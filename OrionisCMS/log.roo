@@ -1,0 +1,16 @@
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-08 22:32:10
+project --topLevelPackage name.orionis.cms --projectName OrionisCMS --java 7 --packaging JAR
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-08 22:32:27
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-08 22:32:32
+jpa setup --database MYSQL --provider HIBERNATE 
+entity jpa --class name.orionis.cms.site.model.DemoModel --testAutomatically 
+repository jpa --interface ~.site.repository.DemoRepo --entity ~.site.model.DemoModel
+service --interface name.orionis.cms.site.service.DemoService --entity ~.site.model.DemoModel
+hint
+web mvc setup
+web mvc controller --class name.orionis.cms.site.web.DemoController
+entity jpa --class name.orionis.cms.extensions.demo.model.Demo 
+service --interface ~.extensions.demo.service.DemoService --entity ~.extensions.demo.model.Demo
+web mvc controller --class ~.extensions.demo.web.DemoController 
+help security 
+security setup

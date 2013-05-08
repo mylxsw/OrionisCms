@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Kaptcha Verification Code -->
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg type="java.util.Properties">
+					<props>
+						<prop key="kaptcha.image.width">81</prop>
+						<prop key="kaptcha.image.height">30</prop>
+						<prop key="kaptcha.textproducer.char.string">sdptABCDEFHKMPRSTWX12345679</prop>
+						<prop key="kaptcha.textproducer.char.length">4</prop>
+						<prop key="kaptcha.textproducer.font.size">24</prop>
+						<prop key="kaptcha.noise.color">black</prop>
+						<prop key="kaptcha.textproducer.font.color">black</prop>
+						<prop key="kaptcha.textproducer.font.names">Optima,Helvetica,Officina</prop>
+						<prop key="kaptcha.obscurificator.impl">name.orionis.cms.service.kaptcha.RippleDistortion</prop>
+						<prop key="kaptcha.border">no</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+</beans>
