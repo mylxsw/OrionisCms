@@ -1,5 +1,11 @@
 <aspectj>
 <aspects>
+<aspect name="name.orionis.cms.extensions.content.model.NewsDataDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="name.orionis.cms.extensions.content.model.NewsDataDataOnDemand_Roo_Configurable"/>
+<aspect name="name.orionis.cms.extensions.content.model.CategoryIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="name.orionis.cms.extensions.content.model.CategoryIntegrationTest_Roo_Configurable"/>
+<aspect name="name.orionis.cms.extensions.content.model.CategoryDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="name.orionis.cms.extensions.content.model.CategoryDataOnDemand_Roo_Configurable"/>
 </aspects>
 </aspectj>
 

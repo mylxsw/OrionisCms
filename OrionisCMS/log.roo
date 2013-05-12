@@ -14,3 +14,39 @@ service --interface ~.extensions.demo.service.DemoService --entity ~.extensions.
 web mvc controller --class ~.extensions.demo.web.DemoController 
 help security 
 security setup
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-12 23:24:08
+hint
+entity jpa --class ~.extensions.content.model.Content
+field string --fieldName title --notNull --sizeMin 1 --sizeMax 50 
+field string --fieldName content --sizeMax 10000
+field date --fieldName create_time --type java.util.Date --notNull --dateTimeFormatPattern "yyyy-MM-dd hh:mm:ss"
+field date --fieldName update_time --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd hh:mm:ss"
+field string --fieldName description --sizeMax 1000
+field number --fieldName list_order --type short --decimalMax 999
+field boolean --fieldName is_link --value false
+field string --fieldName url --sizeMax 100 
+entity jpa --class ~.extensions.content.model.Category --testAutomatically 
+field number --fieldName site_id --type short --value 0 --notNull 
+field string --fieldName cate_name --sizeMin 1 --sizeMax 50 --notNull
+field string --fieldName description --sizeMax 500 --value ""
+field number --fieldName parent_id --type int --value 0
+field string --fieldName url --sizeMax 100
+field boolean --fieldName child --value false
+field string --fieldName style --sizeMax 5
+field string --fieldName image --sizeMax 100
+field boolean --fieldName sethtml --value false
+field string --fieldName letter --sizeMax 50
+field string --fieldName settings --sizeMax 1000 --comment "some settings" 
+field number --fieldName listorder --type short --max 3
+field boolean --fieldName is_menu --value true
+focus --class ~.extensions.content.model.Content
+field number --fieldName status --type short
+field reference --fieldName category --type ~.extensions.content.model.Category --cardinality MANY_TO_ONE 
+field set --fieldName contents --type ~.extensions.content.model.Content --cardinality ONE_TO_MANY --mappedBy category
+entity jpa --class ~.extensions.content.model.NewsData --testAutomatically 
+field string --fieldName content --sizeMax 10000
+field string --fieldName template --sizeMax 30
+field boolean --fieldName allow_comment --value true
+field string --fieldName copy_from --sizeMax 100
+field number --fieldName pagination_type --type short --decimalMax 9
+field number --fieldName max_char_per_page --type int

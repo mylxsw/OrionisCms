@@ -90,7 +90,7 @@
     
     <servlet-mapping>
         <servlet-name>OrionisCMS</servlet-name>
-        <url-pattern>/cms/*</url-pattern>
+        <url-pattern>*.cms</url-pattern>
     </servlet-mapping>
     
     <!-- Handles Cms site requests -->
