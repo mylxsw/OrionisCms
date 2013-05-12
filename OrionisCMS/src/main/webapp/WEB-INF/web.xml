@@ -5,7 +5,10 @@
     <display-name>OrionisCMS</display-name>
     
     <description>Roo generated OrionisCMS application</description>
-
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
     
     <!-- Enable escaping of form submission contents -->
     <context-param>
