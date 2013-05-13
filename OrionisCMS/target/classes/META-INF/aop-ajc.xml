@@ -20,8 +20,8 @@
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_Jpa_ActiveRecord"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_Jpa_ActiveRecord"/>
-<aspect name="name.orionis.cms.extensions.content.model.Category_Roo_ToString"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_Jpa_Entity"/>
+<aspect name="name.orionis.cms.extensions.content.model.Category_Roo_ToString"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_JavaBean"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_Jpa_ActiveRecord"/>
 </aspects>
