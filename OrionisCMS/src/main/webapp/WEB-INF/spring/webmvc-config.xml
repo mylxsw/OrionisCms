@@ -76,19 +76,9 @@
 	<bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver" />
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-		id="tilesViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles2.TilesView" />
-	</bean>
-	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
-		id="tilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/layouts/layouts.xml</value>
-				<!-- Scan views directory for Tiles configurations -->
-				<value>/WEB-INF/views/**/views.xml</value>
-			</list>
-		</property>
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	  <property name="prefix" value="/WEB-INF/views/"/>
+	  <property name="suffix" value=".jsp"/>
 	</bean>
 </beans>

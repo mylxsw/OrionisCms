@@ -54,3 +54,17 @@ field number --fieldName max_char_per_page --type int
 service --interface name.orionis.cms.extensions.content.service.CategoryService --entity ~.extensions.content.model.Category
 hint
 hint
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-13 23:55:21
+hint
+entity jpa --class   ~.core.dict.model.Dictionary
+field string --fieldName dict_code --notNull --sizeMax 50
+field string --fieldName dict_value --sizeMax 200
+field string --fieldName explain --sizeMax 255
+service --interface ~.core.dict.service.DictService --entity ~.core.dict.model.Dictionary
+focus --class ~.core.dict.service.DictService
+// [failed] finder list 
+focus --class ~.core.dict.model.Dictionary
+finder list 
+finder add --finderName findDictionarysByCodeEquals 
+focus --class ~.core.dict.service.DictServiceImpl
+// [failed] finder list 

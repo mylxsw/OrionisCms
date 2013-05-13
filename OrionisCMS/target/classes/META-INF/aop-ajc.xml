@@ -4,26 +4,28 @@
 <aspect name="name.orionis.cms.extensions.content.model.Category_Roo_JavaBean"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.Category_Roo_Jpa_Entity"/>
-<aspect name="name.orionis.cms.extensions.demo.service.DemoService_Roo_Service"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_ToString"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_JavaBean"/>
+<aspect name="name.orionis.cms.core.dict.model.Dictionary_Roo_ToString"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_Jpa_Entity"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_ToString"/>
 <aspect name="name.orionis.cms.extensions.content.model.Category_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.Category_Roo_Jpa_ActiveRecord"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_ToString"/>
-<aspect name="name.orionis.cms.extensions.content.service.CategoryServiceImpl_Roo_Service"/>
-<aspect name="name.orionis.cms.extensions.demo.service.DemoServiceImpl_Roo_Service"/>
+<aspect name="name.orionis.cms.core.dict.model.Dictionary_Roo_Finder"/>
+<aspect name="name.orionis.cms.core.dict.model.Dictionary_Roo_Jpa_ActiveRecord"/>
+<aspect name="name.orionis.cms.core.dict.model.Dictionary_Roo_Jpa_Entity"/>
 <aspect name="name.orionis.helper.cache.CacheAspect"/>
-<aspect name="name.orionis.cms.extensions.content.service.CategoryService_Roo_Service"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_Jpa_ActiveRecord"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_Jpa_ActiveRecord"/>
-<aspect name="name.orionis.cms.extensions.content.model.News_Roo_Jpa_Entity"/>
 <aspect name="name.orionis.cms.extensions.content.model.Category_Roo_ToString"/>
+<aspect name="name.orionis.cms.extensions.content.model.News_Roo_Jpa_Entity"/>
+<aspect name="name.orionis.cms.core.dict.model.Dictionary_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_JavaBean"/>
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_Jpa_ActiveRecord"/>
+<aspect name="name.orionis.cms.core.dict.model.Dictionary_Roo_JavaBean"/>
 </aspects>
 </aspectj>
 
