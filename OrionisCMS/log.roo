@@ -50,3 +50,7 @@ field boolean --fieldName allow_comment --value true
 field string --fieldName copy_from --sizeMax 100
 field number --fieldName pagination_type --type short --decimalMax 9
 field number --fieldName max_char_per_page --type int
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-13 21:20:09
+service --interface name.orionis.cms.extensions.content.service.CategoryService --entity ~.extensions.content.model.Category
+hint
+hint

@@ -4,9 +4,9 @@
 package name.orionis.cms.extensions.content.model;
 
 import java.util.List;
-import name.orionis.cms.extensions.content.model.Category;
 import name.orionis.cms.extensions.content.model.CategoryDataOnDemand;
 import name.orionis.cms.extensions.content.model.CategoryIntegrationTest;
+import name.orionis.cms.extensions.content.service.CategoryService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,10 +26,13 @@ privileged aspect CategoryIntegrationTest_Roo_IntegrationTest {
     @Autowired
     private CategoryDataOnDemand CategoryIntegrationTest.dod;
     
+    @Autowired
+    CategoryService CategoryIntegrationTest.categoryService;
+    
     @Test
-    public void CategoryIntegrationTest.testCountCategorys() {
+    public void CategoryIntegrationTest.testCountAllCategorys() {
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", dod.getRandomCategory());
-        long count = Category.countCategorys();
+        long count = categoryService.countAllCategorys();
         Assert.assertTrue("Counter for 'Category' incorrectly reported there were no entries", count > 0);
     }
     
@@ -39,7 +42,7 @@ privileged aspect CategoryIntegrationTest_Roo_IntegrationTest {
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", obj);
         Long id = obj.getId();
         Assert.assertNotNull("Data on demand for 'Category' failed to provide an identifier", id);
-        obj = Category.findCategory(id);
+        obj = categoryService.findCategory(id);
         Assert.assertNotNull("Find method for 'Category' illegally returned null for id '" + id + "'", obj);
         Assert.assertEquals("Find method for 'Category' returned the incorrect identifier", id, obj.getId());
     }
@@ -47,9 +50,9 @@ privileged aspect CategoryIntegrationTest_Roo_IntegrationTest {
     @Test
     public void CategoryIntegrationTest.testFindAllCategorys() {
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", dod.getRandomCategory());
-        long count = Category.countCategorys();
+        long count = categoryService.countAllCategorys();
         Assert.assertTrue("Too expensive to perform a find all test for 'Category', as there are " + count + " entries; set the findAllMaximum to exceed this value or set findAll=false on the integration test annotation to disable the test", count < 250);
-        List<Category> result = Category.findAllCategorys();
+        List<Category> result = categoryService.findAllCategorys();
         Assert.assertNotNull("Find all method for 'Category' illegally returned null", result);
         Assert.assertTrue("Find all method for 'Category' failed to return any data", result.size() > 0);
     }
@@ -57,11 +60,11 @@ privileged aspect CategoryIntegrationTest_Roo_IntegrationTest {
     @Test
     public void CategoryIntegrationTest.testFindCategoryEntries() {
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", dod.getRandomCategory());
-        long count = Category.countCategorys();
+        long count = categoryService.countAllCategorys();
         if (count > 20) count = 20;
         int firstResult = 0;
         int maxResults = (int) count;
-        List<Category> result = Category.findCategoryEntries(firstResult, maxResults);
+        List<Category> result = categoryService.findCategoryEntries(firstResult, maxResults);
         Assert.assertNotNull("Find entries method for 'Category' illegally returned null", result);
         Assert.assertEquals("Find entries method for 'Category' returned an incorrect number of entries", count, result.size());
     }
@@ -72,7 +75,7 @@ privileged aspect CategoryIntegrationTest_Roo_IntegrationTest {
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", obj);
         Long id = obj.getId();
         Assert.assertNotNull("Data on demand for 'Category' failed to provide an identifier", id);
-        obj = Category.findCategory(id);
+        obj = categoryService.findCategory(id);
         Assert.assertNotNull("Find method for 'Category' illegally returned null for id '" + id + "'", obj);
         boolean modified =  dod.modifyCategory(obj);
         Integer currentVersion = obj.getVersion();
@@ -81,41 +84,41 @@ privileged aspect CategoryIntegrationTest_Roo_IntegrationTest {
     }
     
     @Test
-    public void CategoryIntegrationTest.testMergeUpdate() {
+    public void CategoryIntegrationTest.testUpdateCategoryUpdate() {
         Category obj = dod.getRandomCategory();
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", obj);
         Long id = obj.getId();
         Assert.assertNotNull("Data on demand for 'Category' failed to provide an identifier", id);
-        obj = Category.findCategory(id);
+        obj = categoryService.findCategory(id);
         boolean modified =  dod.modifyCategory(obj);
         Integer currentVersion = obj.getVersion();
-        Category merged = obj.merge();
+        Category merged = categoryService.updateCategory(obj);
         obj.flush();
         Assert.assertEquals("Identifier of merged object not the same as identifier of original object", merged.getId(), id);
         Assert.assertTrue("Version for 'Category' failed to increment on merge and flush directive", (currentVersion != null && obj.getVersion() > currentVersion) || !modified);
     }
     
     @Test
-    public void CategoryIntegrationTest.testPersist() {
+    public void CategoryIntegrationTest.testSaveCategory() {
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", dod.getRandomCategory());
         Category obj = dod.getNewTransientCategory(Integer.MAX_VALUE);
         Assert.assertNotNull("Data on demand for 'Category' failed to provide a new transient entity", obj);
         Assert.assertNull("Expected 'Category' identifier to be null", obj.getId());
-        obj.persist();
+        categoryService.saveCategory(obj);
         obj.flush();
         Assert.assertNotNull("Expected 'Category' identifier to no longer be null", obj.getId());
     }
     
     @Test
-    public void CategoryIntegrationTest.testRemove() {
+    public void CategoryIntegrationTest.testDeleteCategory() {
         Category obj = dod.getRandomCategory();
         Assert.assertNotNull("Data on demand for 'Category' failed to initialize correctly", obj);
         Long id = obj.getId();
         Assert.assertNotNull("Data on demand for 'Category' failed to provide an identifier", id);
-        obj = Category.findCategory(id);
-        obj.remove();
+        obj = categoryService.findCategory(id);
+        categoryService.deleteCategory(obj);
         obj.flush();
-        Assert.assertNull("Failed to remove 'Category' with identifier '" + id + "'", Category.findCategory(id));
+        Assert.assertNull("Failed to remove 'Category' with identifier '" + id + "'", categoryService.findCategory(id));
     }
     
 }

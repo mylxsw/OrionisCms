@@ -13,7 +13,10 @@
 <aspect name="name.orionis.cms.extensions.content.model.NewsData_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.Category_Roo_Jpa_ActiveRecord"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_ToString"/>
+<aspect name="name.orionis.cms.extensions.content.service.CategoryServiceImpl_Roo_Service"/>
 <aspect name="name.orionis.cms.extensions.demo.service.DemoServiceImpl_Roo_Service"/>
+<aspect name="name.orionis.helper.cache.CacheAspect"/>
+<aspect name="name.orionis.cms.extensions.content.service.CategoryService_Roo_Service"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_Configurable"/>
 <aspect name="name.orionis.cms.extensions.content.model.News_Roo_Jpa_ActiveRecord"/>
 <aspect name="name.orionis.cms.extensions.demo.model.Demo_Roo_Jpa_ActiveRecord"/>

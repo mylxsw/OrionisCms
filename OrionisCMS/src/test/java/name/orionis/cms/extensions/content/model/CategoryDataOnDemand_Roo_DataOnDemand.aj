@@ -12,6 +12,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import name.orionis.cms.extensions.content.model.Category;
 import name.orionis.cms.extensions.content.model.CategoryDataOnDemand;
+import name.orionis.cms.extensions.content.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect CategoryDataOnDemand_Roo_DataOnDemand {
@@ -21,6 +23,9 @@ privileged aspect CategoryDataOnDemand_Roo_DataOnDemand {
     private Random CategoryDataOnDemand.rnd = new SecureRandom();
     
     private List<Category> CategoryDataOnDemand.data;
+    
+    @Autowired
+    CategoryService CategoryDataOnDemand.categoryService;
     
     public Category CategoryDataOnDemand.getNewTransientCategory(int index) {
         Category obj = new Category();
@@ -136,14 +141,14 @@ privileged aspect CategoryDataOnDemand_Roo_DataOnDemand {
         }
         Category obj = data.get(index);
         Long id = obj.getId();
-        return Category.findCategory(id);
+        return categoryService.findCategory(id);
     }
     
     public Category CategoryDataOnDemand.getRandomCategory() {
         init();
         Category obj = data.get(rnd.nextInt(data.size()));
         Long id = obj.getId();
-        return Category.findCategory(id);
+        return categoryService.findCategory(id);
     }
     
     public boolean CategoryDataOnDemand.modifyCategory(Category obj) {
@@ -153,7 +158,7 @@ privileged aspect CategoryDataOnDemand_Roo_DataOnDemand {
     public void CategoryDataOnDemand.init() {
         int from = 0;
         int to = 10;
-        data = Category.findCategoryEntries(from, to);
+        data = categoryService.findCategoryEntries(from, to);
         if (data == null) {
             throw new IllegalStateException("Find entries implementation for 'Category' illegally returned null");
         }
@@ -165,7 +170,7 @@ privileged aspect CategoryDataOnDemand_Roo_DataOnDemand {
         for (int i = 0; i < 10; i++) {
             Category obj = getNewTransientCategory(i);
             try {
-                obj.persist();
+                categoryService.saveCategory(obj);
             } catch (ConstraintViolationException e) {
                 StringBuilder msg = new StringBuilder();
                 for (Iterator<ConstraintViolation<?>> iter = e.getConstraintViolations().iterator(); iter.hasNext();) {
