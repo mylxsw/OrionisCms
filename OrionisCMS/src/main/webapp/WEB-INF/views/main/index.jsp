@@ -9,7 +9,27 @@
 <meta name="description" content=""/>
 <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"/>
 <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-responsive.min.css" />"/>
+<link type="text/css" href="<c:url value="/resources/jquery-ui/css/custom-theme/jquery-ui-1.10.0.custom.css" />"/>
+
+<!--[if IE 7]>
+<link rel="stylesheet" href="<c:url value="/resources/assets/css/font-awesome-ie7.min.css" />">
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/jquery-ui/css/custom-theme/jquery.ui.1.10.0.ie.css" />" />
+<![endif]-->
+
+<link type="text/css" href="<c:url value="resources/assets/css/font-awesome.min.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/static/css/core.css" />"/>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<c:url value="/resources/assets/ico/apple-touch-icon-144-precomposed.png" />" >
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<c:url value="/resources/assets/ico/apple-touch-icon-114-precomposed.png" />">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<c:url value="/resources/assets/ico/apple-touch-icon-72-precomposed.png" />">
+<link rel="apple-touch-icon-precomposed" href="<c:url value="/resources/assets/ico/apple-touch-icon-57-precomposed.png" />">
+<link rel="shortcut icon" href="<c:url value="/resources/assets/ico/favicon.png" />">
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 </head>
 <body>
 <div class="container-fluid container-global">
@@ -140,6 +160,7 @@
 </div>
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
+<script src="<c:url value="/resources/jquery-ui/js/jquery-ui-1.10.3.custom.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
 </body>
 </html>
