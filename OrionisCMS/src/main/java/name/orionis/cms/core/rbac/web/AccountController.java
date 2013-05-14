@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import name.orionis.cms.core.base.BaseController;
 
 @Controller
-@RequestMapping("account")
+@RequestMapping("/account")
 public class AccountController extends BaseController {
 
 	@RequestMapping("login")
