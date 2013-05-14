@@ -29,4 +29,11 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<!-- DWR -->
+	<dwr:annotation-config id="dwrAnnotationConfig" />
+  	<dwr:annotation-scan 
+  		base-package="name.orionis" 
+  		scanDataTransferObject="true" 
+  		scanRemoteProxy="false" />
 </beans>

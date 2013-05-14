@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,12 +42,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="brand" href="#">CMS后台管理</a>
+      <a class="brand" href="#"><spring:message code="application_name" /></a>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
           Logged in as <a href="#" class="navbar-link">Username</a>
         </p>
-        <ul class="nav">
+        <ul class="nav" id="ajax_main_nav">
           <li class="active"><a href="index.html">我的面板</a></li>
           <li><a href="setting.html">设置</a></li>
           <li><a href="module.html">模块</a></li>

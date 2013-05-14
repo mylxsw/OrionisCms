@@ -15,6 +15,7 @@
         <!-- Configure these elements to secure URIs in your application -->
         <intercept-url pattern="/cms/account/*" access="permitAll"/>
         <intercept-url pattern="/cms/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/dwr/**" access="isAuthenticated()"/>
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />
