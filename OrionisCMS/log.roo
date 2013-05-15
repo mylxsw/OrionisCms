@@ -71,3 +71,44 @@ focus --class ~.core.dict.service.DictServiceImpl
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-14 01:27:44
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-14 20:39:06
 hint
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-15 22:40:45
+// [failed] entity jpa --class ~.core.rbac.model.User 
+// [failed] entity jpa --class  ~.core.rbac.model.User
+entity jpa --class  ~.core.rbac.model.RbacUser
+field string --fieldName username --sizeMin 3 --sizeMax 50 --unique --notNull
+field string --fieldName password --sizeMin 256 --sizeMax 256 
+field string --fieldName lastLoginIP --sizeMax 15
+field date --fieldName lastLoginTime --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd hh:mm:ss"
+field string --fieldName email --sizeMax 40 --regexp "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"
+field string --fieldName realName --sizeMax 50
+enum type --class ~.core.rbac.model.UserStatus
+hint 
+enum constant --name ENABLED 
+enum constant --name DISABLED
+enum constant --name LOCKED
+field enum --fieldName status --type ~.core.rbac.model.UserStatus 
+focus --class ~.core.rbac.model.RbacUser
+field enum --fieldName status --type ~.core.rbac.model.UserStatus 
+entity jpa --class ~.core.rbac.model.RbacRole 
+field string --fieldName roleName
+field string --fieldName roleName --unique --sizeMin 2 --sizeMax 20
+field set --fieldName rbacUser --type ~.core.rbac.model.RbacUser --cardinality ONE_TO_MANY 
+field enum --fieldName status --type ~.core.rbac.model.Status
+focus --class ~.core.rbac.model.RbacUser
+field reference --fieldName rbacRole --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_ONE
+entity jpa --class ~.core.rbac.model.RbacPermission
+field string --fieldName permissionName --notNull --sizeMax 40
+field string --fieldName permissionValue --notNull --sizeMax 255
+focus --class ~.core.rbac.model.RbacRole
+field set --fieldName rbacPermissions --type ~.core.rbac.model.RbacPermission --cardinality MANY_TO_MANY 
+focus --class ~.core.rbac.model.RbacPermission
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-15 23:26:44
+entity jpa --class ~.core.rbac.model.RbacPermission
+field string --fieldName permissionName --notNull --sizeMax 40
+field string --fieldName permissionValue --notNull --sizeMax 255
+field set --fieldName rbacRoles --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_MANY --mappedBy rbacPermissions
+// [failed] focus --class ~.core.rbac.RbacUser
+focus --class ~.core.rbac.model.RbacUser
+finder list --filter userName
+finder add --finderName findRbacUserByUserNameEquals
+finder add --finderName findRbacUsersByUserNameEquals
