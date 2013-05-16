@@ -1,4 +1,4 @@
-package name.orionis.cms.core.main.remote.dto;
+package name.orionis.cms.remote.dwr.dto;
 
 import org.directwebremoting.annotations.DataTransferObject;
 import org.directwebremoting.annotations.RemoteProperty;

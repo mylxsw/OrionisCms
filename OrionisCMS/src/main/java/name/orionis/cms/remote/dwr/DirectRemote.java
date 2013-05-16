@@ -1,4 +1,4 @@
-package name.orionis.cms.core.main.remote;
+package name.orionis.cms.remote.dwr;
 
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
