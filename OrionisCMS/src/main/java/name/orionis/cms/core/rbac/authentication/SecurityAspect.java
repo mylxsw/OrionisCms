@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Security AOP
- * @author code.404
+ * @author orionis
+ * @2013-5-16
+ * Site : http://blog.orionis.name
  *
  */
 @Aspect
@@ -35,7 +37,8 @@ public class SecurityAspect {
 		String invokeMethod = joinPoint.getSignature().getName();
 		
 		// Current permission name
-		String invokePermissionName = SecurityHelper.parsePermissionName(invokeClass, invokeMethod);
+		String invokePermissionName = SecurityHelper.parsePermissionName(
+				invokeClass, invokeMethod);
 		
 		// Public page, open it
 		if(containsElement(invokePermissionName, publicAccess)){
@@ -54,13 +57,15 @@ public class SecurityAspect {
 		
 		// God Mode, Permit all
 		if(userinfo.isGodMode()){
-			log.info("God Mode:" + SessionHelper.getHttpServletRequest().getRequestURI());
+			log.info("God Mode:" 
+					+ SessionHelper.getHttpServletRequest().getRequestURI());
 			return ;
 		}
 		
 		// If invoke anonymous only method, forbidden
 		if(containsElement(invokePermissionName, anonymousOnlyAccess)){
-			throw new PermissionDenyException("You have logan,Need not access this page!");
+			throw new PermissionDenyException(
+					"You have logan,Need not access this page!");
 		}
 		
 		

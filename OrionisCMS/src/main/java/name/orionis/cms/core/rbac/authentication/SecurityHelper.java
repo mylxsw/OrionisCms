@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SecurityHelper {
-	final public static String ROLE_PERMISSION_LIST = "cn.edu.cdgdc.framework.auth.role_permission_list";
+	final public static String ROLE_PERMISSION_LIST = "name.orionis.cms.core.rbac.authentication.role_permission_list";
 	
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 	/**
@@ -60,7 +60,7 @@ public class SecurityHelper {
 	 * @param role_id
 	 * @return
 	 */
-	public List<String> getPermissionsByRoleId(short role_id){
+	public List<String> getPermissionsByRoleId(Long role_id){
 		return getAllRolePermissions().get(role_id);
 	}
 	

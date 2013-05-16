@@ -17,4 +17,14 @@ privileged aspect RbacUser_Roo_Finder {
         return q;
     }
     
+    public static TypedQuery<RbacUser> RbacUser.findRbacUsersByUserNameEqualsAndPasswordEquals(String userName, String password) {
+        if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
+        if (password == null || password.length() == 0) throw new IllegalArgumentException("The password argument is required");
+        EntityManager em = RbacUser.entityManager();
+        TypedQuery<RbacUser> q = em.createQuery("SELECT o FROM RbacUser AS o WHERE o.userName = :userName  AND o.password = :password", RbacUser.class);
+        q.setParameter("userName", userName);
+        q.setParameter("password", password);
+        return q;
+    }
+    
 }

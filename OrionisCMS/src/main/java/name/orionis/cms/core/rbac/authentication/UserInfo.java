@@ -1,31 +1,57 @@
 package name.orionis.cms.core.rbac.authentication;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import name.orionis.cms.core.rbac.web.AccountController;
+/**
+ * Stored Current User information
+ * @author orionis
+ * @2013-5-16
+ * Site : http://blog.orionis.name
+ *
+ */
 public class UserInfo {
-	private String userId;
-	private short roleId;
+	private Long userId;
+	private Long roleId;
 	private String username;
+	/**
+	 * Token , for Security use
+	 */
 	private String token;
+	/**
+	 * God Mode ,for super administrator
+	 * God Mode will get all priviledge
+	 */
 	private boolean godMode = false;
+
+	/**
+	 * Get Current User info
+	 * @return
+	 */
+	public static UserInfo getCurrentUser(){
+		return (UserInfo) SessionHelper.getSession().getAttribute(AccountController.ACCOUNT_INFO);
+	}
 	
-	
-	public UserInfo(String userId, short roleId) {
+	public UserInfo(Long userId, Long roleId) {
 		super();
 		this.userId = userId;
 		this.roleId = roleId;
 	}
 	public UserInfo(){
 	}
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public UserInfo setUserId(Long userId) {
 		this.userId = userId;
+		return this;
 	}
-	public short getRoleId() {
+	public Long getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(short roleId) {
+	public UserInfo setRoleId(Long roleId) {
 		this.roleId = roleId;
+		return this;
 	}
 
 	public UserInfo setGodMode(boolean b) {
@@ -36,19 +62,22 @@ public class UserInfo {
 		return godMode;
 	}
 	public String getUsername() {
-		if(username == null){
-			username = userId;
-		}
 		return username;
 	}
-	public void setUsername(String username) {
+	public UserInfo setUsername(String username) {
 		this.username = username;
+		return this;
 	}
 	public String getToken() {
+		// if not set token ,then initialize it 
+		if(token == null){
+			token = DigestUtils.sha256Hex(getUsername() + "{" + System.currentTimeMillis() + "}");
+		}
 		return token;
 	}
-	public void setToken(String token) {
+	public UserInfo setToken(String token) {
 		this.token = token;
+		return this;
 	}
 	
 }

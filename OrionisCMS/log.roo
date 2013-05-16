@@ -128,3 +128,14 @@ finder list --filter permission
 focus --class name.orionis.cms.core.rbac.model.RbacPermission
 finder list --filter role
 finder add --finderName findRbacPermissionsByRbacRole
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-16 22:29:20
+hint
+focus --class ~.core.rbac.model.RbacUser
+finder list --class ~.core.rbac.model.RbacUser --filter userName
+finder list --class ~.core.rbac.model.RbacUser 
+finder list --class ~.core.rbac.model.RbacUser --depth 2
+finder list --class ~.core.rbac.model.RbacUser --depth 2 --filter userName
+finder list --class ~.core.rbac.model.RbacUser --depth 2 --filter userName,password
+finder add --finderName findRbacUsersByUserNameEqualsAndPasswordEquals
+service --interface ~.core.rbac.service.RbacService
+service --interface ~.core.rbac.service.RbacUserService --entity ~.core.rbac.model.RbacUser
