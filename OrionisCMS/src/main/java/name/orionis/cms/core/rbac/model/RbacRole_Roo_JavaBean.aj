@@ -4,6 +4,7 @@
 package name.orionis.cms.core.rbac.model;
 
 import java.util.Set;
+import name.orionis.cms.core.rbac.model.RbacMenu;
 import name.orionis.cms.core.rbac.model.RbacPermission;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.model.RbacUser;
@@ -41,6 +42,14 @@ privileged aspect RbacRole_Roo_JavaBean {
     
     public void RbacRole.setRbacPermissions(Set<RbacPermission> rbacPermissions) {
         this.rbacPermissions = rbacPermissions;
+    }
+    
+    public Set<RbacMenu> RbacRole.getRbacMenus() {
+        return this.rbacMenus;
+    }
+    
+    public void RbacRole.setRbacMenus(Set<RbacMenu> rbacMenus) {
+        this.rbacMenus = rbacMenus;
     }
     
 }

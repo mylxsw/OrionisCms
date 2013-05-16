@@ -9,7 +9,8 @@ import name.orionis.cms.core.base.BaseController;
 @Controller
 @RequestMapping("/account")
 public class AccountController extends BaseController {
-
+	public static final String ACCOUNT_INFO = "userinfo";
+	
 	@RequestMapping("login")
 	public String login(Model model){
 		return view("login");

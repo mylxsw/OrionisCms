@@ -3,7 +3,6 @@
 
 package name.orionis.cms.core.rbac.model;
 
-import java.util.Set;
 import name.orionis.cms.core.rbac.model.RbacPermission;
 import name.orionis.cms.core.rbac.model.RbacRole;
 
@@ -17,20 +16,36 @@ privileged aspect RbacPermission_Roo_JavaBean {
         this.permissionName = permissionName;
     }
     
-    public String RbacPermission.getPermissionValue() {
-        return this.permissionValue;
+    public String RbacPermission.getController() {
+        return this.controller;
     }
     
-    public void RbacPermission.setPermissionValue(String permissionValue) {
-        this.permissionValue = permissionValue;
+    public void RbacPermission.setController(String controller) {
+        this.controller = controller;
     }
     
-    public Set<RbacRole> RbacPermission.getRbacRoles() {
-        return this.rbacRoles;
+    public String RbacPermission.getMethod() {
+        return this.method;
     }
     
-    public void RbacPermission.setRbacRoles(Set<RbacRole> rbacRoles) {
-        this.rbacRoles = rbacRoles;
+    public void RbacPermission.setMethod(String method) {
+        this.method = method;
+    }
+    
+    public String RbacPermission.getUrl() {
+        return this.url;
+    }
+    
+    public void RbacPermission.setUrl(String url) {
+        this.url = url;
+    }
+    
+    public RbacRole RbacPermission.getRbacRole() {
+        return this.rbacRole;
+    }
+    
+    public void RbacPermission.setRbacRole(RbacRole rbacRole) {
+        this.rbacRole = rbacRole;
     }
     
 }

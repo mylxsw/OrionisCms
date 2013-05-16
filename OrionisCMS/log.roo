@@ -112,3 +112,19 @@ focus --class ~.core.rbac.model.RbacUser
 finder list --filter userName
 finder add --finderName findRbacUserByUserNameEquals
 finder add --finderName findRbacUsersByUserNameEquals
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-16 15:18:25
+entity jpa --class ~.core.rbac.model.RbacMenu
+field string --fieldName menuName --sizeMax 40 --notNull 
+field string --fieldName url --sizeMax 100
+field enum --fieldName status --type ~.core.rbac.model.Status
+field number --fieldName parentId --type java.lang.Long
+field reference --fieldName rbacRole --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_ONE 
+focus --class ~.core.rbac.model.RbacRole
+field set --fieldName rbacMenus --type ~.core.rbac.model.RbacMenu --cardinality ONE_TO_MANY --mappedBy rbacRole
+focus --class ~.core.rbac.model.RbacPermission
+field reference --fieldName rbacRole --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_ONE
+focus --class name.orionis.cms.core.rbac.model.RbacRole
+finder list --filter permission
+focus --class name.orionis.cms.core.rbac.model.RbacPermission
+finder list --filter role
+finder add --finderName findRbacPermissionsByRbacRole

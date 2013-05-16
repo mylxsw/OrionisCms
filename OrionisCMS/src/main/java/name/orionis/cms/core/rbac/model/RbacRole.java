@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
@@ -27,6 +28,9 @@ public class RbacRole {
     @Enumerated
     private Status status;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "rbacRole")
     private Set<RbacPermission> rbacPermissions = new HashSet<RbacPermission>();
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rbacRole")
+    private Set<RbacMenu> rbacMenus = new HashSet<RbacMenu>();
 }

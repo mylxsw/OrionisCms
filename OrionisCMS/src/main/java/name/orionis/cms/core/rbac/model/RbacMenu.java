@@ -1,32 +1,31 @@
 package name.orionis.cms.core.rbac.model;
 
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(finders = { "findRbacPermissionsByRbacRole" })
-public class RbacPermission {
+@RooJpaActiveRecord
+public class RbacMenu {
 
     @NotNull
     @Size(max = 40)
-    private String permissionName;
+    private String menuName;
 
-    @NotNull
-    @Size(max = 40)
-    private String controller;
-
-    @NotNull
-    @Size(max = 40)
-    private String method;
-
-    @NotNull
-    @Size(max = 255)
+    @Size(max = 100)
     private String url;
+
+    @Enumerated
+    private Status status;
+
+    @Value("0")
+    private Long parentId;
 
     @ManyToOne
     private RbacRole rbacRole;
