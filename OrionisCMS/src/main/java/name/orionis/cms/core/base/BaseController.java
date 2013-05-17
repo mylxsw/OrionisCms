@@ -115,7 +115,8 @@ public abstract class BaseController implements ApplicationContextAware {
 	 * @param resp
 	 * @return
 	 */
-	protected String ajax(Map<String ,String> data, String info, String status, HttpServletResponse resp){
+	protected String ajax(Map<String ,String> data, String info, 
+			String status, HttpServletResponse resp){
 		Map<String,String> map = new HashMap<String, String>();
 		map.putAll(data);
 		map.put("info", info);
@@ -140,7 +141,8 @@ public abstract class BaseController implements ApplicationContextAware {
 	 * @param redirectAttr
 	 * @return
 	 */
-	protected String redirect(String url, Map<String, Object> flashData, RedirectAttributes redirectAttr){
+	protected String redirect(String url, Map<String, Object> flashData, 
+			RedirectAttributes redirectAttr){
 		for(Map.Entry<String, Object> m : flashData.entrySet()){
 			redirectAttr.addFlashAttribute(m.getKey(), m.getValue());
 		}
@@ -153,7 +155,8 @@ public abstract class BaseController implements ApplicationContextAware {
 	 * @param resp
 	 * @return
 	 */
-	protected String errors(BindingResult result, Form<?> form, HttpServletResponse resp){
+	protected String errors(BindingResult result, Form<?> form, 
+			HttpServletResponse resp){
 		return ajax(MessageBuilder.init().
 				addMessage(result.getFieldErrors()).
 				addMessage(form.errorMessages()).
