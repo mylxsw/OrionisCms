@@ -74,4 +74,12 @@ privileged aspect RbacUser_Roo_JavaBean {
         this.rbacRole = rbacRole;
     }
     
+    public Date RbacUser.getCreateData() {
+        return this.createData;
+    }
+    
+    public void RbacUser.setCreateData(Date createData) {
+        this.createData = createData;
+    }
+    
 }

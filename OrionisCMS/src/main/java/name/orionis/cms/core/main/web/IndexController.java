@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import name.orionis.cms.core.base.BaseController;
+import name.orionis.helper.reflection.annotation.Remark;
 
 /**
  * The Cms System main controller
@@ -14,6 +15,7 @@ import name.orionis.cms.core.base.BaseController;
  *
  */
 @Controller
+@Remark(value="Cms Admin Main Page")
 public class IndexController extends BaseController {
 	
 	/**
@@ -21,10 +23,12 @@ public class IndexController extends BaseController {
 	 * @param model
 	 * @return
 	 */
+	@Remark(value="Admin Main Page" , group="main")
 	@RequestMapping("/index")
 	public String index(Model model){
 		return view("index");
 	}
+	
 	
 	@Override
 	protected String _viewBase() {

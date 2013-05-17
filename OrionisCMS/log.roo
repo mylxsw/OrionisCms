@@ -139,3 +139,13 @@ finder list --class ~.core.rbac.model.RbacUser --depth 2 --filter userName,passw
 finder add --finderName findRbacUsersByUserNameEqualsAndPasswordEquals
 service --interface ~.core.rbac.service.RbacService
 service --interface ~.core.rbac.service.RbacUserService --entity ~.core.rbac.model.RbacUser
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-17 00:40:09
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-17 21:32:34
+service --interface ~.core.rbac.service.RbacUserService --entity ~.core.rbac.model.RbacUser
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-17 23:14:10
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-17 23:20:51
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-17 23:39:12
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-17 23:40:16
+hint
+// [failed] service --interface ~.core.rbac.service.RbacRoleService --entity ~.core.rbac.model.RbacRole
+service --interface ~.core.rbac.service.RbacRoleService --entity ~.core.rbac.model.RbacRole

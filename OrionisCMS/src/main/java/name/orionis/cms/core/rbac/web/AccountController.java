@@ -20,6 +20,7 @@ import name.orionis.cms.core.rbac.authentication.ConfigHelper;
 import name.orionis.cms.core.rbac.authentication.UserInfo;
 import name.orionis.cms.core.rbac.model.RbacUser;
 import name.orionis.cms.core.rbac.service.RbacService;
+import name.orionis.cms.utils.Encrypt;
 import name.orionis.helper.reflection.annotation.Remark;
 
 /**
@@ -30,7 +31,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  *
  */
 @Controller
-@Remark(value="Account Controller", group="rbac")
+@Remark(value="Account Controller", group="account")
 @RequestMapping("/account")
 public class AccountController extends BaseController {
 	public static final String ACCOUNT_INFO = "userinfo";
@@ -50,7 +51,7 @@ public class AccountController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("login")
-	@Remark(value="User Login", group="rbac")
+	@Remark(value="User Login", group="account")
 	public String login(@RequestParam(value="username", required=false) String username, 
 			@RequestParam(value="password", required=false) String password, 
 			HttpServletRequest req,
@@ -70,8 +71,8 @@ public class AccountController extends BaseController {
 		// God Mode
 		if(configHelper.isAllowGodMode()){
 			if(configHelper.getGodUser().equals(
-					DigestUtils.sha256Hex(password)) 
-					&& configHelper.getGodPassword().equals(DigestUtils.sha256Hex(password))){
+					Encrypt.encryptPassword(password, username)) 
+					&& configHelper.getGodPassword().equals(Encrypt.encryptPassword(password, username))){
 				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true));
 				return ajax("God Mode Successfully!", STATUS_SUCCESS, resp);
 			}
@@ -80,7 +81,7 @@ public class AccountController extends BaseController {
 		// Create Login User Information
 		RbacUser _user = new RbacUser();
 		_user.setUserName(username);
-		_user.setPassword(password);
+		_user.setPassword(Encrypt.encryptPassword(password, username));
 		_user.setLastLoginIP(req.getRemoteAddr());
 		_user.setLastLoginTime(new Date(System.currentTimeMillis()));
 		
@@ -97,6 +98,18 @@ public class AccountController extends BaseController {
 		return ajax("Login Successfully", STATUS_SUCCESS, resp);
 	}
 	
+	/**
+	 * Safe logout
+	 * @param session
+	 * @param resp
+	 * @return
+	 */
+	@Remark(value="Logout", group="account")
+	@RequestMapping("logout")
+	public String logout(HttpSession session, HttpServletResponse resp){
+		session.invalidate();
+		return ajax("Logout Successfully!", STATUS_SUCCESS, resp);
+	}
 	
 	@Override
 	protected String _viewBase() {

@@ -46,4 +46,7 @@ public class RbacUser {
 
     @ManyToOne
     private RbacRole rbacRole;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private Date createData;
 }

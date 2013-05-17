@@ -1,8 +1,5 @@
 package name.orionis.cms.core.rbac.service;
 
-
-import org.apache.commons.codec.digest.DigestUtils;
-
 import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.model.RbacUser;
 import name.orionis.cms.core.rbac.model.Status;
@@ -11,7 +8,7 @@ public class RbacServiceImpl implements RbacService {
 	@Override
 	public RbacUser userLogin(RbacUser user){
 		RbacUser loginUser = RbacUser.findRbacUsersByUserNameEqualsAndPasswordEquals(
-				user.getUserName(), DigestUtils.sha256Hex(user.getPassword())).getSingleResult();
+				user.getUserName(), user.getPassword()).getSingleResult();
 		
 		// Check user account status
 		if(loginUser == null){
