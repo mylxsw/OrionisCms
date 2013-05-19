@@ -19,11 +19,11 @@ public class RbacPermission  implements Serializable {
     private String permissionName;
 
     @NotNull
-    @Size(max = 40)
+    @Size(max = 220)
     private String controller;
 
     @NotNull
-    @Size(max = 40)
+    @Size(max = 220)
     private String method;
 
     @NotNull

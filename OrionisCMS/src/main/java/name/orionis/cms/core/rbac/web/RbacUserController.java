@@ -107,7 +107,7 @@ public class RbacUserController extends BaseController {
 	 */
 	@Remark(value="User delete",group="rbac_user")
 	@RequestMapping("delete")
-	public String user_delete(@RequestParam("id") long id, HttpServletResponse resp){
+	public String delete(@RequestParam("id") long id, HttpServletResponse resp){
 		userService.deleteRbacUser(RbacUser.findRbacUser(id));
 		return success(resp);
 	}

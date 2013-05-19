@@ -56,8 +56,6 @@ public class RbacPermissionController extends BaseController {
 	public String update(HttpServletResponse resp){
 		permissionService.updatePermissions(getApplicationContext());
 		
-		// Reload all permissions
-		securityHelper.reloadRolePermissionCache();
 		return success(resp);
 	}
 	/**
@@ -73,7 +71,6 @@ public class RbacPermissionController extends BaseController {
 	@Remark(value="Grant permission to role",group="rbac_permission")
 	@RequestMapping("add")
 	public String add(
-			@RequestParam(value="id", required=false) long id,
 			@Valid @ModelAttribute("permissionForm") PermissionForm permissionForm,
 			BindingResult result,
 			HttpServletRequest req, 
@@ -81,8 +78,9 @@ public class RbacPermissionController extends BaseController {
 		
 		if(HTTP_GET.equals(req.getMethod())){
 			// Check if received an role id
+			long id = Long.parseLong(req.getParameter("id"));
 			if(id == 0){
-				throw new ActionFailedException("info.action.invalididsuply");
+				throw new ActionFailedException("Invalid Id!");
 			}
 			
 			// Get all controller and method by reflection tools
@@ -97,6 +95,7 @@ public class RbacPermissionController extends BaseController {
 				permissions.put(rp.getController() + "." + rp.getMethod(), rp);
 			}
 			model.addAttribute("permissions", permissions);
+			model.addAttribute("id", id);
 			return view("add");
 		}
 		
@@ -108,7 +107,7 @@ public class RbacPermissionController extends BaseController {
 		permissionService.saveRbacPermission(permissionForm.toEntity());
 	
 		// Reload Cached Role Permissions
-		securityHelper.reloadRolePermissionCache();
+		//securityHelper.reloadRolePermissionCache();
 		
 		return success(resp);
 	}
@@ -126,13 +125,12 @@ public class RbacPermissionController extends BaseController {
 		
 		permissionService.deleteRbacPermission(RbacPermission.findRbacPermission(id));
 		
-		securityHelper.reloadRolePermissionCache();
 		return success(resp);
 	}
 	
 	@Override
 	protected String _viewBase() {
-		return null;
+		return "rbac/permission/";
 	}
 
 }

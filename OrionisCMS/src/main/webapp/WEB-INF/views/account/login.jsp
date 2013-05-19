@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -60,10 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container">
 
       <form class="form-signin" action="account/login" method="post" ajax="true" after="login_success">
-        <h2 class="form-signin-heading"><spring:message code="ui.msg.pleaselogin"/></h2>
-        <input type="text" name="username" class="input-block-level" placeholder="Username">
-        <input type="password" name="password" class="input-block-level" placeholder="Password">
-        <input class="btn btn-large btn-primary" type="submit" value="<spring:message code="ui.login"/>" />
+        <h2 class="form-signin-heading">Please Login</h2>
+        <input type="text" name="username" class="input-block-level" placeholder="User Name" value="godgod" />
+        <input type="password" name="password" class="input-block-level" placeholder="Password" value="godgod" />
+        <input class="btn btn-large btn-primary" type="submit" value="Login" />
       </form>
     </div> <!-- /container -->
 <div id="dialog"></div>

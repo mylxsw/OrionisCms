@@ -7,6 +7,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import name.orionis.helper.reflection.annotation.Remark;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,7 @@ import com.google.code.kaptcha.Producer;
  *
  */
 @Controller
+@Remark(value="Kaptcha", group="open")
 public class KaptchaController {
 	private Producer captchaProducer = null;
 
@@ -32,6 +35,7 @@ public class KaptchaController {
 		this.captchaProducer = captchaProducer;
 	}
 
+	@Remark(value="handleRequest", group="open")
 	@RequestMapping("/captcha-image")
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

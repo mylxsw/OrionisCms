@@ -32,7 +32,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * every controllers need to extends this controller
  *
  */
-@Transactional
 public abstract class BaseController implements ApplicationContextAware {
 	
 	private ApplicationContext applicationContext;

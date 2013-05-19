@@ -20,11 +20,11 @@ public class PermissionForm extends Form<RbacPermission> {
     private String permissionName;
 
     @NotNull
-    @Size(max = 40)
+    @Size(max = 220)
     private String controller;
 
     @NotNull
-    @Size(max = 40)
+    @Size(max = 220)
     private String method;
 
     @NotNull

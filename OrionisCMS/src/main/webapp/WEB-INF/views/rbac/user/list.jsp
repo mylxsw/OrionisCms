@@ -22,7 +22,7 @@
 					<ec:column property="email" title="Email" />
 					<ec:column property="status" title="Status"></ec:column>
 					<ec:column title="Operation" alias="action"  filterable="false" sortable="false">
-						<admin:button value="ui.delete" user-id="${ul.id }" clazz="btn-danger delete_user"></admin:button>
+						<admin:button value="Delete" user-id="${ul.id }" clazz="btn-danger delete_user"></admin:button>
 					</ec:column>
 				</ec:row>
 			</ec:table>

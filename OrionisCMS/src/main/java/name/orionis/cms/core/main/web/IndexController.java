@@ -22,7 +22,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  *
  */
 @Controller
-@Remark(value="Cms Admin Main Page")
+@Remark(value="Cms Admin Main Page",group="main")
 public class IndexController extends BaseController {
 	
 	@Resource

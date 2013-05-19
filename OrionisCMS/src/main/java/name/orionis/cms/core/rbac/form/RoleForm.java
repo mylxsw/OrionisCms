@@ -4,6 +4,7 @@ import javax.validation.constraints.Size;
 
 import name.orionis.cms.core.base.Form;
 import name.orionis.cms.core.rbac.model.RbacRole;
+import name.orionis.cms.core.rbac.model.Status;
 /**
  * Role Form
  * @author orionis
@@ -20,6 +21,7 @@ public class RoleForm extends Form<RbacRole> {
 	public RbacRole toEntity() {
 		RbacRole role = new RbacRole();
 		role.setRoleName(roleName);
+		role.setStatus(Status.ENABLED);
 		return role;
 	}
 

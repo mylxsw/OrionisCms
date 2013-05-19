@@ -2,7 +2,6 @@
 <%@page import="name.orionis.cms.core.rbac.dto.NavItem"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -51,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="brand" href="#"><spring:message code="application_name" /></a>
+      <a class="brand" href="#">Orionis CMS</a>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
           Logged in as <a href="#" class="navbar-link">Username</a>

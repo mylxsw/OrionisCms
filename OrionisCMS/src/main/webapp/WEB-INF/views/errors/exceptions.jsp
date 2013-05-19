@@ -57,11 +57,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   <body>
 
-    <div class="container">
-		
-		<div>${exception }</div>
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
 
-    </div> <!-- /container -->
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="page-header">
+          <h1>${exception }</h1>
+        </div>
+        <p class="lead">${e }</p>
+      </div>
+
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Orionis CMS <a href="http://blog.orionis.name">orionis</a>.</p>
+      </div>
+    </div>
 <div id="dialog"></div>
 <div id="queue"></div>
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
@@ -73,5 +87,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
 <script src="<c:url value="/resources/static/js/jquery-cms-ext.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
+<script type="text/javascript">
+$(function(){
+	var redirect = "${redirect}";
+	if(redirect){
+		setTimeout(redirectfunc, 2000);
+	}
+	function redirectfunc(){
+		window.location.href=$.orionis.url("${redirect}");
+	}
+});
+</script>
+
   </body>
 </html>
