@@ -23,6 +23,6 @@ public class Encrypt {
 	
 	public static void main(String [] args){
 		System.out.println(Encrypt.encryptPassword("testtest","testtest"));
-		System.out.println(Encrypt.encryptPassword("god","godgod"));
+		System.out.println(Encrypt.encryptPassword("godgod","godgod"));
 	}
 }

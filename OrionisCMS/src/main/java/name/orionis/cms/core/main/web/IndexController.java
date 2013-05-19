@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import name.orionis.cms.core.base.BaseController;
 import name.orionis.cms.core.rbac.authentication.UserInfo;
+import name.orionis.cms.core.rbac.dto.NavItem;
 import name.orionis.cms.core.rbac.service.RbacMenuService;
 import name.orionis.cms.core.rbac.web.AccountController;
 import name.orionis.helper.reflection.annotation.Remark;
@@ -35,8 +36,7 @@ public class IndexController extends BaseController {
 	@Remark(value="Admin Main Page" , group="main")
 	@RequestMapping("/index")
 	public String index(Model model, HttpSession session){
-		UserInfo user = (UserInfo) session.getAttribute(AccountController.ACCOUNT_INFO);
-		model.addAttribute("menu_trees", menuService.listMenusTree(user.getRoleId()));
+		
 		return view("index");
 	}
 	

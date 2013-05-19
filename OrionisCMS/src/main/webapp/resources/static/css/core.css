@@ -100,3 +100,18 @@ html, body{
 .inline-block{
 	display: inline-block;
 }
+/*************************************************
+			对话框
+**************************************************/
+#dialog{
+	display: none;
+	padding:20px;
+}
+#dialog ._select_school_link {
+	padding: 3px 8px;
+	border: 1px solid #CCC;
+}
+#dialog ._select_school_link:hover {
+	border: 1px solid rgb(118, 146, 233);
+	background-color: rgb(126, 178, 255);
+}

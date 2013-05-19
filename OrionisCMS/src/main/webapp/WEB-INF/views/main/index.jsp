@@ -1,6 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="name.orionis.cms.core.rbac.dto.NavItem"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +16,7 @@
 <meta name="description" content=""/>
 <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"/>
 <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-responsive.min.css" />"/>
-<link type="text/css" href="<c:url value="/resources/jquery-ui/css/custom-theme/jquery-ui-1.10.0.custom.css" />"/>
+<link rel="stylesheet" href="<c:url value="/resources/jquery-ui/css/custom-theme/jquery-ui-1.10.0.custom.css" />"/>
 
 <!--[if IE 7]>
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/font-awesome-ie7.min.css" />">
@@ -31,6 +37,9 @@
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<script type="text/javascript">
+	var basePath = "<%=basePath%>";
+</script>
 </head>
 <body>
 <div class="container-fluid container-global">
@@ -47,16 +56,7 @@
         <p class="navbar-text pull-right">
           Logged in as <a href="#" class="navbar-link">Username</a>
         </p>
-        <ul class="nav" id="ajax_main_nav">
-          <li class="active"><a href="index.html">我的面板</a></li>
-          <li><a href="setting.html">设置</a></li>
-          <li><a href="module.html">模块</a></li>
-          <li><a href="#contact">内容</a></li>
-          <li><a href="#contact">用户</a></li>
-          <li><a href="#contact">界面</a></li>
-          <li><a href="#contact">扩展</a></li>
-          <li><a href="#contact">应用</a></li>
-        </ul>
+        <ul class="nav" id="ajax_main_nav"></ul>
         <form class="navbar-search pull-left" action="">
           <input type="text" class="search-query span2" placeholder="Search">
         </form>
@@ -70,7 +70,7 @@
 
     <div class="span2 left_nav" >
       <div class="well sidebar-nav">
-        <ul class="nav nav-list">
+        <ul class="nav nav-list" id="ajax_left_nav">
           <li class="nav-header">个人设置</li>
           <li class="active"><a href="#">修改个人信息</a></li>
           <li><a href="#">修改密码</a></li>
@@ -87,7 +87,7 @@
       </div><!--/.well -->
     </div><!--/span-->
     
-    <div class="span10 main">
+    <div class="span10 main" id="ajax_main">
 		<ul class="breadcrumb">
 		  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
 		  <li><a href="#">Library</a> <span class="divider">/</span></li>
@@ -146,7 +146,7 @@
 					<hr class="hr" />
 					※ 您的模版允许后台在线编辑，为避免安全问题，建议您设为不允许在线修改<br>
 					</div>
-				</div>				
+				</div>
 			</div>
      	</div>
      
@@ -155,6 +155,8 @@
 
   <hr>
 </div><!--/.fluid-container-->
+<div id="dialog"></div>
+<div id="queue"></div>
 <footer class="footer">
 	<div class="copyright">&copy; orionis.name 2013</div>
 </footer>
@@ -162,6 +164,10 @@
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/jquery-ui/js/jquery-ui-1.10.3.custom.js" />" type="text/javascript"></script>
+<script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/interface/DirectRemote.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script src="<c:url value="/resources/static/js/jquery-cms-ext.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
 </body>
 </html>

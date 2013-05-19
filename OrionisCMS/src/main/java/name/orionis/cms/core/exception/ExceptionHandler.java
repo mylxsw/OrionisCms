@@ -1,5 +1,8 @@
 package name.orionis.cms.core.exception;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +20,10 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
-		System.out.println("hello");
+		response.setStatus(HttpServletResponse.SC_OK);
+		Map<String, String> model = new HashMap<String, String>();
+		ex.printStackTrace();
+		model.put("exception", ex.getMessage());
 		return new ModelAndView("errors/exceptions");
 	}
 

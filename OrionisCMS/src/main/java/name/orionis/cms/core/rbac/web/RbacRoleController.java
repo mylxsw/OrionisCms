@@ -89,7 +89,7 @@ public class RbacRoleController extends BaseController {
 	
 	@Override
 	protected String _viewBase() {
-		return null;
+		return "rbac/role/";
 	}
 
 }

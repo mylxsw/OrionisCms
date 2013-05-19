@@ -394,7 +394,12 @@
 			<version>1.7</version>
 		</dependency>
 		
-		
+		<!-- Extremecomponents Table -->
+		<dependency>
+			<groupId>org.extremecomponents</groupId>
+			<artifactId>extremecomponents</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -1,0 +1,10 @@
+<%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ tag import="tags.NavUtil" %>
+<%@ attribute name="nav_data" required="true" type="tags.NavItem"  %>
+<ul class="u-menu u-menu-gp u-menu-show">
+	<%
+		String nav = NavUtil.genNavManager(nav_data);
+		out.println(nav);
+	%>
+    
+</ul>

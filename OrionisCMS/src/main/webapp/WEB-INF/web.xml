@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
     
@@ -115,7 +115,18 @@
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
-    
+    <!-- Extremecomponents -->
+	<context-param>
+		<param-name>extremecomponentsPreferencesLocation</param-name>
+		<param-value>/META-INF/spring/extremecomponents.properties</param-value>
+	</context-param>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/tld/extremecomponents</taglib-uri>
+			<taglib-location>/WEB-INF/tld/extremecomponents.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/uncaughtException</location>

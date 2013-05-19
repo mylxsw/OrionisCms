@@ -88,7 +88,7 @@ public class AccountController extends BaseController {
 		RbacUser user = null;
 		try{
 			user = rbacService.userLogin(_user);
-		} catch( ActionFailedException e){
+		} catch( Exception e){
 			return ajax(e.getMessage(), STATUS_FAILED, resp);
 		}
 		
