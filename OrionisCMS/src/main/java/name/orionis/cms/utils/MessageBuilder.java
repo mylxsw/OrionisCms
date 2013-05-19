@@ -3,9 +3,13 @@ package name.orionis.cms.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.validation.FieldError;
+
 /**
  * Message Builder
  * @author orionis
@@ -16,7 +20,6 @@ import org.springframework.validation.FieldError;
 public class MessageBuilder {
 	
 	private List<String> messages = new ArrayList<String>();
-	
 	private MessageBuilder(){}
 	public static MessageBuilder init(){
 		return new MessageBuilder();
@@ -40,7 +43,10 @@ public class MessageBuilder {
 	public String build(){
 		StringBuilder message = new StringBuilder();
 		for(String m: messages){
-			message.append("<p>").append(m).append("</p>");
+			if(StringUtils.isBlank(m)){
+				continue;
+			}
+			message.append("<p>").append(m ).append("</p>");
 		}
 		return message.toString();
 	}

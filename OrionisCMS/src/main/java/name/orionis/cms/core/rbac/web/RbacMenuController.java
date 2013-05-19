@@ -49,7 +49,7 @@ public class RbacMenuController extends BaseController {
 	 * @return
 	 */
 	@Remark(value="Menu list",group="rbac_menus")
-	@RequestMapping("menus")
+	@RequestMapping("list")
 	public String list( 
 			@RequestParam("id") long id, 
 			HttpServletRequest req, 

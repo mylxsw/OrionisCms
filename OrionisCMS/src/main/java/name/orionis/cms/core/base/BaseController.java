@@ -2,6 +2,7 @@ package name.orionis.cms.core.base;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * every controllers need to extends this controller
  *
  */
+@Transactional
 public abstract class BaseController implements ApplicationContextAware {
 	
 	private ApplicationContext applicationContext;
@@ -172,5 +175,4 @@ public abstract class BaseController implements ApplicationContextAware {
 	protected String failed(HttpServletResponse resp){
 		return ajax(Constant.MESSAGE_ACTION_FAILED, STATUS_FAILED, resp);
 	}
-	
 }

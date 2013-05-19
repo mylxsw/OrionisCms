@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +24,6 @@ import name.orionis.cms.core.rbac.model.RbacUser;
 import name.orionis.cms.core.rbac.service.RbacUserService;
 import name.orionis.cms.utils.Configuration;
 import name.orionis.cms.utils.Constant;
-import name.orionis.cms.utils.MessageBuilder;
 import name.orionis.helper.reflection.annotation.Remark;
 
 /**
@@ -82,15 +82,19 @@ public class RbacUserController extends BaseController {
 				role_list.put(r.getId(), r.getRoleName());
 			}
 			model.addAttribute("roles", role_list);
-			return view("user_add");
+			return view("add");
 		}
 		
 		// Check Form Information
 		if(result.hasErrors() || !userForm.validate()){
 			return errors(result, userForm, resp);
 		}
+		try{
+			userService.saveRbacUser(userForm.toEntity());
+		}catch(Exception e){
+			return ajax(Constant.MESSAGE_ACTION_FAILED, STATUS_FAILED, resp);
+		}
 		
-		userService.saveRbacUser(userForm.toEntity());
 		
 		return success(resp);
 	}
@@ -110,7 +114,7 @@ public class RbacUserController extends BaseController {
 	
 	@Override
 	protected String _viewBase() {
-		return null;
+		return "rbac/user/";
 	}
 	
 }

@@ -30,11 +30,6 @@
 		resource requests to the container's default Servlet -->
 	<mvc:default-servlet-handler />
 
-	<!-- Register "global" interceptor beans to apply to all registered HandlerMappings -->
-	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
-			p:paramName="lang" />
-	</mvc:interceptors>
 
 	<!-- Enable this for integration of file upload functionality -->
 	<bean

@@ -156,12 +156,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <hr>
 </div><!--/.fluid-container-->
 <div id="dialog"></div>
+<div id="message"></div>
 <div id="queue"></div>
 <footer class="footer">
 	<div class="copyright">&copy; orionis.name 2013</div>
 </footer>
 </div>
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/static/js/jquery.form.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/jquery-ui/js/jquery-ui-1.10.3.custom.js" />" type="text/javascript"></script>
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>

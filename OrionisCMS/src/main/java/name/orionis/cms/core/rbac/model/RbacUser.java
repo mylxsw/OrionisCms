@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,7 +41,6 @@ public class RbacUser  implements Serializable  {
     private Date lastLoginTime;
 
     @Size(max = 40)
-    @Pattern(regexp = "\\\\w+([-+.]\\\\w+)*@\\\\w+([-.]\\\\w+)*\\\\.\\\\w+([-.]\\\\w+)*")
     private String email;
 
     @Size(max = 50)
@@ -49,7 +49,7 @@ public class RbacUser  implements Serializable  {
     @Enumerated
     private Status status;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     private RbacRole rbacRole;
     
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")

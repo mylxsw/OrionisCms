@@ -52,7 +52,7 @@ public class SecurityAspect {
 			if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 				return ;
 			}
-			throw new PermissionDenyException("Access Denied!");
+			throw new PermissionDenyException("info.action.accessdeny");
 		}
 		
 		// God Mode, Permit all
@@ -65,7 +65,7 @@ public class SecurityAspect {
 		// If invoke anonymous only method, forbidden
 		if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 			throw new PermissionDenyException(
-					"You have logan,Need not access this page!");
+					"info.action.haveloginneednotaccessthispage");
 		}
 		
 		
@@ -76,7 +76,7 @@ public class SecurityAspect {
 
 		if (!role_permissions.contains(invokePermissionName)) {
 			log.info("Access Intercept:  " + invokeClass + " : " + invokeMethod);
-			throw new PermissionDenyException("Access Denied!");
+			throw new PermissionDenyException("info.action.accessdeny");
 		}
 	}
 	

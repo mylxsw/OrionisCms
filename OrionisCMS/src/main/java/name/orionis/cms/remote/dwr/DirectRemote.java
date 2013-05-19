@@ -20,70 +20,68 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RemoteProxy
-public class DirectRemote implements ApplicationContextAware {
-	private ApplicationContext ctx;
-	
+public class DirectRemote {
 	@RemoteMethod
 	public NavItem getNavigation(String position){
 		NavItem root = new NavItem();
 		if(position.equalsIgnoreCase("top")){
-			root.add(new NavItem().setLinkName(msg("menu.my_dashboard")).setLinkUrl("menu.my_dashboard"));
-			root.add(new NavItem().setLinkName(msg("menu.setting")).setLinkUrl("menu.setting"));
-			root.add(new NavItem().setLinkName(msg("menu.module")).setLinkUrl("menu.module"));
-			root.add(new NavItem().setLinkName(msg("menu.content")).setLinkUrl("menu.content"));
-			root.add(new NavItem().setLinkName(msg("menu.user")).setLinkUrl("menu.user"));
-			root.add(new NavItem().setLinkName(msg("menu.ui")).setLinkUrl("menu.ui"));
-			root.add(new NavItem().setLinkName(msg("menu.extension")).setLinkUrl("menu.extension"));
-			root.add(new NavItem().setLinkName(msg("menu.app")).setLinkUrl("menu.app"));
+			root.add(new NavItem().setLinkName("Dashboard").setLinkUrl("menu.my_dashboard"));
+			root.add(new NavItem().setLinkName("Setting").setLinkUrl("menu.setting"));
+			root.add(new NavItem().setLinkName("Module").setLinkUrl("menu.module"));
+			root.add(new NavItem().setLinkName("Content").setLinkUrl("menu.content"));
+			root.add(new NavItem().setLinkName("User").setLinkUrl("menu.user"));
+			root.add(new NavItem().setLinkName("UI").setLinkUrl("menu.ui"));
+			root.add(new NavItem().setLinkName("Extension").setLinkUrl("menu.extension"));
+			root.add(new NavItem().setLinkName("App").setLinkUrl("menu.app"));
 		}
 		if(position.equalsIgnoreCase("menu.my_dashboard")){
-			root.add(new NavItem().setLinkName(msg("menu.personal.information")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.personal.information.change")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.personal.password.change")).setLinkUrl("account/change_password")));
+			root.add(new NavItem().setLinkName("Personal Information")).setFolder(true)
+					.add(new NavItem().setLinkName("Modify Personal Info").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Change Password").setLinkUrl("account/change_password"));
 		}else if(position.equalsIgnoreCase("menu.setting")){
-			root.add(new NavItem().setLinkName(msg("menu.setting.relatesetting")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.setting.site")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.setting.base")).setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName(msg("menu.setting.security")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.setting.email")).setLinkUrl("")));
-			root.add(new NavItem().setLinkName(msg("menu.admin.setting")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.admin.adminmanage")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.admin.rolemanage")).setLinkUrl("rbac/role/list")));
+			root.add(new NavItem().setLinkName("Related Settings")).setFolder(true)
+					.add(new NavItem().setLinkName("Site Setting").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Basic Setting").setLinkUrl("account/change_password"))
+					.add(new NavItem().setLinkName("Security Setting").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Email Setting").setLinkUrl(""));
+			root.add(new NavItem().setLinkName("Admin Settings")).setFolder(true)
+					.add(new NavItem().setLinkName("Admin Management").setLinkUrl("rbac/user/list"))
+					.add(new NavItem().setLinkName("Role Management").setLinkUrl("rbac/role/list"));
 		}else if(position.equalsIgnoreCase("menu.module")){
-			root.add(new NavItem().setLinkName(msg("menu.module.modulemanage")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.module.advertisement")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.module.announce")).setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName(msg("menu.module.message")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.module.sms")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.module.remark")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.module.friendlink")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.module.vote")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.module.search")).setLinkUrl("")));
+			root.add(new NavItem().setLinkName("Modules Management")).setFolder(true)
+					.add(new NavItem().setLinkName("Advertisement").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Announce").setLinkUrl("account/change_password"))
+					.add(new NavItem().setLinkName("Message").setLinkUrl(""))
+					.add(new NavItem().setLinkName("SMS").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Remark").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Blogroll").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Vote").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Search").setLinkUrl(""));
 		}else if(position.equalsIgnoreCase("menu.content")){
-			root.add(new NavItem().setLinkName(msg("menu.content.content_pub_manage")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.content.attachment_manage")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.content.subject")).setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName(msg("menu.content.fragment_manage")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.content.collection")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.content.remark_manage")).setLinkUrl("")));
-			root.add(new NavItem().setLinkName(msg("menu.content.pub.pub_manage")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.content.pub.refresh.category")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.content.pub.refresh.index")).setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName(msg("menu.content.pub.refresh.url")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.content.pub.refresh.synchronization")).setLinkUrl("")));
-			root.add(new NavItem().setLinkName(msg("menu.content.relation.content_relation_setting")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.content.relation.category_manage")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.content.relation.modle_manage")).setLinkUrl("account/change_password")));
+			root.add(new NavItem().setLinkName("Content Management")).setFolder(true)
+					.add(new NavItem().setLinkName("Attachment").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Subject").setLinkUrl("account/change_password"))
+					.add(new NavItem().setLinkName("Fragment").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Collection").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Remark Management").setLinkUrl(""));
+			root.add(new NavItem().setLinkName("Cached Management")).setFolder(true)
+					.add(new NavItem().setLinkName("Category Refresh").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Index Page Refresh").setLinkUrl("account/change_password"))
+					.add(new NavItem().setLinkName("Url Refresh").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Synchronization Refresh").setLinkUrl(""));
+			root.add(new NavItem().setLinkName("Content Settings")).setFolder(true)
+					.add(new NavItem().setLinkName("Category Management").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Module Management").setLinkUrl("account/change_password"));
 		}else if(position.equalsIgnoreCase("menu.user")){
-			root.add(new NavItem().setLinkName(msg("menu.user.usermanage")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.user.audituser")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.user.usermodule.setting")).setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName(msg("menu.user.group.manage")).setLinkUrl(""))
-					.add(new NavItem().setLinkName(msg("menu.user.model.manage")).setLinkUrl("")));
+			root.add(new NavItem().setLinkName("User Management")).setFolder(true)
+					.add(new NavItem().setLinkName("User Audit").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("User Module Setting").setLinkUrl("account/change_password"))
+					.add(new NavItem().setLinkName("Group Management").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Model Management").setLinkUrl(""));
 		}else if(position.equalsIgnoreCase("menu.ui")){
-			root.add(new NavItem().setLinkName(msg("menu.ui.template_manage")).setFolder(true)
-					.add(new NavItem().setLinkName(msg("menu.ui.template.style")).setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName(msg("menu.ui.taglib")).setLinkUrl("account/change_password")));
+			root.add(new NavItem().setLinkName("menu.ui.template_manage")).setFolder(true)
+					.add(new NavItem().setLinkName("menu.ui.template.style").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("menu.ui.taglib").setLinkUrl("account/change_password"));
 		}else if(position.equalsIgnoreCase("menu.extension")){
 			
 		}else if(position.equalsIgnoreCase("menu.app")){
@@ -93,12 +91,4 @@ public class DirectRemote implements ApplicationContextAware {
 		return root;
 	}
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
-		ctx = applicationContext;
-	}
-	private String msg(String key){
-		return ctx.getMessage(key, new Object[]{},  Locale.getDefault());
-	}
 }

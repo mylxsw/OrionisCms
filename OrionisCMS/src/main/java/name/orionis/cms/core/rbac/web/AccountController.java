@@ -64,7 +64,7 @@ public class AccountController extends BaseController {
 		
 		// Username and password must be not blank 
 		if(StringUtils.isBlank(username) || StringUtils.isBlank(password)){
-			return ajax("Username or password not correct!", STATUS_FAILED, resp);
+			return ajax("Username or password maybe error!", STATUS_FAILED, resp);
 		}
 		
 		// God Mode
@@ -73,7 +73,7 @@ public class AccountController extends BaseController {
 					Encrypt.encryptPassword(password, username)) 
 					&& configHelper.getGodPassword().equals(Encrypt.encryptPassword(password, username))){
 				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true));
-				return ajax("God Mode Successfully!", STATUS_SUCCESS, resp);
+				return ajax("God mode successfully!", STATUS_SUCCESS, resp);
 			}
 		}
 		
@@ -94,7 +94,7 @@ public class AccountController extends BaseController {
 		
 		session.setAttribute(ACCOUNT_INFO, new UserInfo(user.getId(), 
 				user.getRbacRole().getId()).setUsername(user.getUserName()));
-		return ajax("Login Successfully", STATUS_SUCCESS, resp);
+		return ajax("Login successfully!", STATUS_SUCCESS, resp);
 	}
 	
 	/**
@@ -107,7 +107,7 @@ public class AccountController extends BaseController {
 	@RequestMapping("logout")
 	public String logout(HttpSession session, HttpServletResponse resp){
 		session.invalidate();
-		return ajax("Logout Successfully!", STATUS_SUCCESS, resp);
+		return ajax("Safe Logout successfully!", STATUS_SUCCESS, resp);
 	}
 	
 	@Override

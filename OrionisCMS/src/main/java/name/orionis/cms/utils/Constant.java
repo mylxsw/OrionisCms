@@ -15,15 +15,15 @@ public class Constant {
 	/**
 	 * Message: successfully operation
 	 */
-	final public static String MESSAGE_ACTION_SUCCESS = "Successful operation!";
+	final public static String MESSAGE_ACTION_SUCCESS = "Operation Successfully";
 	/**
 	 * Message: form wrong
 	 */
-	final public static String MESSAGE_ACTION_FORM_WRONG = "The form information has wrong!";
+	final public static String MESSAGE_ACTION_FORM_WRONG = "Form validation error!";
 	/**
 	 * Message: failed operation
 	 */
-	public static final String MESSAGE_ACTION_FAILED = "Failed Operation!";
+	public static final String MESSAGE_ACTION_FAILED = "Operation Failed!";
 	
 	/**
 	 * Security Reflection Tools Scan Controller`s base package

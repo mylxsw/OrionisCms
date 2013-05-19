@@ -87,7 +87,6 @@ jQuery.orionis = {
 					};
 					
 					options.url = $.orionis.url($(this).attr("action"));
-					
 					// 表单提交之前的处理，一般是表单字段校验
 					// function_name(formData, form, options)
 					if( !$.orionis.isEmpty($(this).attr("before"))){
@@ -130,8 +129,8 @@ jQuery.orionis = {
 			 * 为按钮增加href点击事件
 			 * ********************************************************************************
 			 */
-			if($("button").length){
-				$("button[href!='']").click(function(e){
+			if($("button[parse='true']").length){
+				$("button[parse='true']").click(function(e){
 					e.preventDefault();
 					var href = $(this).attr("href");
 					var params = $(this).attr("params");
@@ -180,7 +179,7 @@ jQuery.orionis = {
 		 * 对话框提示消息
 		 */
 		alert_message:function(message){//Alert提示消息
-			var dialog = $("#dialog");
+			var dialog = $("#message");
 			dialog.html(message);
 			dialog.dialog({
 				modal: true,
@@ -193,17 +192,21 @@ jQuery.orionis = {
 			      }
 			});
 		},
+		dialog_dismiss:function(){
+			$("#dialog").dialog("close");
+		},
 		/**
 		 * 弹出对话框
 		 * @param html
 		 */
-		dialog:function(html){
+		dialog:function(html, title){
 			var dialog = $("#dialog");
 			dialog.html(html);
 			dialog.dialog({
 				modal: true,
 				width:800,
-				height:400
+				height:400,
+				title: title
 			});
 		},
 		/**

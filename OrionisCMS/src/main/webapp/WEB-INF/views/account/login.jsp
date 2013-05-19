@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,9 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+	<link rel="stylesheet" href="<c:url value="/resources/jquery-ui/css/custom-theme/jquery-ui-1.10.0.custom.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"/>
 	<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-responsive.min.css" />"/>
+	<link rel="stylesheet" href="<c:url value="/resources/static/css/core.css" />"/>
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -44,26 +50,43 @@
       }
 
     </style>
+    <script type="text/javascript">
+	var basePath = "<%=basePath%>";
+	</script>
   </head>
 
   <body>
 
     <div class="container">
 
-      <form class="form-signin" action="<c:url value="/cms/account/login"/>" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+      <form class="form-signin" action="account/login" method="post" ajax="true" after="login_success">
+        <h2 class="form-signin-heading"><spring:message code="ui.msg.pleaselogin"/></h2>
         <input type="text" name="username" class="input-block-level" placeholder="Username">
         <input type="password" name="password" class="input-block-level" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" name="_spring_security_remember_me" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        <input class="btn btn-large btn-primary" type="submit" value="<spring:message code="ui.login"/>" />
       </form>
-
     </div> <!-- /container -->
+<div id="dialog"></div>
+<div id="queue"></div>
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/static/js/jquery.form.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
+<script src="<c:url value="/resources/jquery-ui/js/jquery-ui-1.10.3.custom.js" />" type="text/javascript"></script>
+<script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/interface/DirectRemote.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script src="<c:url value="/resources/static/js/jquery-cms-ext.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
+  <script type="text/javascript">
+  	$(function(){
+  		$.orionis.reloadJsEvent();
+  	});
+  	function login_success(data){
+  		$.orionis.alert_message(data.info);
+  		if(data.status== 1){
+  			window.location.href=$.orionis.url("index");
+  		}
+  	}
+  </script>
   </body>
 </html>

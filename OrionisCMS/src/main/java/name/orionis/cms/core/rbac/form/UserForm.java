@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+
 import name.orionis.cms.core.base.Form;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.model.RbacUser;
@@ -22,17 +24,15 @@ import name.orionis.cms.utils.Encrypt;
  */
 public class UserForm extends Form<RbacUser> {
 	@NotNull
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 50, message="ui.msg.usernameFormatError")
     private String userName;
 
-    @Size(min = 6, max = 30)
+    @Size(min = 6, max = 30, message="ui.msg.passwordmustin630")
     private String password;
 
-    @Size(max = 40)
-    @Pattern(regexp = "\\\\w+([-+.]\\\\w+)*@\\\\w+([-.]\\\\w+)*\\\\.\\\\w+([-.]\\\\w+)*")
     private String email;
 
-    @Size(max = 50)
+    @Size(max = 50, message="ui.msg.realnamemustlt50")
     private String realName;
     
     private long roleId;
@@ -83,4 +83,15 @@ public class UserForm extends Form<RbacUser> {
 	public void setRealName(String realName) {
 		this.realName = realName;
 	}
+
+
+	public long getRoleId() {
+		return roleId;
+	}
+
+
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
+	}
+	
 }

@@ -82,7 +82,7 @@ public class RbacPermissionController extends BaseController {
 		if(HTTP_GET.equals(req.getMethod())){
 			// Check if received an role id
 			if(id == 0){
-				throw new ActionFailedException("No valid id provide!");
+				throw new ActionFailedException("info.action.invalididsuply");
 			}
 			
 			// Get all controller and method by reflection tools
