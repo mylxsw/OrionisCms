@@ -1,4 +1,5 @@
 package name.orionis.cms.core.rbac.authentication;
+import java.util.ArrayList;
 import java.util.List;
 
 import name.orionis.cms.core.rbac.web.AccountController;
@@ -71,8 +72,11 @@ public class SecurityAspect {
 		
 
 		// Role Permissions List
-		List<String> role_permissions = securityHelper
-				.getPermissionsByRoleId(userinfo.getRoleId());
+		List<String> role_permissions =new ArrayList<String>();
+		try{
+			role_permissions =  securityHelper
+					.getPermissionsByRoleId(userinfo.getRoleId());
+		}catch(Exception e){}
 
 		if (!role_permissions.contains(invokePermissionName)) {
 			log.info("Access Intercept:  " + invokeClass + " : " + invokeMethod);

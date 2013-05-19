@@ -57,6 +57,8 @@ public class RbacMenuController extends BaseController {
 			Model model){
 		NavItem navItems = menuService.listMenusTree(id);
 		model.addAttribute("menus", navItems);
+		
+		model.addAttribute("role_id", id);
 		return view("list");
 	}
 	/**
@@ -72,18 +74,19 @@ public class RbacMenuController extends BaseController {
 	@Remark(value="Menu add",group="rbac_menus")
 	@RequestMapping("add")
 	public String add(
-			@RequestParam(value="id",required=false) long id,
 			@Valid @ModelAttribute("menuForm") MenuForm menuForm,
 			BindingResult result,
 			HttpServletRequest req, HttpServletResponse resp, Model model){
 		
 		if(HTTP_GET.equals(req.getMethod())){
+			long id = Long.parseLong(req.getParameter("id"));
 			NavItem menusTree = menuService.listMenusTree(id);
 			Map<Long, String> menus = NavItem.toMap(menusTree, "&nbsp;&nbsp;", "&nbsp;&nbsp;".length());
 			menus.put(0L, "Root");
 			model.addAttribute("menus",menus );
 			
-			return view("menu_add");
+			model.addAttribute("role_id", id);
+			return view("add");
 		}
 		
 		// Check errors
@@ -114,11 +117,14 @@ public class RbacMenuController extends BaseController {
 	
 	@Remark(value="Menu modify", group="rbac_menus")
 	@RequestMapping("modify")
-	public String modify(@RequestParam("id") long id,
+	public String modify(
 			@Valid @ModelAttribute("menuForm") MenuForm menuForm,
 			BindingResult result,
 			HttpServletRequest req, 
 			HttpServletResponse resp,Model model){
+		
+		long id = Long.parseLong(req.getParameter("id"));
+		
 		if(HTTP_GET.equals(req.getMethod())){
 			// here, id attribute is role id
 			RbacMenu menu = RbacMenu.findRbacMenu(id);
@@ -160,6 +166,6 @@ public class RbacMenuController extends BaseController {
 	
 	@Override
 	protected String _viewBase() {
-		return null;
+		return "rbac/menu/";
 	}
 }

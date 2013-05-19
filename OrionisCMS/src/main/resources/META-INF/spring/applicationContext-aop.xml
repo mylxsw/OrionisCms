@@ -27,12 +27,12 @@
 	<bean id="cache" class="name.orionis.helper.cache.impl.MemoryCache">
 		<property name="devMode" value="${cache.mode.dev}"></property><!-- Development Mode -->
 	</bean>
-  	<bean id="cacheAspect" class="name.orionis.helper.cache.CacheAspect" autowire="byType">
+<!--   	<bean id="cacheAspect" class="name.orionis.helper.cache.CacheAspect" autowire="byType">
   		<property name="cache" ref="cache"></property>
-  	</bean>
+  	</bean> -->
 
 	<aop:aspectj-autoproxy proxy-target-class="true">
 		<!-- <aop:include name="securityAspect"/> -->
-		<aop:include name="cacheAspect"/>
+		<!-- <aop:include name="cacheAspect"/> -->
 	</aop:aspectj-autoproxy>
 </beans>

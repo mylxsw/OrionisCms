@@ -56,7 +56,7 @@ public class RbacUserController extends BaseController {
 		model.addAttribute("total", RbacUser.countRbacUsers());
 		// Current page user list
 		model.addAttribute("users", userService
-				.findRbacUserEntries(page, cfg.getInt(Constant.CMS_PAGE_SIZE)));
+				.findRbacUserEntries(cfg.getInt(Constant.CMS_PAGE_SIZE) * (page -1), cfg.getInt(Constant.CMS_PAGE_SIZE)));
 		return view("list");
 	}
 	

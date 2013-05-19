@@ -177,3 +177,4 @@ hint
 focus --class ~.core.rbac.model.RbacUser
 finder list --filter username
 finder add --finderName findRbacUsersByUserNameEquals
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-19 22:14:41

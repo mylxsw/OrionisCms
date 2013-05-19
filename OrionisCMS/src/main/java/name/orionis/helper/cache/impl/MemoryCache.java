@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import name.orionis.helper.cache.ICache;
 
 /**
@@ -13,12 +17,14 @@ import name.orionis.helper.cache.ICache;
  * @author code.404
  *
  */
-public class MemoryCache implements ICache {
+public class MemoryCache implements ICache , ApplicationContextAware {
 
 	Map<String, Object> map = new HashMap<String, Object>();
 	private boolean devMode = false;
 	private boolean isSupportExpiration = true;
 
+	private static ApplicationContext ctx;
+	
 	@Override
 	public void put(String key, Object value) {
 		put(key, value, -1);
@@ -105,6 +111,16 @@ public class MemoryCache implements ICache {
 		public long expiration;
 		public long createTime;
 		public Object object;
+	}
+
+	public static ICache getInstance() {
+		return ctx.getBean(MemoryCache.class);
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.ctx = applicationContext;
 	}
 
 }

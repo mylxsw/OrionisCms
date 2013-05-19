@@ -24,7 +24,12 @@ li:hover{
 	margin-right:10px;
 }
 </style>
-		<div>
+<ul class="breadcrumb">
+  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
+  <li ><a href="javascript:$.orionis.updateMain('rbac/role/list');">Role Management</a><span class="divider">/</span></li>
+  <li class="active">Permission List</li>
+</ul>
+		<div class="row-fluid o-module o-module-big">
 			<%
 				Map<String, RbacPermission> permission_list = (Map<String, RbacPermission>) request.getAttribute("permissions");
 				

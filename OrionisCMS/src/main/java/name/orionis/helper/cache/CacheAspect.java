@@ -1,4 +1,6 @@
 package name.orionis.helper.cache;
+import name.orionis.helper.cache.impl.MemoryCache;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -20,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public class CacheAspect {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
-	private ICache cache;
+	private ICache cache = MemoryCache.getInstance();
 
 	@Around("cached()")
 	public Object cacheMethod(ProceedingJoinPoint pjp) throws Throwable{
@@ -115,11 +117,4 @@ public class CacheAspect {
 	@Pointcut("@annotation(name.orionis.helper.cache.Cached)")
 	public void cached(){}
 
-	public ICache getCache() {
-		return cache;
-	}
-
-	public void setCache(ICache cache) {
-		this.cache = cache;
-	}
 }

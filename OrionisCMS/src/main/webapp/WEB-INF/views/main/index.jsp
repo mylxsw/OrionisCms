@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a class="brand" href="#">Orionis CMS</a>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
-          Logged in as <a href="#" class="navbar-link">Username</a>
+           <a href="#" class="navbar-link logout" >Logout</a>
         </p>
         <ul class="nav" id="ajax_main_nav"></ul>
         <form class="navbar-search pull-left" action="">
@@ -67,26 +67,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="container-fluid">
   <div class="row-fluid">
 
-    <div class="span2 left_nav" >
+    <div class="span3 left_nav" >
       <div class="well sidebar-nav">
         <ul class="nav nav-list" id="ajax_left_nav">
-          <li class="nav-header">个人设置</li>
-          <li class="active"><a href="#">修改个人信息</a></li>
-          <li><a href="#">修改密码</a></li>
-          <li class="nav-header">内容管理</li>
-          <li><a href="#">管理内容</a></li>
-          <li><a href="#">附件管理</a></li>
-          <li><a href="#">专题</a></li>
-          <li><a href="#">评论管理</a></li>
-          <li class="nav-header">缓存管理</li>
-          <li><a href="#">生成首页</a></li>
-          <li><a href="#">清理缓存</a></li>
-          <li><a href="#">更新栏目</a></li>
         </ul>
       </div><!--/.well -->
     </div><!--/span-->
     
-    <div class="span10 main" id="ajax_main">
+    <div class="span9 main" id="ajax_main">
 		<ul class="breadcrumb">
 		  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
 		  <li><a href="#">Library</a> <span class="divider">/</span></li>

@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <hr>
 </div><!--/.fluid-container-->
 <footer class="footer">
-	<div class="copyright">&copy; Company 2013</div>
+	<div class="copyright">&copy; Orionis  2013</div>
 </footer>
 </div>
 <!-- 弹窗  -->
@@ -19,13 +19,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <button class="btn" data-dismiss="modal">关闭</button>
     </div>
  </div>
-<script src="<%=basePath %>resources/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="<%=basePath %>resources/jquery/jquery.form.js" type="text/javascript"></script>
+<script src="<%=basePath %>resources/static/js/jquery-1.8.3.js" type="text/javascript"></script>
+<script src="<%=basePath %>resources/static/js/jquery.form.js" type="text/javascript"></script>
 <script src="<%=basePath %>resources/bootstrap/js/bootstrap.min.js" type="text/javascript" ></script>
+<script src="<%=basePath %>resources/jquery-ui/js/jquery-ui-1.10.3.custom.js"  type="text/javascript"></script>
 <script type='text/javascript' src='<%=basePath %>dwr/engine.js'></script>
-<script type='text/javascript' src='<%=basePath %>dwr/interface/AdminNav.js'></script>
+<script type='text/javascript' src='<%=basePath %>dwr/interface/DirectRemote.js'></script>
 <script type='text/javascript' src='<%=basePath %>dwr/util.js'></script>
-<script src="<%=basePath %>resources/admin/js/core.js" type="text/javascript" ></script>
+<script src="<%=basePath %>resources/static/js/jquery-cms-ext.js" type="text/javascript" ></script>
+<script src="<%=basePath %>resources/static/js/core.js" type="text/javascript" ></script>
 <jsp:doBody></jsp:doBody>
 </body>
 </html>

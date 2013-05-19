@@ -50,16 +50,23 @@ public class SecurityHelper implements ApplicationContextAware {
 		Map<Long, List<String>> rplist = new HashMap<Long, List<String>>();
 		
 		// initialize role-permissions
-		List<RbacRole> rolelist = RbacRole.findAllRbacRoles();
-		for(RbacRole r : rolelist){
-			List<String> list = new ArrayList<String>();
-			List<RbacPermission> permissionsAvailable = RbacPermission.findRbacPermissionsByRbacRole(r).getResultList();
-			for(RbacPermission p: permissionsAvailable){
-				list.add(parsePermissionName(p.getController(),p.getMethod() ));
+		try{
+			List<RbacRole> rolelist = RbacRole.findAllRbacRoles();
+			for(RbacRole r : rolelist){
+				List<String> list = new ArrayList<String>();
+				List<RbacPermission> permissionsAvailable = new ArrayList<RbacPermission>();
+				try{
+					permissionsAvailable = RbacPermission.findRbacPermissionsByRbacRole(r).getResultList();
+				}catch(Exception ee){}
+				for(RbacPermission p: permissionsAvailable){
+					list.add(parsePermissionName(p.getController(),p.getMethod() ));
+				}
+				if(!list.isEmpty())
+					rplist.put(r.getId(), list);
 			}
-			if(!list.isEmpty())
-				rplist.put(r.getId(), list);
+		} catch(Exception e){
 		}
+		
 		return rplist;
 	}
 	
