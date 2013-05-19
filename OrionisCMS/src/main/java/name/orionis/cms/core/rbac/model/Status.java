@@ -1,4 +1,7 @@
 package name.orionis.cms.core.rbac.model;
-public enum Status {
+
+import java.io.Serializable;
+
+public enum Status  implements Serializable  {
     ENABLED, DISABLED, LOCKED, EXPIRED;
 }

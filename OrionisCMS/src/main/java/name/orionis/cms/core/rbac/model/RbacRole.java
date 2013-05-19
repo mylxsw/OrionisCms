@@ -1,5 +1,6 @@
 package name.orionis.cms.core.rbac.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -16,13 +17,13 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord
-public class RbacRole {
+public class RbacRole  implements Serializable  {
 
     @Column(unique = true)
     @Size(min = 2, max = 20)
     private String roleName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rbacRole")
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "rbacRole")
     private Set<RbacUser> rbacUser = new HashSet<RbacUser>();
 
     @Enumerated

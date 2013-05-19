@@ -20,4 +20,9 @@ public class Encrypt {
 	public static String encryptPassword(String password, String salt){
 		return DigestUtils.sha256Hex(password + "{" + salt + "}");
 	}
+	
+	public static void main(String [] args){
+		System.out.println(Encrypt.encryptPassword("testtest","testtest"));
+		System.out.println(Encrypt.encryptPassword("god","godgod"));
+	}
 }

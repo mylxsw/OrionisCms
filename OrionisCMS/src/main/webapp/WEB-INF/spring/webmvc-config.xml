@@ -13,6 +13,9 @@
 			type="annotation" />
 	</context:component-scan>
 
+	<!-- Exception Resolver -->
+	<bean id="exceptionResolver" class="name.orionis.cms.core.exception.ExceptionHandler"/>
+
 	<!-- Turns on support for mapping requests to Spring MVC @Controller methods 
 		Also registers default Formatters and Validators for use across all @Controllers -->
 	<mvc:annotation-driven />
@@ -33,14 +36,6 @@
 			p:paramName="lang" />
 	</mvc:interceptors>
 
-	<!-- Selects a static view for rendering without the need for an explicit 
-		controller -->
-	<mvc:view-controller path="/login" />
-	<mvc:view-controller path="/" view-name="index" />
-	<mvc:view-controller path="/uncaughtException" />
-	<mvc:view-controller path="/resourceNotFound" />
-	<mvc:view-controller path="/dataAccessFailure" />
-
 	<!-- Resolves localized messages*.properties and application.properties 
 		files in the application to allow for internationalization. The messages*.properties 
 		files translate Roo generated messages which are part of the admin interface, 
@@ -54,23 +49,6 @@
 	<!-- Store preferred language configuration in a cookie -->
 	<bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
 		id="localeResolver" p:cookieName="locale" />
-
-	<!-- This bean resolves specific types of exceptions to corresponding logical 
-		- view names for error views. The default behaviour of DispatcherServlet 
-		- is to propagate all exceptions to the servlet container: this will happen 
-		- here with all other types of exceptions. -->
-	<bean
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"
-		p:defaultErrorView="uncaughtException">
-		<property name="exceptionMappings">
-			<props>
-				<prop key=".DataAccessException">dataAccessFailure</prop>
-				<prop key=".NoSuchRequestHandlingMethodException">resourceNotFound</prop>
-				<prop key=".TypeMismatchException">resourceNotFound</prop>
-				<prop key=".MissingServletRequestParameterException">resourceNotFound</prop>
-			</props>
-		</property>
-	</bean>
 
 	<!-- Enable this for integration of file upload functionality -->
 	<bean

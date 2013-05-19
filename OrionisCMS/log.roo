@@ -149,3 +149,25 @@ service --interface ~.core.rbac.service.RbacUserService --entity ~.core.rbac.mod
 hint
 // [failed] service --interface ~.core.rbac.service.RbacRoleService --entity ~.core.rbac.model.RbacRole
 service --interface ~.core.rbac.service.RbacRoleService --entity ~.core.rbac.model.RbacRole
+service --interface ~.core.rbac.service.RbacPermissionService --entity ~.core.rbac.model.RbacPermission
+focus --class ~.core.rbac.model.RbacPermission
+// [failed] finder list --filter role
+finder list --filter role
+finder add --finderName findRbacPermissionsByRbacRole
+class --class ~.core.rbac.web.RbacMenuController --extends ~.core.base.BaseController
+service --interface ~.core.rbac.service.RbacMenuService --entity ~.core.rbac.model.RbacMenu
+focus --class ~.core.rbac.model.RbacMenu 
+finder list --filter role,parentId
+finder list --filter role,parentId --depth 1
+finder list --filter role,parentId --depth 2
+finder add --finderName findRbacMenusByRbacRoleAndParentIdEquals
+finder list --filter parent
+finder add --finderName findRbacMenusByParentIdEquals
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-18 22:35:41
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-18 23:28:33
+hint
+entity jpa --class ~.cms.extensions.dynaimcform.model.DynamicForm 
+field string --fieldName what 
+hint
+hint
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-05-19 02:26:44

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +31,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  */
 @Controller
 @Remark(value="Account Controller", group="account")
-@RequestMapping("/account")
+@RequestMapping("account")
 public class AccountController extends BaseController {
 	public static final String ACCOUNT_INFO = "userinfo";
 	@Resource

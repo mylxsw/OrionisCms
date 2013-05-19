@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import name.orionis.cms.core.rbac.authentication.PermissionDenyException;
 import name.orionis.cms.utils.Constant;
 import name.orionis.cms.utils.JsonConverter;
 import name.orionis.cms.utils.MessageBuilder;
@@ -53,13 +54,24 @@ public abstract class BaseController implements ApplicationContextAware {
 		return applicationContext;
 	}
 	
+	/**
+	 * Exception handler
+	 * @param request
+	 * @param response
+	 * @param e
+	 * @return
+	 */
 	@ExceptionHandler(Throwable.class)
 	public ModelAndView handleException(HttpServletRequest request,
 			HttpServletResponse response, Throwable e) {
 		log.error(e.getMessage());
-		e.printStackTrace();
 		response.setStatus(HttpServletResponse.SC_OK);
-		return new ModelAndView("error/error", "exception", e);
+		e.printStackTrace();
+		Map<String, String> model = new HashMap<String, String>();
+		
+		model.put("exception", e.getMessage());
+		
+		return new ModelAndView("errors/exceptions", model);
 	}
 	
 	/**

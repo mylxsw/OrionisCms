@@ -5,14 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import name.orionis.cms.core.rbac.model.RbacPermission;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.helper.cache.Cached;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,10 +22,17 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class SecurityHelper {
+public class SecurityHelper implements ApplicationContextAware {
 	final public static String ROLE_PERMISSION_LIST = "name.orionis.cms.core.rbac.authentication.role_permission_list";
 	
 	protected final Logger log = LoggerFactory.getLogger(getClass());
+
+	private static ApplicationContext ctx;
+	
+	public static SecurityHelper getInstance(){
+		return ctx.getBean(SecurityHelper.class);
+	}
+	
 	/**
 	 * Reload Role Permissions
 	 */
@@ -72,5 +80,11 @@ public class SecurityHelper {
 	 */
 	public static String parsePermissionName(String controller, String method){
 		return controller + "." + method;
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		ctx = applicationContext;
 	}
 }

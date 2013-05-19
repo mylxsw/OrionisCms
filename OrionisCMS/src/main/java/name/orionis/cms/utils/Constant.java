@@ -24,4 +24,9 @@ public class Constant {
 	 * Message: failed operation
 	 */
 	public static final String MESSAGE_ACTION_FAILED = "Failed Operation!";
+	
+	/**
+	 * Security Reflection Tools Scan Controller`s base package
+	 */
+	public static final String SECURITY_BASE_PACKAGE = "name.orionis.cms";
 }

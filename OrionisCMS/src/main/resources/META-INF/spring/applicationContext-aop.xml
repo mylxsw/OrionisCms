@@ -10,18 +10,18 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
 	<!-- AOP Based Access Control -->
-	<bean id="securityAspect" class="name.orionis.cms.core.rbac.authentication.SecurityAspect" autowire="byType">
-		<property name="anonymousOnlyAccess"><!-- Anonymous Access Only -->
+<!-- 	<bean id="securityAspect" class="name.orionis.cms.core.rbac.authentication.SecurityAspect" autowire="byType">
+		<property name="anonymousOnlyAccess">Anonymous Access Only
 			<list>
-				<value>name.orionis.cms.core.rbac.web.AccountController.*</value>
+				<value>name.orionis.cms.core.rbac.web.AccountController.login</value>
 			</list>
 		</property>
-		<property name="publicAccess"><!-- Public Access Page -->
+		<property name="publicAccess">Public Access Page
 			<list>
 				<value>help.index</value>
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 	
 	<!-- Cache Configuration -->
 	<bean id="cache" class="name.orionis.helper.cache.impl.MemoryCache">
@@ -32,7 +32,7 @@
   	</bean>
 
 	<aop:aspectj-autoproxy proxy-target-class="true">
-		<aop:include name="securityAspect"/>
+		<!-- <aop:include name="securityAspect"/> -->
 		<aop:include name="cacheAspect"/>
 	</aop:aspectj-autoproxy>
 </beans>

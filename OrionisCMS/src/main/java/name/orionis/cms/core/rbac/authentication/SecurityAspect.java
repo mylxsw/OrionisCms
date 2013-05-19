@@ -41,7 +41,7 @@ public class SecurityAspect {
 				invokeClass, invokeMethod);
 		
 		// Public page, open it
-		if(containsElement(invokePermissionName, publicAccess)){
+		if(containsElement(invokePermissionName, configHelper.getPublicAccess())){
 			return ;
 		}
 		
@@ -49,7 +49,7 @@ public class SecurityAspect {
 		UserInfo userinfo = (UserInfo) sessionHelper.get(AccountController.ACCOUNT_INFO);
 		// Anonymous, Check if the current page are anonymous only
 		if (userinfo == null) {
-			if(containsElement(invokePermissionName, anonymousOnlyAccess)){
+			if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 				return ;
 			}
 			throw new PermissionDenyException("Access Denied!");
@@ -63,7 +63,7 @@ public class SecurityAspect {
 		}
 		
 		// If invoke anonymous only method, forbidden
-		if(containsElement(invokePermissionName, anonymousOnlyAccess)){
+		if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 			throw new PermissionDenyException(
 					"You have logan,Need not access this page!");
 		}
@@ -108,52 +108,11 @@ public class SecurityAspect {
 		return false;
 	}
 	
-	public SessionHelper getSessionHelper() {
-		return sessionHelper;
-	}
-
-	public void setSessionHelper(SessionHelper sessionHelper) {
-		this.sessionHelper = sessionHelper;
-	}
-
-	public SecurityHelper getSecurityHelper() {
-		return securityHelper;
-	}
-
-	public void setSecurityHelper(SecurityHelper securityHelper) {
-		this.securityHelper = securityHelper;
-	}
-	
-	public List<String> getPublicAccess() {
-		return publicAccess;
-	}
-
-	public void setPublicAccess(List<String> publicAccess) {
-		this.publicAccess = publicAccess;
-	}
-
-	public List<String> getAnonymousOnlyAccess() {
-		return anonymousOnlyAccess;
-	}
-
-	public void setAnonymousOnlyAccess(List<String> anonymousOnlyAccess) {
-		this.anonymousOnlyAccess = anonymousOnlyAccess;
-	}
-
-	public ConfigHelper getConfigHelper() {
-		return configHelper;
-	}
-
-	public void setConfigHelper(ConfigHelper configHelper) {
-		this.configHelper = configHelper;
-	}
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
-	private List<String> publicAccess;// Public access page
-	private List<String> anonymousOnlyAccess;// Anonymous Only Access
-	private SecurityHelper securityHelper;
-	private SessionHelper sessionHelper;
-	private ConfigHelper configHelper;
+	private SecurityHelper securityHelper = SecurityHelper.getInstance();
+	private SessionHelper sessionHelper = SessionHelper.getInstance();
+	private ConfigHelper configHelper = ConfigHelper.getInstance();
 
 }

@@ -2,6 +2,9 @@ package name.orionis.cms.core.rbac.authentication;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -12,7 +15,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  *
  */
 @Component
-public class SessionHelper {
+public class SessionHelper implements ApplicationContextAware {
 
 	public static HttpServletRequest getHttpServletRequest(){
 		return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
@@ -21,6 +24,13 @@ public class SessionHelper {
 	public static HttpSession getSession(){
 		return getHttpServletRequest().getSession();
 	}
+
+	private static ApplicationContext ctx;
+	
+	public static SessionHelper getInstance(){
+		return ctx.getBean(SessionHelper.class);
+	}
+	
 	
 	public void put(String key , Object value){
 		getSession().setAttribute(key, value);
@@ -34,5 +44,11 @@ public class SessionHelper {
 			return defaultValue;
 		}
 		return object;
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		ctx = applicationContext;
 	}
 }

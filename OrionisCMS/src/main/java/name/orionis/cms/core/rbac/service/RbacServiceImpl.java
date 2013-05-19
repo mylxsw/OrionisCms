@@ -14,6 +14,7 @@ public class RbacServiceImpl implements RbacService {
 		if(loginUser == null){
 			throw new ActionFailedException("Username or password not correct!");
 		}
+		System.out.println(Status.ENABLED);
 		if(loginUser.getStatus() != Status.ENABLED){
 			throw new ActionFailedException("User Maybe Locked or Disabled!");
 		}

@@ -1,5 +1,7 @@
 package name.orionis.cms.remote.dwr;
 
+import java.util.List;
+
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.stereotype.Component;
@@ -14,9 +16,5 @@ import org.springframework.stereotype.Component;
 @Component
 @RemoteProxy
 public class DirectRemote {
-
-	@RemoteMethod
-	public String demo(String id){
-		return "hello, " + id;
-	}
+	
 }

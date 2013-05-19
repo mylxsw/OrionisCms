@@ -26,6 +26,16 @@
 		<property name="godUser" value="${security.godUser}"/>
 		<property name="godPassword" value="${security.godPassword}"/>
 		<property name="devMode" value="${security.dev}" />
+		<property name="anonymousOnlyAccess"><!-- Anonymous Access Only -->
+			<list>
+				<value>name.orionis.cms.core.rbac.web.AccountController.login</value>
+			</list>
+		</property>
+		<property name="publicAccess"><!-- Public Access Page -->
+			<list>
+				<value>help.index</value>
+			</list>
+		</property>
 	</bean>
 	
 

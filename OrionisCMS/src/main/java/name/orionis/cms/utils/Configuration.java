@@ -18,7 +18,7 @@ public class Configuration extends Properties {
 	private String PATH = "/META-INF/spring/configuration.properties";
 	
 	public Configuration() throws IOException{
-		this.load(Object.class.getResourceAsStream(PATH));
+		this.load(this.getClass().getResourceAsStream(PATH));
 	}
 	
 	public int getInt(String key){

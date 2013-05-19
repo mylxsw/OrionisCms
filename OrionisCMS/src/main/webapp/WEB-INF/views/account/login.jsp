@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign in &middot; Twitter Bootstrap</title>
+    <title>Sign in &middot; Orionis CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -50,10 +50,10 @@
 
     <div class="container">
 
-      <form class="form-signin" action="<c:url value="/j_spring_security_check"/>" method="post">
+      <form class="form-signin" action="<c:url value="/cms/account/login"/>" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" name="j_username" class="input-block-level" placeholder="Email address">
-        <input type="password" name="j_password" class="input-block-level" placeholder="Password">
+        <input type="text" name="username" class="input-block-level" placeholder="Username">
+        <input type="password" name="password" class="input-block-level" placeholder="Password">
         <label class="checkbox">
           <input type="checkbox" name="_spring_security_remember_me" value="remember-me"> Remember me
         </label>
@@ -62,8 +62,8 @@
 
     </div> <!-- /container -->
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/static/js/jquery.form.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
-
   </body>
 </html>
