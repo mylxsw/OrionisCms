@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -19,7 +18,9 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord
 public class RbacRole  implements Serializable  {
 
-    @Column(unique = true)
+	private static final long serialVersionUID = 1L;
+
+	@Column(unique = true)
     @Size(min = 2, max = 20)
     private String roleName;
 

@@ -120,7 +120,7 @@ public class MemoryCache implements ICache , ApplicationContextAware {
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext)
 			throws BeansException {
-		this.ctx = applicationContext;
+		MemoryCache.ctx = applicationContext;
 	}
 
 }

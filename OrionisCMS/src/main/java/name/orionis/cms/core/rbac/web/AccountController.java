@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import name.orionis.cms.core.base.BaseController;
-import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.authentication.ConfigHelper;
 import name.orionis.cms.core.rbac.authentication.UserInfo;
 import name.orionis.cms.core.rbac.model.RbacUser;

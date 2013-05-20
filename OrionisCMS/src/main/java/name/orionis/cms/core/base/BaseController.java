@@ -2,13 +2,10 @@ package name.orionis.cms.core.base;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import name.orionis.cms.core.rbac.authentication.PermissionDenyException;
 import name.orionis.cms.utils.Constant;
 import name.orionis.cms.utils.JsonConverter;
 import name.orionis.cms.utils.MessageBuilder;
@@ -18,10 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 /**
  * Base Controller

@@ -1,18 +1,13 @@
 package name.orionis.cms.core.main.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
+import name.orionis.cms.core.base.BaseController;
+import name.orionis.helper.reflection.annotation.Remark;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import name.orionis.cms.core.base.BaseController;
-import name.orionis.cms.core.rbac.authentication.UserInfo;
-import name.orionis.cms.core.rbac.dto.NavItem;
-import name.orionis.cms.core.rbac.service.RbacMenuService;
-import name.orionis.cms.core.rbac.web.AccountController;
-import name.orionis.helper.reflection.annotation.Remark;
 
 /**
  * The Cms System main controller
@@ -25,8 +20,6 @@ import name.orionis.helper.reflection.annotation.Remark;
 @Remark(value="Cms Admin Main Page",group="main")
 public class IndexController extends BaseController {
 	
-	@Resource
-	private RbacMenuService menuService;
 	
 	/**
 	 * Admin Home Page

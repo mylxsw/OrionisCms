@@ -4,13 +4,11 @@ package name.orionis.cms.core.rbac.form;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
 import name.orionis.cms.core.base.Form;
-import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.model.RbacUser;
 import name.orionis.cms.core.rbac.model.Status;

@@ -11,11 +11,9 @@ import javax.validation.Valid;
 
 import name.orionis.cms.core.base.BaseController;
 import name.orionis.cms.core.exception.ActionFailedException;
-import name.orionis.cms.core.rbac.authentication.SecurityHelper;
 import name.orionis.cms.core.rbac.form.PermissionForm;
 import name.orionis.cms.core.rbac.model.RbacPermission;
 import name.orionis.cms.core.rbac.service.RbacPermissionService;
-import name.orionis.cms.core.rbac.service.RbacRoleService;
 import name.orionis.cms.utils.Constant;
 import name.orionis.helper.reflection.ControllerClassInfo;
 import name.orionis.helper.reflection.ControllerReflectionUtil;
@@ -40,8 +38,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Remark(value="Rbac Permission Controller", group="rbac")
 public class RbacPermissionController extends BaseController {
 
-	@Resource
-	private SecurityHelper securityHelper;
 	@Resource
 	private RbacPermissionService permissionService;
 	

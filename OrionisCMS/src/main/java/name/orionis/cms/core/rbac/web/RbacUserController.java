@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import name.orionis.cms.core.base.BaseController;
 import name.orionis.cms.core.exception.ActionFailedException;
-import name.orionis.cms.core.rbac.form.RoleForm;
 import name.orionis.cms.core.rbac.form.UserForm;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.model.RbacUser;

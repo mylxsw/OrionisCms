@@ -179,3 +179,4 @@ finder list --filter username
 finder add --finderName findRbacUsersByUserNameEquals
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-19 22:14:41
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-20 12:58:49
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-20 16:53:53

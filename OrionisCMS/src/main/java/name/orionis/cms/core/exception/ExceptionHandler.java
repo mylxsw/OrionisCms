@@ -1,7 +1,6 @@
 package name.orionis.cms.core.exception;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import name.orionis.cms.core.rbac.authentication.PermissionDenyException;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 /**

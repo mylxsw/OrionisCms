@@ -14,7 +14,9 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord(finders = { "findRbacPermissionsByRbacRole" })
 public class RbacPermission  implements Serializable {
 
-    @NotNull
+	private static final long serialVersionUID = 1L;
+
+	@NotNull
     @Size(max = 40)
     private String permissionName;
 

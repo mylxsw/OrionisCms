@@ -8,6 +8,7 @@ package name.orionis.cms.core.exception;
  */
 public class ActionFailedException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
 	private String message;
 	private Exception e;
 	
