@@ -75,7 +75,19 @@
 		<servlet-name>dwr</servlet-name>
 		<url-pattern>/dwr/*</url-pattern>
 	</servlet-mapping>
-    
+    <!-- Hprose -->
+	<servlet>
+		<servlet-name>HproseRemoteService</servlet-name>
+		<servlet-class>hprose.server.HproseServlet</servlet-class>
+		<init-param>
+			<param-name>class</param-name>
+			<param-value>name.orionis.cms.remote.hprose.HproseRemoteService</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HproseRemoteService</servlet-name>
+		<url-pattern>/HproseRemoteService</url-pattern>
+	</servlet-mapping>
     
     <!-- Creates the Spring Container shared by all Servlets and Filters -->
     <listener>
