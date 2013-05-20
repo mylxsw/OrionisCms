@@ -13,6 +13,10 @@ public class Constant {
 	 */
 	final public static String CMS_PAGE_SIZE = "cms.list.page.size";
 	/**
+	 * 
+	 */
+	final public static String CMS_FILE_UPLOAD_PATH = "cms.file.upload.path";
+	/**
 	 * Message: successfully operation
 	 */
 	final public static String MESSAGE_ACTION_SUCCESS = "Operation Successfully";

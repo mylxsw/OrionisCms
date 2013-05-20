@@ -27,7 +27,7 @@ public class SecurityAspect {
 	 * 3. Check user permissions
 	 * @param joinPoint
 	 */
-	@Before("hasAnnotation() && controller() && publicMethod()")
+	@Before("hasAnnotation() && controller() && (cmsCore() || cmsExtensions())")
 	public void authentication(JoinPoint joinPoint) {
 		// Develop Mode
 		if(configHelper.isDevMode()){
@@ -88,9 +88,18 @@ public class SecurityAspect {
 		log.info("Instance SecurityAspect");
 	}
 
-	@Pointcut("execution(public * name.orionis..*.*(..))")
-	public void publicMethod() {
+	/**
+	 * Ponitcut : core package
+	 */
+	@Pointcut("execution(public * name.orionis.cms.core..*.*(..))")
+	public void cmsCore() {
 	}
+	/**
+	 * Pointcut : extensions package
+	 */
+	@Pointcut("execution(public * name.orionis.cms.extensions..*.*(..))")
+	public void cmsExtensions(){}
+	
 	@Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
 	public void hasAnnotation(){}
 
