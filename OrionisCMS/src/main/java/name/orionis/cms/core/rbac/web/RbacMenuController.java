@@ -140,7 +140,13 @@ public class RbacMenuController extends BaseController {
 		}
 		 
 		if(HTTP_GET.equals(req.getMethod())){
-			// here, id attribute is role id
+			// get role `s menu tree
+			NavItem menusTree = menuService.listMenusTree(role_id);
+			Map<Long, String> menus = NavItem.toMap(menusTree, "&nbsp;&nbsp;", "&nbsp;&nbsp;".length());
+			menus.put(0L, "Root");
+			model.addAttribute("menus",menus );
+			
+			// get current menu you want to modify
 			RbacMenu menu = RbacMenu.findRbacMenu(id);
 			model.addAttribute("menu", menu);
 			model.addAttribute("role_id", role_id);

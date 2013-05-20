@@ -38,8 +38,9 @@
  			$(".edit").click(function(e){
  				e.preventDefault();
  				var menu_id = $(this).parent("span").attr("mid");
- 				$.get(basePath + "admin/rbac/menu_edit.html", {menu_id:menu_id}, function(data){
- 					dialogOpen(data);
+ 				$.get($.orionis.url("rbac/menus/modify"), {id:menu_id, roldId:${role_id}}, function(data){
+ 					$.orionis.dialog(data, "Menu Edit");
+ 					$.orionis.reloadJsEvent();
  				});
  			});
  			$(".del").click(function(e){

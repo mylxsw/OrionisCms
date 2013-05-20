@@ -3,6 +3,7 @@ package name.orionis.cms.core.rbac.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.dto.NavItem;
 import name.orionis.cms.core.rbac.model.RbacMenu;
 import name.orionis.cms.core.rbac.model.RbacRole;
@@ -13,13 +14,32 @@ public class RbacMenuServiceImpl implements RbacMenuService {
 	public RbacMenu updateRbacMenu(RbacMenu menu){
 		RbacMenu rbacMenu = RbacMenu.findRbacMenu(menu.getId());
 		// Check if there has a cycle. Recursion test
+		try{
+			_checkCycleRecursion(rbacMenu.getId(), menu.getParentId());
+			rbacMenu.setParentId(menu.getParentId());
+		} catch(ActionFailedException e){}
 		
 		// Update
 		rbacMenu.setMenuName(menu.getMenuName());
 		rbacMenu.setUrl(menu.getUrl());
-		rbacMenu.setParentId(menu.getParentId());
+		
 		
 		return rbacMenu.merge();
+	}
+	private void _checkCycleRecursion(long parentId , long id){
+		List<RbacMenu> list = null;
+		try{
+			list = RbacMenu.findRbacMenusByParentIdEquals(parentId).getResultList();
+		} catch(Exception e){ 
+			return ;
+		}
+		
+		for(RbacMenu l : list){
+			if(l.getId() == id){
+				throw new ActionFailedException();
+			}
+			_checkCycleRecursion(l.getId(), id);
+		}
 	}
 	@Override
 	public void deleteRbacMenuCascade(RbacMenu menu){
