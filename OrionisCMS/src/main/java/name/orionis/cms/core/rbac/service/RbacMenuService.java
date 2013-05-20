@@ -20,4 +20,10 @@ public interface RbacMenuService {
 	 * @param findRbacMenu
 	 */
 	void deleteRbacMenuCascade(RbacMenu findRbacMenu);
+	/**
+	 * Update Menu
+	 * @param menu
+	 * @return
+	 */
+	public RbacMenu updateRbacMenu(RbacMenu menu);
 }

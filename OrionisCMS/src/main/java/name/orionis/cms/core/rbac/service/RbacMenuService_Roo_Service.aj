@@ -15,5 +15,4 @@ privileged aspect RbacMenuService_Roo_Service {
     public abstract List<RbacMenu> RbacMenuService.findAllRbacMenus();    
     public abstract List<RbacMenu> RbacMenuService.findRbacMenuEntries(int firstResult, int maxResults);    
     public abstract void RbacMenuService.saveRbacMenu(RbacMenu rbacMenu);    
-    public abstract RbacMenu RbacMenuService.updateRbacMenu(RbacMenu rbacMenu);    
 }

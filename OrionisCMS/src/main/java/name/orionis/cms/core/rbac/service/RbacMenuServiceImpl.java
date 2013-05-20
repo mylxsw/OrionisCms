@@ -10,6 +10,18 @@ import name.orionis.cms.core.rbac.model.Status;
 
 public class RbacMenuServiceImpl implements RbacMenuService {
 	@Override
+	public RbacMenu updateRbacMenu(RbacMenu menu){
+		RbacMenu rbacMenu = RbacMenu.findRbacMenu(menu.getId());
+		// Check if there has a cycle. Recursion test
+		
+		// Update
+		rbacMenu.setMenuName(menu.getMenuName());
+		rbacMenu.setUrl(menu.getUrl());
+		rbacMenu.setParentId(menu.getParentId());
+		
+		return rbacMenu.merge();
+	}
+	@Override
 	public void deleteRbacMenuCascade(RbacMenu menu){
 		// Search for all submenus
 		List<Long> ids = _subMenuIds(menu.getId());

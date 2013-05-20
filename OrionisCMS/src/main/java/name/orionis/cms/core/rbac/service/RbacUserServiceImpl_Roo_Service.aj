@@ -39,8 +39,4 @@ privileged aspect RbacUserServiceImpl_Roo_Service {
         rbacUser.persist();
     }
     
-    public RbacUser RbacUserServiceImpl.updateRbacUser(RbacUser rbacUser) {
-        return rbacUser.merge();
-    }
-    
 }

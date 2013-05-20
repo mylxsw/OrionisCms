@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import name.orionis.cms.core.base.BaseController;
+import name.orionis.cms.core.exception.ActionFailedException;
+import name.orionis.cms.core.rbac.form.RoleForm;
 import name.orionis.cms.core.rbac.form.UserForm;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.model.RbacUser;
@@ -98,7 +100,58 @@ public class RbacUserController extends BaseController {
 		
 		return success(resp);
 	}
-	
+	@Remark(value="User Edit", group="rbac_user")
+	@RequestMapping("edit")
+	public String edit(
+			@Valid @ModelAttribute("userForm") UserForm userForm,
+			BindingResult result,
+			HttpServletRequest req, HttpServletResponse resp,
+			Model model){
+		
+		// user id
+		long id = 0;
+		try{
+			id = Long.parseLong(req.getParameter("id"));
+		}catch(Exception e){
+			throw new ActionFailedException("Invalid Id!");
+		}
+		if(HTTP_GET.equals(req.getMethod())){
+			// Role list
+			List<RbacRole> roles = RbacRole.findAllRbacRoles();
+			Map<Long, String> role_list = new HashMap<Long, String>();
+			for(RbacRole r : roles){
+				role_list.put(r.getId(), r.getRoleName());
+			}
+			model.addAttribute("roles", role_list);
+			
+			// fill back user information
+			model.addAttribute("user", userService.findRbacUser(id));
+			model.addAttribute("user_id", id);
+			return view("edit");
+		}
+		// Check , here,we need not check form`s validate method,
+		// because we are updating user information
+		if(result.hasErrors()){
+			return errors(result, userForm, resp);
+		}
+		// Save Modify
+		RbacUser rbacUser = userForm.toEntity();
+		String pwd = req.getParameter("password");
+		
+		// if password equals "--------", indicate that password not change
+		if(pwd.equals("--------")){
+			rbacUser.setPassword("");
+		}
+		rbacUser.setId(id);
+		
+		try{
+			userService.updateRbacUser(rbacUser);
+		} catch(Exception e){
+			return failed(resp);
+		}
+		
+		return success(resp);
+	}
 	/**
 	 * User delete
 	 * @param id

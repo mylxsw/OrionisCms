@@ -17,11 +17,13 @@ public class RoleForm extends Form<RbacRole> {
 	@Size(min = 2, max = 20)
     private String roleName;
 	
+	private int status = 0;
+	
 	@Override
 	public RbacRole toEntity() {
 		RbacRole role = new RbacRole();
 		role.setRoleName(roleName);
-		role.setStatus(Status.ENABLED);
+		role.setStatus(status == 1 ? Status.ENABLED : Status.DISABLED);
 		return role;
 	}
 
@@ -31,5 +33,13 @@ public class RoleForm extends Form<RbacRole> {
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

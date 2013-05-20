@@ -39,8 +39,4 @@ privileged aspect RbacMenuServiceImpl_Roo_Service {
         rbacMenu.persist();
     }
     
-    public RbacMenu RbacMenuServiceImpl.updateRbacMenu(RbacMenu rbacMenu) {
-        return rbacMenu.merge();
-    }
-    
 }

@@ -7,6 +7,9 @@
     <admin:input name="email" label="Email" id="email"></admin:input>
     <admin:select name="roleId" label="Role" data="${roles }" id="roleid"></admin:select>
     <admin:buttonPanel>
+    	<label class="checkbox">
+    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">是否可用</span>
+   		</label>
    		<button type="submit" class="btn" name="login" value="login">Add</button>
     </admin:buttonPanel>
 </form>

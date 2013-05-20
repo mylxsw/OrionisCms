@@ -15,5 +15,4 @@ privileged aspect RbacUserService_Roo_Service {
     public abstract List<RbacUser> RbacUserService.findAllRbacUsers();    
     public abstract List<RbacUser> RbacUserService.findRbacUserEntries(int firstResult, int maxResults);    
     public abstract void RbacUserService.saveRbacUser(RbacUser rbacUser);    
-    public abstract RbacUser RbacUserService.updateRbacUser(RbacUser rbacUser);    
 }

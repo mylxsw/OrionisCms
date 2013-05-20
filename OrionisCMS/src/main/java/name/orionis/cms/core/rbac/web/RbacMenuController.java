@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import name.orionis.cms.core.base.BaseController;
+import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.dto.NavItem;
 import name.orionis.cms.core.rbac.form.MenuForm;
 import name.orionis.cms.core.rbac.model.RbacMenu;
@@ -114,7 +115,15 @@ public class RbacMenuController extends BaseController {
 		model.addAttribute("tree",controllers);
 		return view("select");
 	}
-	
+	/**
+	 * Modify Menu
+	 * @param menuForm
+	 * @param result
+	 * @param req
+	 * @param resp
+	 * @param model
+	 * @return
+	 */
 	@Remark(value="Menu modify", group="rbac_menus")
 	@RequestMapping("modify")
 	public String modify(
@@ -122,13 +131,19 @@ public class RbacMenuController extends BaseController {
 			BindingResult result,
 			HttpServletRequest req, 
 			HttpServletResponse resp,Model model){
-		
-		long id = Long.parseLong(req.getParameter("id"));
-		
+		long id, role_id;
+		try{
+			id = Long.parseLong(req.getParameter("id"));
+			role_id = Long.parseLong(req.getParameter("roldId"));
+		}catch(Exception e){
+			throw new ActionFailedException("Invalid ID");
+		}
+		 
 		if(HTTP_GET.equals(req.getMethod())){
 			// here, id attribute is role id
 			RbacMenu menu = RbacMenu.findRbacMenu(id);
 			model.addAttribute("menu", menu);
+			model.addAttribute("role_id", role_id);
 			return view("modify");
 		}
 		// here , id attribute is menu id
@@ -137,14 +152,14 @@ public class RbacMenuController extends BaseController {
 		if(result.hasErrors() || !menuForm.validate()){
 			return errors(result, menuForm, resp);
 		}
+		RbacMenu rbacMenu = menuForm.toEntity();
+		rbacMenu.setId(id);
 		
-		RbacMenu rbacMenu = RbacMenu.findRbacMenu(id);
-		
-		rbacMenu.setMenuName(menuForm.getMenuName());
-		rbacMenu.setParentId(menuForm.getParentId());
-		rbacMenu.setUrl(menuForm.getUrl());
-		
-		menuService.updateRbacMenu(rbacMenu);
+		try{
+			menuService.updateRbacMenu(rbacMenu);
+		}catch(Exception e){
+			return failed(resp);
+		}
 		
 		return success(resp);
 	}

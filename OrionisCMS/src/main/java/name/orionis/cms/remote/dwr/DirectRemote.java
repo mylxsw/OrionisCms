@@ -1,14 +1,18 @@
 package name.orionis.cms.remote.dwr;
 
-import java.util.Locale;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import name.orionis.cms.core.rbac.authentication.UserInfo;
 import name.orionis.cms.core.rbac.dto.NavItem;
+import name.orionis.cms.core.rbac.service.RbacMenuService;
+import name.orionis.cms.core.rbac.web.AccountController;
 
+import org.directwebremoting.WebContextFactory;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,8 +25,56 @@ import org.springframework.stereotype.Component;
 @Component
 @RemoteProxy
 public class DirectRemote {
+	@Resource
+	private RbacMenuService menuService;
+	
+	/**
+	 * Navigations
+	 * @param position
+	 * @return
+	 */
 	@RemoteMethod
 	public NavItem getNavigation(String position){
+		
+		UserInfo user = (UserInfo) WebContextFactory.get().getSession()
+				.getAttribute(AccountController.ACCOUNT_INFO);
+		if(user.isGodMode()){
+			return _godNavs(position);
+		}
+		/******************************************************************
+		 *				Normal User Dynamic Menus
+		 ******************************************************************/
+		NavItem tree = menuService.listMenusTree(user.getRoleId());
+		
+		// Get Top Menus
+		if(position.equalsIgnoreCase("top")){
+			NavItem root = new NavItem();
+			List<NavItem> subItems = tree.getSubItems();
+			for(NavItem n : subItems){
+				root.add(new NavItem().setLinkName(n.getLinkName())
+						.setLinkUrl(n.getLinkUrl()));
+			}
+			return root;
+		}
+		
+		// Get Sub menus
+		List<NavItem> subItems = tree.getSubItems();
+		for(NavItem n: subItems){
+			if(n.getLinkUrl().equals(position)){
+				if(n.getSubItems().size() > 0){
+					n.setFolder(true);
+				}
+				return n;
+			}
+		}
+		return null;
+	}
+	
+	
+	/******************************************************************
+	 * 				Super User Fixed Menus
+	 ******************************************************************/
+	private NavItem _godNavs(String position) {
 		NavItem root = new NavItem();
 		if(position.equalsIgnoreCase("top")){
 			root.add(new NavItem().setLinkName("Dashboard").setLinkUrl("menu.my_dashboard"));

@@ -22,6 +22,7 @@
 					<ec:column title="Operation" alias="action"  filterable="false" sortable="false">
 						<admin:button clazz="menus_list btn-info" value="Menus" role-id="${ul.id }"></admin:button>
 						<admin:button clazz="permission_list btn-success" value="Permissions" role-id="${ul.id }"></admin:button>
+						<admin:button clazz="role_edit" value="Edit" role-id="${ul.id }"></admin:button>
 						<admin:button clazz="role_delete btn-danger" role-id="${ul.id }" value="Delete"></admin:button>
 					</ec:column>
 				</ec:row>
@@ -41,6 +42,11 @@ $(function(){
 	});
 	$(".menus_list").click(function(){
 		$.orionis.updateMain("rbac/menus/list?id=" + $(this).attr("role-id"));
+	});
+	$(".role_edit").click(function(){
+		$.get($.orionis.url("rbac/role/edit"), {id: $(this).attr("role-id")}, function(data){
+			$.orionis.dialog(data, "Role Edit");
+		});
 	});
 	$(".role_delete").click(function(){
 		if(confirm("Are you sure you want to delete?") == false){

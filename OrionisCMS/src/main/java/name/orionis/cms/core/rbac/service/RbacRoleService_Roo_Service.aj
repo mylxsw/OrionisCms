@@ -15,5 +15,4 @@ privileged aspect RbacRoleService_Roo_Service {
     public abstract List<RbacRole> RbacRoleService.findAllRbacRoles();    
     public abstract List<RbacRole> RbacRoleService.findRbacRoleEntries(int firstResult, int maxResults);    
     public abstract void RbacRoleService.saveRbacRole(RbacRole rbacRole);    
-    public abstract RbacRole RbacRoleService.updateRbacRole(RbacRole rbacRole);    
 }

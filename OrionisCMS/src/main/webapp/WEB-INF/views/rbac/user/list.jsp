@@ -22,6 +22,7 @@
 					<ec:column property="email" title="Email" />
 					<ec:column property="status" title="Status"></ec:column>
 					<ec:column title="Operation" alias="action"  filterable="false" sortable="false">
+						<admin:button value="Edit" user-id="${ul.id }" clazz="edit_user"></admin:button>
 						<admin:button value="Delete" user-id="${ul.id }" clazz="btn-danger delete_user"></admin:button>
 					</ec:column>
 				</ec:row>
@@ -33,6 +34,11 @@ $(function(){
 	$("#addUser").click(function(){
 		$.get($.orionis.url("rbac/user/add"), {}, function(data){
 			$.orionis.dialog(data, "User Add");
+		});
+	});
+	$(".edit_user").click(function(){
+		$.get($.orionis.url("rbac/user/edit"), {id: $(this).attr("user-id")}, function(data){
+			$.orionis.dialog(data, "User Edit");
 		});
 	});
 	$(".delete_user").click(function(){

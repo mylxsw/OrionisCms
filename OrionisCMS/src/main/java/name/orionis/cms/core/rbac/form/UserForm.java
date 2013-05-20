@@ -39,7 +39,7 @@ public class UserForm extends Form<RbacUser> {
     
     private long roleId;
     
-    
+    private int status  = 0;
     
     
 	@Override
@@ -63,7 +63,7 @@ public class UserForm extends Form<RbacUser> {
 		user.setEmail(email);
 		user.setCreateData(new Date(System.currentTimeMillis()));
 		user.setRealName(realName);
-		user.setStatus(Status.ENABLED);
+		user.setStatus(status == 1 ? Status.ENABLED : Status.DISABLED);
 		user.setRbacRole(RbacRole.findRbacRole(roleId));
 		
 		return user;
@@ -110,6 +110,16 @@ public class UserForm extends Form<RbacUser> {
 
 	public void setRoleId(long roleId) {
 		this.roleId = roleId;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 }

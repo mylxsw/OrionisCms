@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import name.orionis.cms.core.base.BaseController;
+import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.form.RoleForm;
+import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.service.RbacRoleService;
 import name.orionis.helper.reflection.annotation.Remark;
 /**
@@ -67,12 +69,60 @@ public class RbacRoleController extends BaseController {
 		if(result.hasErrors() || !roleForm.validate()){
 			return errors(result, roleForm, resp);
 		}
-		
-		roleService.saveRbacRole(roleForm.toEntity());
+		// Add
+		try{
+			roleService.saveRbacRole(roleForm.toEntity());
+		}catch(Exception e){
+			return failed(resp);
+		}
 		
 		return success(resp);
 	}
-	
+	/**
+	 * Role Edit
+	 * @param roleForm
+	 * @param result
+	 * @param req
+	 * @param resp
+	 * @param model
+	 * @return
+	 */
+	@Remark(value="Role Edit", group="rbac_role")
+	@RequestMapping("edit")
+	public String edit(
+			@Valid @ModelAttribute("roleForm") RoleForm roleForm,
+			BindingResult result,
+			HttpServletRequest req, HttpServletResponse resp,
+			Model model){
+		
+		// Role id
+		long id = 0;
+		try{
+			id = Long.parseLong(req.getParameter("id"));
+		}catch(Exception e){
+			throw new ActionFailedException("Invalid Id!");
+		}
+		if(HTTP_GET.equals(req.getMethod())){
+			// fill back role information
+			model.addAttribute("role", roleService.findRbacRole(id));
+			model.addAttribute("role_id", id);
+			return view("edit");
+		}
+		// Check
+		if(result.hasErrors() || !roleForm.validate()){
+			return errors(result, roleForm, resp);
+		}
+		// Save Modify
+		RbacRole rbacRole = roleForm.toEntity();
+		rbacRole.setId(id);
+		try{
+			roleService.updateRbacRole(rbacRole);
+		} catch(Exception e){
+			return failed(resp);
+		}
+		
+		return success(resp);
+	}
 	/**
 	 * Role Delete
 	 * @param id

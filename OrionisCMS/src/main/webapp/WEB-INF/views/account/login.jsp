@@ -75,7 +75,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<c:url value="/dwr/interface/DirectRemote.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
 <script src="<c:url value="/resources/static/js/jquery-cms-ext.js"/>" type="text/javascript" ></script>
-<script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
   <script type="text/javascript">
   	$(function(){
   		$.orionis.reloadJsEvent();

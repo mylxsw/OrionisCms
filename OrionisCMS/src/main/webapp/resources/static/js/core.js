@@ -20,7 +20,11 @@ $(function(){
 			for(var j = 0; j < data.subItems.length; j ++){
 				var topItem = data.subItems[j];
 				//菜单主项目
-				str += "<li class='nav-header'>" + topItem.linkName + "</li>";
+				if(topItem.folder){
+					str += "<li class='nav-header'>" + topItem.linkName + "</li>";
+				}else{
+					str += "<li><a href='" + topItem.linkUrl + "'>" + topItem.linkName + "</a></li>";
+				}
 				//具体菜单项
 				for(var i = 0; i < topItem.subItems.length; i ++){
 					var subItem = topItem.subItems[i];

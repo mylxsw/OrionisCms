@@ -39,8 +39,4 @@ privileged aspect RbacRoleServiceImpl_Roo_Service {
         rbacRole.persist();
     }
     
-    public RbacRole RbacRoleServiceImpl.updateRbacRole(RbacRole rbacRole) {
-        return rbacRole.merge();
-    }
-    
 }
