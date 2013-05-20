@@ -6,7 +6,7 @@
     <input type="hidden" name="id" value="${role_id }"	 />
     <admin:buttonPanel>
     	<label class="checkbox">
-    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">是否可用</span>
+    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">Enabled</span>
    		</label>
     	<admin:button value="Save" type="submit"></admin:button>
     </admin:buttonPanel>

@@ -180,3 +180,25 @@ finder add --finderName findRbacUsersByUserNameEquals
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-19 22:14:41
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-20 12:58:49
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-20 16:53:53
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-20 21:39:03
+hint
+entity jpa --class ~.cms.extensions.blogroll.model 
+field number --fieldName siteId --type int
+entity jpa --class ~.cms.extensions.blogroll.model.BlogRoll 
+field number --fieldName siteId --type int
+field string --fieldName linkName --sizeMin 1 --sizeMax 100
+field string --fieldName linkUrl --sizeMax 255 
+field string --fieldName logo --sizeMax 100
+field string --fieldName introduce --sizeMax 200
+field number --fieldName listOrder --type int
+field date --fieldName createTime --type java.util.Date 
+hint
+field number --fieldName linkType --type int
+entity jpa --class ~.cms.extensions.blogroll.model.BlogrollCategory
+field string --fieldName categoryName --sizeMin 1 --sizeMax 50
+field number --fieldName listOrder --type int
+field set --fieldName blogROlls --type ~.cms.extensions.blogroll.model.BlogRoll --cardinality ONE_TO_MANY 
+focus --class ~.cms.extensions.blogroll.model.BlogRoll
+field reference --fieldName blogRollCategory --type ~.cms.extensions.blogroll.model.BlogrollCategory --cardinality MANY_TO_ONE 
+service --interface ~.cms.extensions.blogroll.service.BlogrollService --entity ~.cms.extensions.blogroll.model.BlogRoll
+service --interface ~.cms.extensions.blogroll.service.BlogrollCategoryService --entity ~.cms.extensions.blogroll.model.blogRollCategory

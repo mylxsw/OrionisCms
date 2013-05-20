@@ -10,6 +10,7 @@ import com.jhlabs.image.RippleFilter;
 import com.jhlabs.image.TransformFilter;
 
 public class RippleDistortion extends Configurable implements GimpyEngine {
+	@Override
 	public BufferedImage getDistortedImage(BufferedImage baseImage) {
 		NoiseProducer noiseProducer = getConfig().getNoiseImpl();
 		BufferedImage distortedImage = new BufferedImage(baseImage.getWidth(),

@@ -32,5 +32,5 @@ public class Constant {
 	/**
 	 * Security Reflection Tools Scan Controller`s base package
 	 */
-	public static final String SECURITY_BASE_PACKAGE = "name.orionis.cms";
+	public static final String SECURITY_BASE_PACKAGE = "name.orionis.cms.core && name.orionis.cms.extensions";
 }

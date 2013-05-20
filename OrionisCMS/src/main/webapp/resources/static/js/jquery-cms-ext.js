@@ -144,8 +144,9 @@ jQuery.orionis = {
 		 * ********************************************************************************
 		 */
 		if($("a.parse").length){
-			$("a.parse").each(function(){
-				$(this).attr("href", $.orionis.url($(this).attr("href")));
+			$("a.parse").click(function(e){
+				e.preventDefault();
+				$.orionis.updateMain($(this).attr("href"));
 			});
 			$("form.parse").each(function(){
 				$(this).attr("action", $.orionis.url($(this).attr("action")));

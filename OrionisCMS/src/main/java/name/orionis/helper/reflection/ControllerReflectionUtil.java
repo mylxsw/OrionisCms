@@ -36,6 +36,9 @@ public class ControllerReflectionUtil {
 			String packagePrefix, 
 			boolean retrievalMethods ){
 		
+		// Add  Multiple packagePrefix Support
+		String[] packagePrefix_split = packagePrefix.split("&&");
+		
 		List<ControllerClassInfo> results = new ArrayList<ControllerClassInfo>();
 		
 		// Get All Controller in Spring Context With @Contrller Annotation
@@ -53,7 +56,15 @@ public class ControllerReflectionUtil {
 			int indexOf = simpleName.indexOf("$$");
 			
 			// get the base package name
-			if(simpleName.indexOf(packagePrefix) != 0){
+			boolean flag = false;
+			for(int i = 0; i < packagePrefix_split.length; i ++){
+				if(simpleName.indexOf(packagePrefix_split[i].trim()) != 0){
+					continue;
+				}
+				flag = true;
+				break;
+			}
+			if(!flag){
 				continue;
 			}
 			

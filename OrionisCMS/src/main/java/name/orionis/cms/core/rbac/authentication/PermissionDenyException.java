@@ -32,6 +32,7 @@ public class PermissionDenyException extends RuntimeException {
 		this.e = e;
 	}
 	
+	@Override
 	public String getMessage() {
 		return message;
 	}

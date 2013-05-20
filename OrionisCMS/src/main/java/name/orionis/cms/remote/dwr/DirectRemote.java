@@ -86,11 +86,11 @@ public class DirectRemote {
 			root.add(new NavItem().setLinkName("Extension").setLinkUrl("menu.extension"));
 			root.add(new NavItem().setLinkName("App").setLinkUrl("menu.app"));
 		}
-		if(position.equalsIgnoreCase("menu.my_dashboard")){
+		if(position.equalsIgnoreCase("menu.my_dashboard")){ // Dashboard
 			root.add(new NavItem().setLinkName("Personal Information").setFolder(true)
 					.add(new NavItem().setLinkName("Modify Personal Info").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Change Password").setLinkUrl("account/change_password")));
-		}else if(position.equalsIgnoreCase("menu.setting")){
+		}else if(position.equalsIgnoreCase("menu.setting")){ // Settings
 			root.add(new NavItem().setLinkName("Related Settings").setFolder(true)
 					.add(new NavItem().setLinkName("Site Setting").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Basic Setting").setLinkUrl("account/change_password"))
@@ -99,17 +99,17 @@ public class DirectRemote {
 			root.add(new NavItem().setLinkName("Admin Settings").setFolder(true)
 					.add(new NavItem().setLinkName("Admin Management").setLinkUrl("rbac/user/list"))
 					.add(new NavItem().setLinkName("Role Management").setLinkUrl("rbac/role/list")));
-		}else if(position.equalsIgnoreCase("menu.module")){
+		}else if(position.equalsIgnoreCase("menu.module")){ // Modules
 			root.add(new NavItem().setLinkName("Modules Management").setFolder(true)
 					.add(new NavItem().setLinkName("Advertisement").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Announce").setLinkUrl("account/change_password"))
 					.add(new NavItem().setLinkName("Message").setLinkUrl(""))
 					.add(new NavItem().setLinkName("SMS").setLinkUrl(""))
 					.add(new NavItem().setLinkName("Remark").setLinkUrl(""))
-					.add(new NavItem().setLinkName("Blogroll").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Blogroll").setLinkUrl("blogroll/list")) // Blogroll
 					.add(new NavItem().setLinkName("Vote").setLinkUrl(""))
 					.add(new NavItem().setLinkName("Search").setLinkUrl("")));
-		}else if(position.equalsIgnoreCase("menu.content")){
+		}else if(position.equalsIgnoreCase("menu.content")){ // Context
 			root.add(new NavItem().setLinkName("Content Management").setFolder(true)
 					.add(new NavItem().setLinkName("Attachment").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Subject").setLinkUrl("account/change_password"))
@@ -124,13 +124,13 @@ public class DirectRemote {
 			root.add(new NavItem().setLinkName("Content Settings").setFolder(true)
 					.add(new NavItem().setLinkName("Category Management").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Module Management").setLinkUrl("account/change_password")));
-		}else if(position.equalsIgnoreCase("menu.user")){
+		}else if(position.equalsIgnoreCase("menu.user")){ // User
 			root.add(new NavItem().setLinkName("User Management").setFolder(true)
 					.add(new NavItem().setLinkName("User Audit").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("User Module Setting").setLinkUrl("account/change_password"))
 					.add(new NavItem().setLinkName("Group Management").setLinkUrl(""))
 					.add(new NavItem().setLinkName("Model Management").setLinkUrl("")));
-		}else if(position.equalsIgnoreCase("menu.ui")){
+		}else if(position.equalsIgnoreCase("menu.ui")){ // UI
 			root.add(new NavItem().setLinkName("Template Management").setFolder(true)
 					.add(new NavItem().setLinkName("Template Style").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Taglib").setLinkUrl("account/change_password")));

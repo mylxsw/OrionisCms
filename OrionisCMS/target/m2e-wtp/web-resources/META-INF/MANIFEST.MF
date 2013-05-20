@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Build-Jdk: 1.7.0
-Built-By: code.404
+Build-Jdk: 1.7.0_15
+Built-By: orionis
 Created-By: Maven Integration for Eclipse
 

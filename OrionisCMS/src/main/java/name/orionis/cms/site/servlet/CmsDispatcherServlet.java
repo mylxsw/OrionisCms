@@ -19,6 +19,7 @@ public class CmsDispatcherServlet extends HttpServlet {
 	private static String suffix;
 	private WebApplicationContext ctx;
 	
+	@Override
 	public void init() throws ServletException {
 		// Get the url`s suffix . such as ".html"
 		suffix = getServletConfig().getInitParameter("suffix");
@@ -26,10 +27,12 @@ public class CmsDispatcherServlet extends HttpServlet {
 		ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 	}
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Deal with URL, Generate JSP file address

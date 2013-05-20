@@ -9,6 +9,7 @@
 <%@ attribute name="after" description="ajax提交之后的回调函数" %>
 <%@ attribute name="success" description="ajax返回结果为success的回调函数" %>
 <%@ attribute name="failed" description="ajax提交返回结果为failed的回调函数" %>
+<%@ attribute name="id"  %>
 <%@ attribute name="defaultAction" description="是否采用默认的动作" type="java.lang.Boolean" %>
 <%@ attribute name="reload" description="返回成功状态后自动刷新页面" type="java.lang.Boolean" %>
 	<form action="${action }" method="<c:out value="${method }" default="POST" />" 
@@ -16,6 +17,7 @@
 		<c:if test="${before != null }"> before="${before}" </c:if>
 		<c:if test="${after != null }"> after="${after }" </c:if>
 		<c:if test="${success != null }"> success="${success }" </c:if>
+		<c:if test="${id != null }"> id="${id }" </c:if>
 		<c:if test="${failed != null }"> failed="${failed }" </c:if>
 		<c:if test="${defaultAction != null }"> default="${defaultAction }" </c:if>
 		<c:if test="${reload != null }"> reload="${reload }" </c:if>
