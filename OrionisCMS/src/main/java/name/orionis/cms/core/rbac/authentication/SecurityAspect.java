@@ -1,12 +1,17 @@
 package name.orionis.cms.core.rbac.authentication;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.web.AccountController;
+import name.orionis.cms.utils.Constant;
+import name.orionis.cms.utils.JsonConverter;
 
-import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +31,39 @@ public class SecurityAspect {
 	 * 2. Non Anonymous, If in god mode, permit all, otherwise check permissions
 	 * 3. Check user permissions
 	 * @param joinPoint
+	 * @throws Throwable 
 	 */
-	@Before("hasAnnotation() && controller() && (cmsCore() || cmsExtensions())")
-	public void authentication(JoinPoint joinPoint) {
+	@Around("hasAnnotation() && controller() && (cmsCore() || cmsExtensions())")
+	public Object authentication(ProceedingJoinPoint joinPoint) throws Throwable {
+		try{
+			// Check authority
+			_beforeCheck(joinPoint);
+			return joinPoint.proceed();
+		} catch (Exception e){
+			// Catch Exception
+			
+			// Permission Deny Exception
+			if(e instanceof PermissionDenyException){
+				throw e;
+			}
+			
+			String methodName = joinPoint.getSignature().getName();
+			// If method name contains "list", in general, this method is
+			// an ajax method.
+			if(methodName.contains("list")){
+				throw new ActionFailedException(e.getMessage());
+			}
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("info", Constant.MESSAGE_ACTION_FAILED);
+			map.put("status", "0");
+			return JsonConverter.mapToJson(map);
+		} 
+	}
+	/**
+	 * Check authority
+	 * @param joinPoint
+	 */
+	private void _beforeCheck(ProceedingJoinPoint joinPoint){
 		// Develop Mode
 		if(configHelper.isDevMode()){
 			return ;
