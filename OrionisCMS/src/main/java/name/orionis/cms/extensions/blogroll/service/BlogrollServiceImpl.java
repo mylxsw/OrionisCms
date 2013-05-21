@@ -27,7 +27,9 @@ public class BlogrollServiceImpl implements BlogrollService {
 		b.setLinkType(blogroll.getLinkType());
 		b.setIntroduce(blogroll.getIntroduce());
 		b.setListOrder(blogroll.getListOrder());
-		b.setLogo(blogroll.getLogo());
+		if(blogroll.getLogo() != null){
+			b.setLogo(blogroll.getLogo());
+		}
 		
 		return b.merge();
 	}
