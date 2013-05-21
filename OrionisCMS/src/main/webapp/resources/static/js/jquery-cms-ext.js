@@ -245,16 +245,23 @@ jQuery.orionis = {
 	 *  	b) multiple="true"
 	 *  3. input元素后面紧跟一个<div class="_filename"></div>
 	 * 
+	 *  三个额外表单参数：
+	 *  	1. JSESSIONID 用于辨别用户，弥补flash的漏洞
+	 *  	2. PRIVATE_ACCESS 区分文件上传地址是公开位置还是私有位置
+	 *  	3. PRIVATE_KEY 加密密钥
+	 *  
 	 */
-	upload_bind: function(id){//上传文件绑定
+	upload_bind: function(id, private_key, privateAccess){//上传文件绑定
 		// 绑定的上传结果字段
 		var field = $("#" + id).attr("field-bind");
+		privateAccess = (privateAccess == undefined ? "true" :privateAccess);
 		$("#" + id).uploadify({
 			'method'		:	'POST',
 			'fileObjName' : 'upload_file',
 			'formData'     : {
 				'JSESSIONID': $("input[name='_jsessionId_']").val(),
-				'TOKEN' : $("input[name='_token_']").val()
+				'PRIVATE_ACCESS': privateAccess,
+				'PRIVATE_KEY': private_key,
 			},
 			'swf'      : basePath + 'resources/jquery-uploadify/uploadify.swf',
 			'uploader' : $.orionis.url("file/upload"),

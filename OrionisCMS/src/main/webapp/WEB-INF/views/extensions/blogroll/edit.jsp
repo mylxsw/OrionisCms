@@ -9,7 +9,7 @@
 		<admin:input name="linkUrl" label="Link Url" value="${blogroll.linkUrl }"></admin:input>
 		<admin:select name="categoryId" label="Category" data="${category }" selected="${blogroll.blogRollCategory.id }"></admin:select>
 		<admin:textarea name="introduce" label="Introduce" value="${blogroll.introduce }" ></admin:textarea>
-		<admin:upload name="logo" label="Logo" id="logo"></admin:upload>
+		<admin:upload name="logo" label="Logo" id="logo"  privateAccess="false"></admin:upload>
 		<admin:input name="listOrder" label="List Order" value="${blogroll.listOrder }" ></admin:input>
 		<admin:buttonPanel>
 			<admin:button value="Save" type="submit"></admin:button>

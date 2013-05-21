@@ -203,3 +203,5 @@ field reference --fieldName blogRollCategory --type ~.cms.extensions.blogroll.mo
 service --interface ~.cms.extensions.blogroll.service.BlogrollService --entity ~.cms.extensions.blogroll.model.BlogRoll
 service --interface ~.cms.extensions.blogroll.service.BlogrollCategoryService --entity ~.cms.extensions.blogroll.model.blogRollCategory
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 11:56:11
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-21 15:18:09
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 17:32:02

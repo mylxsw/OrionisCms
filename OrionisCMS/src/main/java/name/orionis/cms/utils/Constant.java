@@ -15,7 +15,8 @@ public class Constant {
 	/**
 	 * 
 	 */
-	final public static String CMS_FILE_UPLOAD_PATH = "cms.file.upload.path";
+	final public static String CMS_FILE_UPLOAD_PATH_PRIVATE = "cms.file.upload.path.private";
+	final public static String CMS_FILE_UPLOAD_PATH_PUBLIC = "cms.file.upload.path.public";
 	/**
 	 * Message: successfully operation
 	 */

@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.code.kaptcha.util.Config;
+
 import name.orionis.cms.core.base.BaseController;
 import name.orionis.cms.core.rbac.authentication.UserInfo;
 import name.orionis.cms.core.rbac.web.AccountController;
@@ -48,7 +50,8 @@ public class FileUploadController extends BaseController implements ServletConte
 	@RequestMapping(value="/upload")
 	public String handleRequest(
 			@RequestParam("upload_file") MultipartFile file,
-			@RequestParam("TOKEN") String token,
+			@RequestParam("PRIVATE_KEY") String private_key,
+			@RequestParam("PRIVATE_ACCESS") Boolean private_access,
 			HttpServletRequest req,
 			HttpServletResponse resp,
 			HttpSession session){
@@ -57,11 +60,15 @@ public class FileUploadController extends BaseController implements ServletConte
 		// Check whether upload is allowed
 		try{
 			UserInfo user = (UserInfo) session.getAttribute(AccountController.ACCOUNT_INFO);
-			if(!user.getToken().equalsIgnoreCase(token)){
+			// Check whether private key is correct
+			// !!!!!Attention: there still have a bug need to fix, if user get two form ,one is 
+			// private ,and another is public ,then user can use it to submit 
+			if(!private_key.equalsIgnoreCase(
+					DigestUtils.md5Hex(user.getToken() + "{" + 
+							(private_access ? "true" : "false") + "}"))){
 				throw new Exception();
-			}	
+			}
 		} catch( Exception e){
-			e.printStackTrace();
 			return ajax("Upload authentication Failed, Upload Forbidden!", STATUS_FAILED, resp);
 		}
 		
@@ -85,7 +92,7 @@ public class FileUploadController extends BaseController implements ServletConte
 		String new_filename = DigestUtils.md5Hex(origin_filename 
 				+ System.currentTimeMillis()) + ext;
 		try {
-			_copyFile(file, new_filename);
+			_copyFile(file, new_filename, private_access);
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ajax("File upload error!", STATUS_FAILED, resp);
@@ -102,12 +109,23 @@ public class FileUploadController extends BaseController implements ServletConte
 	}
 
 	
-	private void _copyFile(MultipartFile file, String new_filename) throws IOException{
+	private void _copyFile(MultipartFile file, String new_filename , Boolean privateAccess) throws IOException{
 		InputStream inputStream = null;
 		FileOutputStream fos = null;
 		try {
 			inputStream = file.getInputStream();
-			fos = new FileOutputStream(new File( config.getString(Constant.CMS_FILE_UPLOAD_PATH) + new_filename));
+			String _path = "";
+			if(privateAccess){
+				_path = config.getString(Constant.CMS_FILE_UPLOAD_PATH_PRIVATE); 
+			}else{
+				String cfg_path = config.getString(Constant.CMS_FILE_UPLOAD_PATH_PUBLIC);
+				if(cfg_path.equals("")){
+					_path = config.getString(servletContext.getRealPath("/")) + "uploads/";
+				}else{
+					_path = cfg_path;
+				}
+			}
+			fos = new FileOutputStream(new File( _path + new_filename));
 			byte[] buffer = new byte[1024];
 			int byte_read = 0;
 			while((byte_read = inputStream.read(buffer)) != -1){

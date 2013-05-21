@@ -23,14 +23,6 @@
 		<c:if test="${reload != null }"> reload="${reload }" </c:if>
 	 <c:forEach var="attr" items="${dynamic_attr }">	${attr.key }="${attr.value }" </c:forEach>>
 		<input type="hidden" name="_jsessionId_" value="<%=request.getSession().getId() %>" />
-		<%
-			UserInfo user_  = null;
-			try{
-				user_ = (UserInfo)request.getSession().getAttribute(AccountController.ACCOUNT_INFO);
-			}catch(Exception e){}
-			String _token_ = user_ == null ? "" : user_.getToken();
-		 %>
-		<input type="hidden" name="_token_" value="<%=_token_ %>" />
 		<fieldset>
 			<jsp:doBody></jsp:doBody>
 		</fieldset>

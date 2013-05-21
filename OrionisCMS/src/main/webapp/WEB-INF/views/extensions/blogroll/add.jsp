@@ -8,7 +8,7 @@
 		<admin:input name="linkUrl" label="Link Url"></admin:input>
 		<admin:select name="categoryId" label="Category" data="${category }"></admin:select>
 		<admin:textarea name="introduce" label="Introduce" ></admin:textarea>
-		<admin:upload name="logo" label="Logo" id="logo"></admin:upload>
+		<admin:upload name="logo" label="Logo" id="logo"  privateAccess="false"></admin:upload>
 		<admin:input name="listOrder" label="List Order"></admin:input>
 		<admin:buttonPanel>
 			<admin:button value="Add" type="submit"></admin:button>
