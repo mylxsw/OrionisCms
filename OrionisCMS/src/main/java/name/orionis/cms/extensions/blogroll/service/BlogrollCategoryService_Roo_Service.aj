@@ -15,5 +15,4 @@ privileged aspect BlogrollCategoryService_Roo_Service {
     public abstract List<BlogrollCategory> BlogrollCategoryService.findAllBlogrollCategorys();    
     public abstract List<BlogrollCategory> BlogrollCategoryService.findBlogrollCategoryEntries(int firstResult, int maxResults);    
     public abstract void BlogrollCategoryService.saveBlogrollCategory(BlogrollCategory blogrollCategory);    
-    public abstract BlogrollCategory BlogrollCategoryService.updateBlogrollCategory(BlogrollCategory blogrollCategory);    
 }

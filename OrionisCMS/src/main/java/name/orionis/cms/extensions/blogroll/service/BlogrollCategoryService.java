@@ -6,4 +6,10 @@ import org.springframework.roo.addon.layers.service.RooService;
 
 @RooService(domainTypes = {BlogrollCategory.class })
 public interface BlogrollCategoryService {
+	/**
+	 * Update category
+	 * @param cate
+	 * @return
+	 */
+	public BlogrollCategory updateBlogrollCategory(BlogrollCategory cate);
 }

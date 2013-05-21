@@ -15,5 +15,4 @@ privileged aspect BlogrollService_Roo_Service {
     public abstract List<BlogRoll> BlogrollService.findAllBlogRolls();    
     public abstract List<BlogRoll> BlogrollService.findBlogRollEntries(int firstResult, int maxResults);    
     public abstract void BlogrollService.saveBlogRoll(BlogRoll blogRoll);    
-    public abstract BlogRoll BlogrollService.updateBlogRoll(BlogRoll blogRoll);    
 }

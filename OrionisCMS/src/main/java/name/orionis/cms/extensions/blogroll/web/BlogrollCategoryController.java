@@ -74,6 +74,28 @@ public class BlogrollCategoryController extends BaseController {
 		}
 		return success(resp);
 	}
+	
+	@Remark(value="Blogroll Category Edit", group="blogroll")
+	@RequestMapping("edit")
+	public String edit( @Valid @ModelAttribute BlogrollCategoryForm categoryForm,
+			BindingResult result, 
+			HttpServletRequest req, HttpServletResponse resp, Model model){
+		long category_id = Long.parseLong(req.getParameter("id"));
+		if(HTTP_GET.equals(req.getMethod())){
+			model.addAttribute("category", categoryService.findBlogrollCategory(category_id));
+			return view("edit");
+		}
+		// Check Form Information
+		if(result.hasErrors() || !categoryForm.validate()){
+			return errors(result, categoryForm, resp);
+		}
+		BlogrollCategory entity = categoryForm.toEntity();
+		entity.setId(category_id);
+		categoryService.updateBlogrollCategory(entity);
+		
+		return success(resp);
+	}
+	
 	/**
 	 * Category Delete
 	 * @param id

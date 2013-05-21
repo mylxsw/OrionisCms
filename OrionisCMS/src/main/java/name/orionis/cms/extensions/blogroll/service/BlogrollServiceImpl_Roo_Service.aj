@@ -39,8 +39,4 @@ privileged aspect BlogrollServiceImpl_Roo_Service {
         blogRoll.persist();
     }
     
-    public BlogRoll BlogrollServiceImpl.updateBlogRoll(BlogRoll blogRoll) {
-        return blogRoll.merge();
-    }
-    
 }

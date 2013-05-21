@@ -39,8 +39,4 @@ privileged aspect BlogrollCategoryServiceImpl_Roo_Service {
         blogrollCategory.persist();
     }
     
-    public BlogrollCategory BlogrollCategoryServiceImpl.updateBlogrollCategory(BlogrollCategory blogrollCategory) {
-        return blogrollCategory.merge();
-    }
-    
 }

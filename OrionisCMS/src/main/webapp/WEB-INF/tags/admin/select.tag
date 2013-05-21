@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ attribute name="label" required="true"  %>
 <%@ attribute name="name" required="true" %>
-<%@ attribute name="id" required="true" %>
+<%@ attribute name="id" %>
 <%@ attribute name="clazz" required="false" description="CSS" %>
 <%@ attribute name="data" required="true" description="数据map" type="java.util.Map" %>
 <%@ attribute name="selected" required="false" description="默认key" %>

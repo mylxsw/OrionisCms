@@ -202,3 +202,4 @@ focus --class ~.cms.extensions.blogroll.model.BlogRoll
 field reference --fieldName blogRollCategory --type ~.cms.extensions.blogroll.model.BlogrollCategory --cardinality MANY_TO_ONE 
 service --interface ~.cms.extensions.blogroll.service.BlogrollService --entity ~.cms.extensions.blogroll.model.BlogRoll
 service --interface ~.cms.extensions.blogroll.service.BlogrollCategoryService --entity ~.cms.extensions.blogroll.model.blogRollCategory
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 11:56:11

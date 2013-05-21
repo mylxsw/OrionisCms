@@ -3,7 +3,7 @@
 <%@ attribute name="label" required="true"  %>
 <%@ attribute name="name" required="true" %>
 <%@ attribute name="tip" required="false" description="提示"%>
-<%@ attribute name="id" required="true" %>
+<%@ attribute name="id"  %>
 <%@ attribute name="type" required="false"  description="类型" %>
 <%@ attribute name="clazz" required="false" description="CSS" %>
 <div class="control-group" id="group-${id }">
