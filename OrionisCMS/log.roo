@@ -205,3 +205,16 @@ service --interface ~.cms.extensions.blogroll.service.BlogrollCategoryService --
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 11:56:11
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-21 15:18:09
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 17:32:02
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 22:01:04
+entity jpa --class ~.extensions.announce.model.Announce
+field string --fieldName title --sizeMin 1 --sizeMax --notNull
+field string --fieldName content --sizeMin 0 --sizeMax 1000 
+field date --fieldName createDate --type java.util.Date
+field date --fieldName publishTime --type java.util.Date 
+field string --fieldName publisher --sizeMax 30 
+field date --fieldName startTime --type java.util.Date --dateTimeFormatPattern 
+field number --fieldName hits --type int --value 0
+service --interface ~.extensions.announce.service.AnnounceService --entity ~.extensions.announce.model.Announce
+hint
+service --interface ~.extensions.demo.service.DemoService --entity ~.extensions.demo.model.Demo
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-22 01:47:06

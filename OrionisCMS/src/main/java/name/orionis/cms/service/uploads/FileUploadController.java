@@ -120,7 +120,7 @@ public class FileUploadController extends BaseController implements ServletConte
 			}else{
 				String cfg_path = config.getString(Constant.CMS_FILE_UPLOAD_PATH_PUBLIC);
 				if(cfg_path.equals("")){
-					_path = config.getString(servletContext.getRealPath("/")) + "uploads/";
+					_path = servletContext.getRealPath("/") + "uploads/";
 				}else{
 					_path = cfg_path;
 				}

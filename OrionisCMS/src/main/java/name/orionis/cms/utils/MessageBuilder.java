@@ -44,6 +44,11 @@ public class MessageBuilder {
 			if(StringUtils.isBlank(m)){
 				continue;
 			}
+			m = m.replaceAll("\"", "'");
+			if(m.length() > 15){
+				message.append("<p>").append("Some exception occur!" ).append("</p>");
+				continue;
+			}
 			message.append("<p>").append(m ).append("</p>");
 		}
 		return message.toString();
