@@ -71,7 +71,7 @@ public class AccountController extends BaseController {
 			if(configHelper.getGodUser().equals(
 					Encrypt.encryptPassword(password, username)) 
 					&& configHelper.getGodPassword().equals(Encrypt.encryptPassword(password, username))){
-				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true));
+				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true).setUserId(0L).setUsername(username).setRoleId(0L));
 				return ajax("God mode successfully!", STATUS_SUCCESS, resp);
 			}
 		}

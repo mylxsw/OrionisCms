@@ -4,8 +4,11 @@
 	<admin:form action="announce/add" method="post" 
 		id="add_announce_form" ajax="true" 
 		after="add_announce_form_after">
-		<admin:input name="announceName" label="Announce Name"></admin:input>
-
+		<admin:input name="title" label="Title"></admin:input>
+		<admin:datetime name="publishTime" label="Publish Time"></admin:datetime>
+		<admin:datetime name="startTime" label="Start Time"></admin:datetime>
+		<admin:datetime name="endTime" label="End Time"></admin:datetime>
+		<admin:textarea name="content" label="Content"></admin:textarea>		
 		<admin:buttonPanel>
 			<admin:button value="Add" type="submit"></admin:button>
 		</admin:buttonPanel>

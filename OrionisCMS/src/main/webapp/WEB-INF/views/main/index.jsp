@@ -154,6 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/jquery-ui/js/jquery-ui-1.10.3.custom.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/jquery-ui/js/jquery.ui.datepicker-zh-CN.js" />" type="text/javascript"></script>
+<script src="<c:url value="/resources/jquery-ui/js/jquery-ui-timepicker-addon.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/jquery-uploadify/jquery.uploadify.min.js" />" type="text/javascript"></script>
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/interface/DirectRemote.js" />'></script>

@@ -101,21 +101,21 @@ public class DirectRemote {
 					.add(new NavItem().setLinkName("Role Management").setLinkUrl("rbac/role/list")));
 		}else if(position.equalsIgnoreCase("menu.module")){ // Modules
 			root.add(new NavItem().setLinkName("Modules Management").setFolder(true)
-					.add(new NavItem().setLinkName("Advertisement").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("Announce").setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName("Message").setLinkUrl(""))
-					.add(new NavItem().setLinkName("SMS").setLinkUrl(""))
-					.add(new NavItem().setLinkName("Remark").setLinkUrl(""))
+					.add(new NavItem().setLinkName("Advertisement").setLinkUrl("advertisement/list"))
+					.add(new NavItem().setLinkName("Announce").setLinkUrl("announce/list"))
+					.add(new NavItem().setLinkName("Message").setLinkUrl("message/list"))
+					.add(new NavItem().setLinkName("SMS").setLinkUrl("sms/list"))
+					.add(new NavItem().setLinkName("Remark").setLinkUrl("remark/list"))
 					.add(new NavItem().setLinkName("Blogroll").setLinkUrl("blogroll/list")) // Blogroll
-					.add(new NavItem().setLinkName("Vote").setLinkUrl(""))
-					.add(new NavItem().setLinkName("Search").setLinkUrl("")));
+					.add(new NavItem().setLinkName("Vote").setLinkUrl("vote/list"))
+					.add(new NavItem().setLinkName("Search").setLinkUrl("search/list")));
 		}else if(position.equalsIgnoreCase("menu.content")){ // Context
 			root.add(new NavItem().setLinkName("Content Management").setFolder(true)
-					.add(new NavItem().setLinkName("Attachment").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("Subject").setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName("Fragment").setLinkUrl(""))
-					.add(new NavItem().setLinkName("Collection").setLinkUrl(""))
-					.add(new NavItem().setLinkName("Remark Management").setLinkUrl("")));
+					.add(new NavItem().setLinkName("Attachment").setLinkUrl("attachment/list"))
+					.add(new NavItem().setLinkName("Subject").setLinkUrl("subject/list"))
+					.add(new NavItem().setLinkName("Fragment").setLinkUrl("fragment/list"))
+					.add(new NavItem().setLinkName("Collection").setLinkUrl("collection/list"))
+					.add(new NavItem().setLinkName("Remark Management").setLinkUrl("remark/list")));
 			root.add(new NavItem().setLinkName("Cached Management").setFolder(true)
 					.add(new NavItem().setLinkName("Category Refresh").setLinkUrl("account/change_personal"))
 					.add(new NavItem().setLinkName("Index Page Refresh").setLinkUrl("account/change_password"))

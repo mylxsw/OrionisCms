@@ -45,8 +45,9 @@ public class MessageBuilder {
 				continue;
 			}
 			m = m.replaceAll("\"", "'");
-			if(m.length() > 15){
-				message.append("<p>").append("Some exception occur!" ).append("</p>");
+			if(m.length() > 45){
+				message.append("<p>").append(m.substring(m.length() -44) ).append("</p>");
+				System.out.println(m);
 				continue;
 			}
 			message.append("<p>").append(m ).append("</p>");

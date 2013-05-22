@@ -165,9 +165,14 @@ jQuery.orionis = {
 			$('input.datepicker').datepicker({ 
 						dateFormat: "yy-mm-dd", 
 						appendText: " (年-月-日)",
-						yearRange:"1900:2010",
-						changeMonth: true,
-						changeYear: true});
+						changeMonth: true});
+		}
+		if($('input.datetimepicker').length){
+			$('input.datetimepicker').datetimepicker({ 
+				timeFormat: 'HH:mm:ss',
+				stepHour: 2,
+				stepMinute: 10,
+				stepSecond: 10});
 		}
 		/**********************************************************************************
 		 * Tab页, 支持ajax

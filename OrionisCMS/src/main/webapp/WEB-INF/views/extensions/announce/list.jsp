@@ -7,13 +7,15 @@
 </admin:crumb>
 <admin:module title="Announce">
 	<admin:button value="Announce Add" clazz="btn-primary btn-top" id="addAnnounce"  ></admin:button>
-	<ec:table items="announce" var="ul" styleClass="table table-hover table-striped" form="false">
+	<ec:table items="announces" var="ul" styleClass="table table-hover table-striped" form="false">
 		<ec:row>
 			<ec:column property="id" title="ID"  filterable="false" sortable="false"/>
-			<ec:column property="announceName"  title="Announce Name"/>
-			
+			<ec:column property="title"  title="Title"/>
+			<ec:column property="publishTime"  title="PublishTime"/>
+			<ec:column property="startTime"  title="Start Time"/>
+			<ec:column property="endTime"  title="End Time"/>
 			<ec:column title="Operation" alias="action"  filterable="false" sortable="false">
-				<admin:button value="Edit" blogroll-id="${ul.id }" clazz="edit_announce"></admin:button>
+				<admin:button value="Edit" announce-id="${ul.id }" clazz="edit_announce"></admin:button>
 				<admin:button value="Delete" announce-id="${ul.id }" clazz="btn-danger delete_announce"></admin:button>
 			</ec:column>
 		</ec:row>

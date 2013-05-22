@@ -5,8 +5,11 @@
 		id="edit_announce_form" ajax="true" 
 		after="edit_announce_form_after">
 		<admin:input_hidden name="id" value="${announce.id }"></admin:input_hidden>
-		<admin:input name="announceName" label="Announce Name" value="${announce.announceName }"></admin:input>
-		
+		<admin:input name="title" label="Title" value="${announce.title }"></admin:input>
+		<admin:datetime name="publishTime" label="Publish Time" value="${announce.publishTime }"></admin:datetime>
+		<admin:datetime name="startTime" label="Start Time" value="${announce.startTime }"></admin:datetime>
+		<admin:datetime name="endTime" label="End Time" value="${announce.endTime }"></admin:datetime>
+		<admin:textarea name="content" label="Content" value="${announce.content }"></admin:textarea>
 		<admin:buttonPanel>
 			<admin:button value="Save" type="submit"></admin:button>
 		</admin:buttonPanel>

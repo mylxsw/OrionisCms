@@ -20,23 +20,32 @@ import name.orionis.cms.extensions.announce.model.Announce;
  */
 public class AnnounceForm extends Form<Announce> {
     @NotNull
-    @Size(min = 1)
+    @Size(min = 1,max=50,  message="The title must not be null!")
     private String title;
 
-    @Size(min = 0, max = 1000)
+    @Size(min = 0, max = 1000, message="Content length must not more than 1000.")
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date publishTime;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTime;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endTime;
+    
+    @Override
+    public boolean validate(){
+    	if(endTime.before(startTime)){
+    		errorMessages = "The end time must after start time!";
+    		return false;
+    	}
+    	return true;
+    }
 
 	@Override
 	public Announce toEntity() {
