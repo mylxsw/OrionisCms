@@ -1,0 +1,220 @@
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-08 22:32:10
+project --topLevelPackage name.orionis.cms --projectName OrionisCMS --java 7 --packaging JAR
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-08 22:32:27
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-08 22:32:32
+jpa setup --database MYSQL --provider HIBERNATE 
+entity jpa --class name.orionis.cms.site.model.DemoModel --testAutomatically 
+repository jpa --interface ~.site.repository.DemoRepo --entity ~.site.model.DemoModel
+service --interface name.orionis.cms.site.service.DemoService --entity ~.site.model.DemoModel
+hint
+web mvc setup
+web mvc controller --class name.orionis.cms.site.web.DemoController
+entity jpa --class name.orionis.cms.extensions.demo.model.Demo 
+service --interface ~.extensions.demo.service.DemoService --entity ~.extensions.demo.model.Demo
+web mvc controller --class ~.extensions.demo.web.DemoController 
+help security 
+security setup
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-12 23:24:08
+hint
+entity jpa --class ~.extensions.content.model.Content
+field string --fieldName title --notNull --sizeMin 1 --sizeMax 50 
+field string --fieldName content --sizeMax 10000
+field date --fieldName create_time --type java.util.Date --notNull --dateTimeFormatPattern "yyyy-MM-dd hh:mm:ss"
+field date --fieldName update_time --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd hh:mm:ss"
+field string --fieldName description --sizeMax 1000
+field number --fieldName list_order --type short --decimalMax 999
+field boolean --fieldName is_link --value false
+field string --fieldName url --sizeMax 100 
+entity jpa --class ~.extensions.content.model.Category --testAutomatically 
+field number --fieldName site_id --type short --value 0 --notNull 
+field string --fieldName cate_name --sizeMin 1 --sizeMax 50 --notNull
+field string --fieldName description --sizeMax 500 --value ""
+field number --fieldName parent_id --type int --value 0
+field string --fieldName url --sizeMax 100
+field boolean --fieldName child --value false
+field string --fieldName style --sizeMax 5
+field string --fieldName image --sizeMax 100
+field boolean --fieldName sethtml --value false
+field string --fieldName letter --sizeMax 50
+field string --fieldName settings --sizeMax 1000 --comment "some settings" 
+field number --fieldName listorder --type short --max 3
+field boolean --fieldName is_menu --value true
+focus --class ~.extensions.content.model.Content
+field number --fieldName status --type short
+field reference --fieldName category --type ~.extensions.content.model.Category --cardinality MANY_TO_ONE 
+field set --fieldName contents --type ~.extensions.content.model.Content --cardinality ONE_TO_MANY --mappedBy category
+entity jpa --class ~.extensions.content.model.NewsData --testAutomatically 
+field string --fieldName content --sizeMax 10000
+field string --fieldName template --sizeMax 30
+field boolean --fieldName allow_comment --value true
+field string --fieldName copy_from --sizeMax 100
+field number --fieldName pagination_type --type short --decimalMax 9
+field number --fieldName max_char_per_page --type int
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-13 21:20:09
+service --interface name.orionis.cms.extensions.content.service.CategoryService --entity ~.extensions.content.model.Category
+hint
+hint
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-13 23:55:21
+hint
+entity jpa --class   ~.core.dict.model.Dictionary
+field string --fieldName dict_code --notNull --sizeMax 50
+field string --fieldName dict_value --sizeMax 200
+field string --fieldName explain --sizeMax 255
+service --interface ~.core.dict.service.DictService --entity ~.core.dict.model.Dictionary
+focus --class ~.core.dict.service.DictService
+// [failed] finder list 
+focus --class ~.core.dict.model.Dictionary
+finder list 
+finder add --finderName findDictionarysByCodeEquals 
+focus --class ~.core.dict.service.DictServiceImpl
+// [failed] finder list 
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-14 01:27:44
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-14 20:39:06
+hint
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-15 22:40:45
+// [failed] entity jpa --class ~.core.rbac.model.User 
+// [failed] entity jpa --class  ~.core.rbac.model.User
+entity jpa --class  ~.core.rbac.model.RbacUser
+field string --fieldName username --sizeMin 3 --sizeMax 50 --unique --notNull
+field string --fieldName password --sizeMin 256 --sizeMax 256 
+field string --fieldName lastLoginIP --sizeMax 15
+field date --fieldName lastLoginTime --type java.util.Date --dateTimeFormatPattern "yyyy-MM-dd hh:mm:ss"
+field string --fieldName email --sizeMax 40 --regexp "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"
+field string --fieldName realName --sizeMax 50
+enum type --class ~.core.rbac.model.UserStatus
+hint 
+enum constant --name ENABLED 
+enum constant --name DISABLED
+enum constant --name LOCKED
+field enum --fieldName status --type ~.core.rbac.model.UserStatus 
+focus --class ~.core.rbac.model.RbacUser
+field enum --fieldName status --type ~.core.rbac.model.UserStatus 
+entity jpa --class ~.core.rbac.model.RbacRole 
+field string --fieldName roleName
+field string --fieldName roleName --unique --sizeMin 2 --sizeMax 20
+field set --fieldName rbacUser --type ~.core.rbac.model.RbacUser --cardinality ONE_TO_MANY 
+field enum --fieldName status --type ~.core.rbac.model.Status
+focus --class ~.core.rbac.model.RbacUser
+field reference --fieldName rbacRole --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_ONE
+entity jpa --class ~.core.rbac.model.RbacPermission
+field string --fieldName permissionName --notNull --sizeMax 40
+field string --fieldName permissionValue --notNull --sizeMax 255
+focus --class ~.core.rbac.model.RbacRole
+field set --fieldName rbacPermissions --type ~.core.rbac.model.RbacPermission --cardinality MANY_TO_MANY 
+focus --class ~.core.rbac.model.RbacPermission
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-15 23:26:44
+entity jpa --class ~.core.rbac.model.RbacPermission
+field string --fieldName permissionName --notNull --sizeMax 40
+field string --fieldName permissionValue --notNull --sizeMax 255
+field set --fieldName rbacRoles --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_MANY --mappedBy rbacPermissions
+// [failed] focus --class ~.core.rbac.RbacUser
+focus --class ~.core.rbac.model.RbacUser
+finder list --filter userName
+finder add --finderName findRbacUserByUserNameEquals
+finder add --finderName findRbacUsersByUserNameEquals
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-16 15:18:25
+entity jpa --class ~.core.rbac.model.RbacMenu
+field string --fieldName menuName --sizeMax 40 --notNull 
+field string --fieldName url --sizeMax 100
+field enum --fieldName status --type ~.core.rbac.model.Status
+field number --fieldName parentId --type java.lang.Long
+field reference --fieldName rbacRole --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_ONE 
+focus --class ~.core.rbac.model.RbacRole
+field set --fieldName rbacMenus --type ~.core.rbac.model.RbacMenu --cardinality ONE_TO_MANY --mappedBy rbacRole
+focus --class ~.core.rbac.model.RbacPermission
+field reference --fieldName rbacRole --type ~.core.rbac.model.RbacRole --cardinality MANY_TO_ONE
+focus --class name.orionis.cms.core.rbac.model.RbacRole
+finder list --filter permission
+focus --class name.orionis.cms.core.rbac.model.RbacPermission
+finder list --filter role
+finder add --finderName findRbacPermissionsByRbacRole
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-16 22:29:20
+hint
+focus --class ~.core.rbac.model.RbacUser
+finder list --class ~.core.rbac.model.RbacUser --filter userName
+finder list --class ~.core.rbac.model.RbacUser 
+finder list --class ~.core.rbac.model.RbacUser --depth 2
+finder list --class ~.core.rbac.model.RbacUser --depth 2 --filter userName
+finder list --class ~.core.rbac.model.RbacUser --depth 2 --filter userName,password
+finder add --finderName findRbacUsersByUserNameEqualsAndPasswordEquals
+service --interface ~.core.rbac.service.RbacService
+service --interface ~.core.rbac.service.RbacUserService --entity ~.core.rbac.model.RbacUser
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-17 00:40:09
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-17 21:32:34
+service --interface ~.core.rbac.service.RbacUserService --entity ~.core.rbac.model.RbacUser
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-17 23:14:10
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-17 23:20:51
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-17 23:39:12
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-17 23:40:16
+hint
+// [failed] service --interface ~.core.rbac.service.RbacRoleService --entity ~.core.rbac.model.RbacRole
+service --interface ~.core.rbac.service.RbacRoleService --entity ~.core.rbac.model.RbacRole
+service --interface ~.core.rbac.service.RbacPermissionService --entity ~.core.rbac.model.RbacPermission
+focus --class ~.core.rbac.model.RbacPermission
+// [failed] finder list --filter role
+finder list --filter role
+finder add --finderName findRbacPermissionsByRbacRole
+class --class ~.core.rbac.web.RbacMenuController --extends ~.core.base.BaseController
+service --interface ~.core.rbac.service.RbacMenuService --entity ~.core.rbac.model.RbacMenu
+focus --class ~.core.rbac.model.RbacMenu 
+finder list --filter role,parentId
+finder list --filter role,parentId --depth 1
+finder list --filter role,parentId --depth 2
+finder add --finderName findRbacMenusByRbacRoleAndParentIdEquals
+finder list --filter parent
+finder add --finderName findRbacMenusByParentIdEquals
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-18 22:35:41
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-18 23:28:33
+hint
+entity jpa --class ~.cms.extensions.dynaimcform.model.DynamicForm 
+field string --fieldName what 
+hint
+hint
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-05-19 02:26:44
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-19 13:39:14
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-19 17:15:21
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-19 19:24:04
+focus --class ~.core.rbac.model.RbacUser
+finder list --filter username
+finder add --finderName findRbacUsersByUserNameEquals
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-19 22:14:41
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-20 12:58:49
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-20 16:53:53
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-05-20 21:39:03
+hint
+entity jpa --class ~.cms.extensions.blogroll.model 
+field number --fieldName siteId --type int
+entity jpa --class ~.cms.extensions.blogroll.model.BlogRoll 
+field number --fieldName siteId --type int
+field string --fieldName linkName --sizeMin 1 --sizeMax 100
+field string --fieldName linkUrl --sizeMax 255 
+field string --fieldName logo --sizeMax 100
+field string --fieldName introduce --sizeMax 200
+field number --fieldName listOrder --type int
+field date --fieldName createTime --type java.util.Date 
+hint
+field number --fieldName linkType --type int
+entity jpa --class ~.cms.extensions.blogroll.model.BlogrollCategory
+field string --fieldName categoryName --sizeMin 1 --sizeMax 50
+field number --fieldName listOrder --type int
+field set --fieldName blogROlls --type ~.cms.extensions.blogroll.model.BlogRoll --cardinality ONE_TO_MANY 
+focus --class ~.cms.extensions.blogroll.model.BlogRoll
+field reference --fieldName blogRollCategory --type ~.cms.extensions.blogroll.model.BlogrollCategory --cardinality MANY_TO_ONE 
+service --interface ~.cms.extensions.blogroll.service.BlogrollService --entity ~.cms.extensions.blogroll.model.BlogRoll
+service --interface ~.cms.extensions.blogroll.service.BlogrollCategoryService --entity ~.cms.extensions.blogroll.model.blogRollCategory
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 11:56:11
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-21 15:18:09
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 17:32:02
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-21 22:01:04
+entity jpa --class ~.extensions.announce.model.Announce
+field string --fieldName title --sizeMin 1 --sizeMax --notNull
+field string --fieldName content --sizeMin 0 --sizeMax 1000 
+field date --fieldName createDate --type java.util.Date
+field date --fieldName publishTime --type java.util.Date 
+field string --fieldName publisher --sizeMax 30 
+field date --fieldName startTime --type java.util.Date --dateTimeFormatPattern 
+field number --fieldName hits --type int --value 0
+service --interface ~.extensions.announce.service.AnnounceService --entity ~.extensions.announce.model.Announce
+hint
+service --interface ~.extensions.demo.service.DemoService --entity ~.extensions.demo.model.Demo
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-22 01:47:06

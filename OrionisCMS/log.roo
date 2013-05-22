@@ -218,3 +218,5 @@ service --interface ~.extensions.announce.service.AnnounceService --entity ~.ext
 hint
 service --interface ~.extensions.demo.service.DemoService --entity ~.extensions.demo.model.Demo
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-22 01:47:06
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-05-22 09:52:38
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-22 13:36:09
