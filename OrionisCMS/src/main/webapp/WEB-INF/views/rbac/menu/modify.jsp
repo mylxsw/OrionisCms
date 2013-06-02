@@ -2,14 +2,14 @@
 <%@ taglib tagdir="/WEB-INF/tags/admin" prefix="admin" %>
 <div style="width:700px">
 <form action="rbac/menus/modify" method="post" id="add_menu_form" ajax="true" after="edit_menu_form_after">
-	<legend>Menu Edit <a href="#" id="callbackInfo" >Fill Back</a></legend>
-	<admin:input name="menuName" label="Menu Name" id="menuName" value="${menu.menuName }"></admin:input>
+	<legend>编辑菜单 <a href="#" id="callbackInfo" >回填</a></legend>
+	<admin:input name="menuName" label="菜单名" id="menuName" value="${menu.menuName }"></admin:input>
 	<input type="hidden" name="id" value="${menu.id }" />
 	<input type="hidden" name="roldId" value="${role_id }" />
-	<admin:input name="url" label="Url" id="url" value="${menu.url }"></admin:input>
-	<admin:select name="parentId" label="Parent" data="${menus }" id="parent" selected="${menu.parentId}"></admin:select>
+	<admin:input name="url" label="菜单地址" id="url" value="${menu.url }"></admin:input>
+	<admin:select name="parentId" label="上级菜单" data="${menus }" id="parent" selected="${menu.parentId}"></admin:select>
     <admin:buttonPanel>
-   		<button type="submit" class="btn" name="login" value="login">Save</button>
+   		<button type="submit" class="btn" name="login" value="login">保存</button>
     </admin:buttonPanel>
   <script>
     $(function(){

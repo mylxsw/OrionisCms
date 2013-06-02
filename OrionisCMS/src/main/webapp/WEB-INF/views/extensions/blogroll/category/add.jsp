@@ -4,10 +4,10 @@
 	<admin:form action="blogroll/category/add" method="post" 
 		id="add_blogroll_category_form" ajax="true" 
 		after="add_blogroll_category_form_after">
-		<admin:input name="categoryName" label="Category Name" id="categoryName"></admin:input>
-		<admin:input name="listOrder" label="List Order" id="listOrder"  value="1"></admin:input>
+		<admin:input name="categoryName" label="分类名称" id="categoryName"></admin:input>
+		<admin:input name="listOrder" label="排序" id="listOrder"  value="1"></admin:input>
 		<admin:buttonPanel>
-			<admin:button value="Add" type="submit"></admin:button>
+			<admin:button value="添加" type="submit"></admin:button>
 		</admin:buttonPanel>
 	</admin:form>
 </admin:dialog_panel>

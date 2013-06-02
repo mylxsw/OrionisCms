@@ -2,13 +2,13 @@
 <%@ taglib tagdir="/WEB-INF/tags/admin" prefix="admin" %>
 <div style="width:700px">
 <form action="rbac/menus/add" method="post" id="add_menu_form" ajax="true" after="add_menu_form_after">
-	<legend>Menu Add <a href="#" id="callbackInfo" >Fill Back</a></legend>
-	<admin:input name="menuName" label="Menu Name" id="menuName"></admin:input>
+	<legend>添加菜单 <a href="#" id="callbackInfo" >回填</a></legend>
+	<admin:input name="menuName" label="菜单名" id="menuName"></admin:input>
 	<input type="hidden" name="roldId" value="${role_id }" />
-	<admin:input name="url" label="Url" id="url"></admin:input>
-	<admin:select name="parentId" label="Parent" data="${menus }" id="parent" selected="0"></admin:select>
+	<admin:input name="url" label="菜单链接" id="url"></admin:input>
+	<admin:select name="parentId" label="上级菜单" data="${menus }" id="parent" selected="0"></admin:select>
     <admin:buttonPanel>
-   		<button type="submit" class="btn" name="login" value="login">Add</button>
+   		<button type="submit" class="btn" name="login" value="login">添加</button>
     </admin:buttonPanel>
   <script>
     $(function(){

@@ -16,12 +16,12 @@
 }
 </style>
 <ul class="breadcrumb">
-  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
-  <li ><a href="javascript:$.orionis.updateMain('rbac/role/list');">Role Management</a><span class="divider">/</span></li>
-  <li class="active">Permission List</li>
+  <li><a href="#"><i class="icon-home"></i> 主面板</a> <span class="divider">/</span></li>
+  <li ><a href="javascript:$.orionis.updateMain('rbac/role/list');">角色管理</a><span class="divider">/</span></li>
+  <li class="active">菜单列表</li>
 </ul>
 		<div class="row-fluid o-module o-module-big">
-    	<admin:button value="Menu Add" id="addMenu" style="margin-left: 9px; margin-top: 10px;"></admin:button>
+    	<admin:button value="添加菜单" id="addMenu" style="margin-left: 9px; margin-top: 10px;"></admin:button>
 		<div style="margin-top:20px; border:1px solid #CCC; padding:10px;" id="menu_preview">
 			<admin:nav nav_data="${menus }"></admin:nav>
 		</div>
@@ -30,7 +30,7 @@
  		$(function(){
  			$("#addMenu").click(function(){
  				$.get($.orionis.url("rbac/menus/add"), {id: "${role_id}"}, function(data){
- 					$.orionis.dialog(data, "Menu Add");
+ 					$.orionis.dialog(data, "添加菜单");
  					$.orionis.reloadJsEvent();
  				});
  			});
@@ -39,13 +39,13 @@
  				e.preventDefault();
  				var menu_id = $(this).parent("span").attr("mid");
  				$.get($.orionis.url("rbac/menus/modify"), {id:menu_id, roldId:${role_id}}, function(data){
- 					$.orionis.dialog(data, "Menu Edit");
+ 					$.orionis.dialog(data, "编辑菜单");
  					$.orionis.reloadJsEvent();
  				});
  			});
  			$(".del").click(function(e){
  				e.preventDefault();
- 				if(confirm("Are you sure you want to delete? This will also delete all submenus!!!") == false){
+ 				if(confirm("您确定要删除该菜单？该操作将会删除所有的子菜单!!!") == false){
  					return false;
  				}
  				var curid = $(this).parent("span").attr("mid");

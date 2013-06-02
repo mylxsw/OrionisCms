@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign in &middot; Orionis CMS</title>
+    <title>登录 &middot; Orionis CMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,10 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container">
 
       <form class="form-signin" action="account/login" method="post" ajax="true" after="login_success">
-        <h2 class="form-signin-heading">Please Login</h2>
-        <input type="text" name="username" class="input-block-level" placeholder="User Name" value="godgod" />
-        <input type="password" name="password" class="input-block-level" placeholder="Password" value="godgod" />
-        <input class="btn btn-large btn-primary" type="submit" value="Login" />
+        <h2 class="form-signin-heading">登录</h2>
+        <input type="text" name="username" class="input-block-level" placeholder="用户名" value="godgod" />
+        <input type="password" name="password" class="input-block-level" placeholder="密码" value="godgod" />
+        <input class="btn btn-large btn-primary" type="submit" value="登录" />
       </form>
     </div> <!-- /container -->
 <div id="dialog"></div>

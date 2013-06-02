@@ -20,10 +20,10 @@ import name.orionis.cms.extensions.announce.model.Announce;
  */
 public class AnnounceForm extends Form<Announce> {
     @NotNull
-    @Size(min = 1,max=50,  message="The title must not be null!")
+    @Size(min = 1,max=50,  message="标题不能为空!")
     private String title;
 
-    @Size(min = 0, max = 1000, message="Content length must not more than 1000.")
+    @Size(min = 0, max = 1000, message="内容长度不能大于1000个字符.")
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -41,7 +41,7 @@ public class AnnounceForm extends Form<Announce> {
     @Override
     public boolean validate(){
     	if(endTime.before(startTime)){
-    		errorMessages = "The end time must after start time!";
+    		errorMessages = "结束时间必须在开始时间之后!";
     		return false;
     	}
     	return true;

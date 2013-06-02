@@ -227,3 +227,8 @@ field string --fieldName title --notNull --sizeMax 50
 service --interface ~.extensions.advertisement.service.AdvertisementService --entity ~.extensions.advertisement.model.Advertisement
 service --interface ~.extensions.content.service.CategoryService --entity ~.extensions.content.model.Category
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-05-22 23:31:36
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-06-02 15:03:25
+hint
+entity jpa --class ~.cms.extensions.demo.model.Demo2
+field string --fieldName testField 
+field number --fieldName age --type int

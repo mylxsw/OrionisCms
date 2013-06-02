@@ -4,10 +4,10 @@
 	<admin:form action="advertisement/add" method="post" 
 		id="add_advertisement_form" ajax="true" 
 		after="add_advertisement_form_after">
-		<admin:input name="title" label="Title"></admin:input>
-		<admin:textarea name="content" label="Content"></admin:textarea>
+		<admin:input name="title" label="标题"></admin:input>
+		<admin:textarea name="content" label="内容"></admin:textarea>
 		<admin:buttonPanel>
-			<admin:button value="Add" type="submit"></admin:button>
+			<admin:button value="添加" type="submit"></admin:button>
 		</admin:buttonPanel>
 	</admin:form>
 </admin:dialog_panel>

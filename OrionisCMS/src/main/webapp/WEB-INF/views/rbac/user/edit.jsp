@@ -3,15 +3,15 @@
 <div style="width:700px">
 <form action="rbac/user/edit" method="post" id="edit_user_form" ajax="true" after="edit_user_form_after">
 	<input type="hidden" name="id" value="${user.id }" />
-	<admin:input name="userName" id="username" label="Username" value="${user.userName }"></admin:input>
-    <admin:input name="password" type="password" label="Password" id="password" value="--------" ></admin:input>
-    <admin:input name="email" label="Email" id="email" value="${user.email }"></admin:input>
-    <admin:select name="roleId" label="Role" data="${roles }" id="roleid" selected="${user.rbacRole.id }"></admin:select>
+	<admin:input name="userName" id="username" label="用户名" value="${user.userName }"></admin:input>
+    <admin:input name="password" type="password" label="密码" id="password" value="--------" ></admin:input>
+    <admin:input name="email" label="邮箱" id="email" value="${user.email }"></admin:input>
+    <admin:select name="roleId" label="所属角色" data="${roles }" id="roleid" selected="${user.rbacRole.id }"></admin:select>
     <admin:buttonPanel>
     	<label class="checkbox">
-    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">Enabled</span>
+    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">是否可用</span>
    		</label>
-   		<button type="submit" class="btn" name="login" value="login">Save</button>
+   		<button type="submit" class="btn" name="login" value="login">保存</button>
     </admin:buttonPanel>
 </form>
 <script>

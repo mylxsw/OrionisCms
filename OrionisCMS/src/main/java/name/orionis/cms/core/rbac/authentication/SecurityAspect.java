@@ -88,7 +88,7 @@ public class SecurityAspect {
 			if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 				return ;
 			}
-			throw new PermissionDenyException("Access Denied!", "account/login");
+			throw new PermissionDenyException("没有授权!", "account/login");
 		}
 		
 		// God Mode, Permit all
@@ -101,7 +101,7 @@ public class SecurityAspect {
 		// If invoke anonymous only method, forbidden
 		if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 			throw new PermissionDenyException(
-					"Access Denied!");
+					"没有授权!");
 		}
 		
 		
@@ -115,7 +115,7 @@ public class SecurityAspect {
 
 		if (!role_permissions.contains(invokePermissionName)) {
 			log.info("Access Intercept:  " + invokeClass + " : " + invokeMethod);
-			throw new PermissionDenyException("Access Denied!");
+			throw new PermissionDenyException("没有授权!");
 		}
 	}
 	

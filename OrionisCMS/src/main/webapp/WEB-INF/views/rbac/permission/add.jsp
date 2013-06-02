@@ -25,9 +25,9 @@ li:hover{
 }
 </style>
 <ul class="breadcrumb">
-  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
-  <li ><a href="javascript:$.orionis.updateMain('rbac/role/list');">Role Management</a><span class="divider">/</span></li>
-  <li class="active">Permission List</li>
+  <li><a href="#"><i class="icon-home"></i> 主面板</a> <span class="divider">/</span></li>
+  <li ><a href="javascript:$.orionis.updateMain('rbac/role/list');">角色管理</a><span class="divider">/</span></li>
+  <li class="active">权限列表</li>
 </ul>
 		<div class="row-fluid o-module o-module-big">
 			<%
@@ -59,7 +59,7 @@ li:hover{
 								 + " permission-id='" 
 								 + permission_list.get(c.getClassName() + "." + m.getMethodName()).getId() 
 								 + "' "
-							 	 + ">Cancel</span>");
+							 	 + ">取消</span>");
 						}else{
 							out.write("<span class='right_btn' " 
 								 + " permission-controller='" + c.getClassName() 
@@ -67,7 +67,7 @@ li:hover{
 								 + "' permission-url='" + (m.getUrl())[0]
 								 + "' permission-label='" + m.getRemark()
 								 + "' "
-								 + ">Select</span>");
+								 + ">授权</span>");
 						}
 						
 						out.write(" <span style='color:gray;display:inline-block; float:right'>[ " + m.getRemark() + " ]</span> "

@@ -30,7 +30,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  * Site : http://blog.orionis.name
  *
  */
-@Remark(value="Blogroll" ,group="blogroll")
+@Remark(value="友情链接" ,group="blogroll")
 @RequestMapping("blogroll")
 @Controller
 public class BlogrollController extends BaseController {
@@ -40,7 +40,7 @@ public class BlogrollController extends BaseController {
 	@Resource
 	private BlogrollCategoryService categoryService;
 	
-	@Remark(value="Blogroll List" , group="blogroll")
+	@Remark(value="友情链接列表" , group="blogroll")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, 
 			HttpServletResponse resp,
@@ -50,7 +50,7 @@ public class BlogrollController extends BaseController {
 		return view("list");
 	}
 	
-	@Remark(value="Blogroll Add", group="blogroll")
+	@Remark(value="添加友情链接", group="blogroll")
 	@RequestMapping("add")
 	public String add( @Valid @ModelAttribute BlogrollForm rollForm,
 			BindingResult result, 
@@ -72,7 +72,7 @@ public class BlogrollController extends BaseController {
 		return success(resp);
 	}
 	
-	@Remark(value="Blogroll Edit", group="blogroll")
+	@Remark(value="编辑友情链接", group="blogroll")
 	@RequestMapping("edit")
 	public String edit( @Valid @ModelAttribute BlogrollForm rollForm,
 			BindingResult result, 
@@ -95,7 +95,7 @@ public class BlogrollController extends BaseController {
 		return success(resp);
 	}
 	
-	@Remark(value="Blogroll delete",group="blogroll")
+	@Remark(value="删除友情链接",group="blogroll")
 	@RequestMapping("delete")
 	public String role_delete(@RequestParam("id") long id, HttpServletRequest req, 
 			HttpServletResponse resp){

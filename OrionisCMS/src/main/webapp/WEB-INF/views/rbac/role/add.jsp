@@ -2,12 +2,12 @@
 <%@ taglib tagdir="/WEB-INF/tags/admin" prefix="admin" %>
 <div style="width:700px">
 <form action="rbac/role/add" method="post" id="add_role_form" ajax="true" after="add_role_form_after">
-    <admin:input name="roleName" label="Role Name" id="rolename"></admin:input>
+    <admin:input name="roleName" label="角色名" id="rolename"></admin:input>
     <admin:buttonPanel>
     	<label class="checkbox">
-    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">Enabled</span>
+    		<input type="checkbox" value="1" name="status" checked="checked"><span class="metro-checkbox">是否可用</span>
    		</label>
-    	<admin:button value="Add" type="submit"></admin:button>
+    	<admin:button value="添加" type="submit"></admin:button>
     </admin:buttonPanel>
 </form>
 </div>

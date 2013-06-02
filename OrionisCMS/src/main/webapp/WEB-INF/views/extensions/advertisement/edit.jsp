@@ -5,10 +5,10 @@
 		id="edit_advertisement_form" ajax="true" 
 		after="edit_advertisement_form_after">
 		<admin:input_hidden name="id" value="${advertisement.id }"></admin:input_hidden>
-		<admin:input name="title" label="Title" value="${advertisement.title }"></admin:input>
-		<admin:textarea name="content" label="Content" value="${advertisement.content }"></admin:textarea>
+		<admin:input name="title" label="标题" value="${advertisement.title }"></admin:input>
+		<admin:textarea name="content" label="内容" value="${advertisement.content }"></admin:textarea>
 		<admin:buttonPanel>
-			<admin:button value="Save" type="submit"></admin:button>
+			<admin:button value="保存" type="submit"></admin:button>
 		</admin:buttonPanel>
 	</admin:form>
 </admin:dialog_panel>

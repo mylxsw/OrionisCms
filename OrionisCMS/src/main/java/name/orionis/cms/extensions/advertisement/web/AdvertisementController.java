@@ -29,7 +29,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  * Site : http://blog.orionis.name
  *
  */
-@Remark(value = "Advertisement", group = "advertisement")
+@Remark(value = "广告管理", group = "advertisement")
 @RequestMapping("advertisement")
 @Controller
 public class AdvertisementController extends BaseController {
@@ -37,7 +37,7 @@ public class AdvertisementController extends BaseController {
 	@Resource
 	private AdvertisementService advertisementService;
 
-	@Remark(value = "Advertisement List", group = "advertisement")
+	@Remark(value = "广告列表", group = "advertisement")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, HttpServletResponse resp,
 			Model model) {
@@ -45,7 +45,7 @@ public class AdvertisementController extends BaseController {
 		return view("list");
 	}
 
-	@Remark(value = "Advertisement Add", group = "advertisement")
+	@Remark(value = "添加广告", group = "advertisement")
 	@RequestMapping("add")
 	public String add(@Valid @ModelAttribute AdvertisementForm advertisementForm,
 			BindingResult result, HttpServletRequest req,
@@ -69,7 +69,7 @@ public class AdvertisementController extends BaseController {
 		return success(resp);
 	}
 
-	@Remark(value = "Advertisement Edit", group = "advertisement")
+	@Remark(value = "编辑广告", group = "advertisement")
 	@RequestMapping("edit")
 	public String edit(@Valid @ModelAttribute AdvertisementForm advertisementForm,
 			BindingResult result, HttpSession session, HttpServletRequest req,
@@ -94,7 +94,7 @@ public class AdvertisementController extends BaseController {
 		return success(resp);
 	}
 
-	@Remark(value = "Advertisement delete", group = "advertisement")
+	@Remark(value = "删除广告", group = "advertisement")
 	@RequestMapping("delete")
 	public String delete(@RequestParam("id") long id, HttpServletRequest req,
 			HttpServletResponse resp) {

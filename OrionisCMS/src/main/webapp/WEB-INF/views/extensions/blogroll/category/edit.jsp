@@ -5,10 +5,10 @@
 		id="edit_blogroll_category_form" ajax="true" 
 		after="edit_blogroll_category_form_after">
 		<admin:input_hidden name="id" value="${category.id }"></admin:input_hidden>
-		<admin:input name="categoryName" label="Category Name" id="categoryName" value="${category.categoryName }"></admin:input>
-		<admin:input name="listOrder" label="List Order" id="listOrder" value="${category.listOrder }"></admin:input>
+		<admin:input name="categoryName" label="分类名称" id="categoryName" value="${category.categoryName }"></admin:input>
+		<admin:input name="listOrder" label="排序" id="listOrder" value="${category.listOrder }"></admin:input>
 		<admin:buttonPanel>
-			<admin:button value="Save" type="submit"></admin:button>
+			<admin:button value="保存" type="submit"></admin:button>
 		</admin:buttonPanel>
 	</admin:form>
 </admin:dialog_panel>

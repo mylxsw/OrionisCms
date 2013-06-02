@@ -15,7 +15,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  */
 @Controller
 @RequestMapping("/rbac")
-@Remark(value="Rbac Manage Controller", group="rbac")
+@Remark(value="RBAC管理控制器", group="rbac")
 public class RbacManageController extends BaseController {
 
 	@Override

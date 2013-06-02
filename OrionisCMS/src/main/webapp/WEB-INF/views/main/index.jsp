@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>Dashboard</title>
+<title>Orionis CMS</title>
 <meta name="keywords" content=""/>
 <meta name="description" content=""/>
 <link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"/>
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a class="brand" href="#">Orionis CMS</a>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
-           <a href="#" class="navbar-link logout" >Logout</a>
+           <a href="#" class="navbar-link logout" >退出</a>
         </p>
         <ul class="nav" id="ajax_main_nav"></ul>
         <form class="navbar-search pull-left" action="">
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="span9 main" id="ajax_main">
 		<ul class="breadcrumb">
-		  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
+		  <li><a href="#"><i class="icon-home"></i> 主面板</a> <span class="divider">/</span></li>
 		  <li><a href="#">Library</a> <span class="divider">/</span></li>
 		  <li class="active">Data</li>
 		</ul>

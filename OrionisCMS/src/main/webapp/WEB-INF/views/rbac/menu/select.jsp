@@ -55,7 +55,7 @@ li:hover{
 								 + "' permission-url='" + (m.getUrl())[0]
 								 + "' permission-label='" + m.getRemark()
 								 + "' "
-								 + ">Select</span>");
+								 + ">选择</span>");
 						
 						out.write(" <span style='color:gray;display:inline-block; float:right'>[ " + m.getRemark() + " ]</span> "
 							+ "</li>");

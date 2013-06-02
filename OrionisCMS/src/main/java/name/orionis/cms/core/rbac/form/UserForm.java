@@ -23,16 +23,16 @@ import name.orionis.cms.utils.Encrypt;
  */
 public class UserForm extends Form<RbacUser> {
 	@NotNull
-    @Size(min = 3, max = 50, message="User name must be 3-50 character length.")
+    @Size(min = 3, max = 50, message="用户名长度必须为3-50个字符长度.")
     private String userName;
 
-    @Size(min = 6, max = 30, message="Password must be 6-30 character length.")
+    @Size(min = 6, max = 30, message="密码长度必须为6-30个字符长度.")
     private String password;
 
-    @Email
+    @Email(message="邮箱地址格式错误!")
     private String email;
 
-    @Size(max = 50, message="The Real name must be less than 50 character length.")
+    @Size(max = 50, message="真实姓名必须少于50个字符长度.")
     private String realName;
     
     private long roleId;
@@ -47,7 +47,7 @@ public class UserForm extends Form<RbacUser> {
 		} catch(Exception e){
 			return true;
 		}
-		errorMessages = "User Name has been used!";
+		errorMessages = "用户名已经存在了!";
 		
 		return false;
 	}

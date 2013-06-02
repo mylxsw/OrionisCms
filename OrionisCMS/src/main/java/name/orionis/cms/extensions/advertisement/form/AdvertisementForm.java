@@ -15,11 +15,11 @@ import name.orionis.cms.extensions.advertisement.model.Advertisement;
 public class AdvertisementForm extends Form<Advertisement> {
 
 	@NotNull
-    @Size(min=1, max = 50, message="The title must be not null!")
+    @Size(min=1, max = 50, message="标题不能为空!")
     private String title;
     
 
-    @Size(min = 0, max = 500, message="Content must less than 500 character!")
+    @Size(min = 0, max = 500, message="内容不能多于500个字符!")
     private String content;
 	
 	@Override

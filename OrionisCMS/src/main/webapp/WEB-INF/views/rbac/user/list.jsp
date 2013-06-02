@@ -2,13 +2,13 @@
 <%@ taglib uri="/tld/extremecomponents" prefix="ec" %>
 <%@ taglib tagdir="/WEB-INF/tags/admin" prefix="admin" %>
 <ul class="breadcrumb">
-  <li><a href="#"><i class="icon-home"></i> Home</a> <span class="divider">/</span></li>
-  <li class="active">User Management</li>
+  <li><a href="#"><i class="icon-home"></i> 主面板</a> <span class="divider">/</span></li>
+  <li class="active">管理员管理</li>
 </ul>
 <div class="row-fluid o-module o-module-big">
-	<h4>User Management</h4>
+	<h4>管理员管理</h4>
 	<div>
-		<button id="addUser" class="btn btn-primary" style="margin-left: 20px;">User Add</button>
+		<button id="addUser" class="btn btn-primary" style="margin-left: 20px;">添加用户</button>
 		<ec:table 
 				items="users"
 				var="ul"
@@ -17,13 +17,13 @@
 				>
 				<ec:row>
 					<ec:column property="id" title="ID"  filterable="false" sortable="false"/>
-					<ec:column property="userName"  title="User Name"/>
-					<ec:column property="rbacRole.roleName" title="Role" />
-					<ec:column property="email" title="Email" />
-					<ec:column property="status" title="Status"></ec:column>
-					<ec:column title="Operation" alias="action"  filterable="false" sortable="false">
-						<admin:button value="Edit" user-id="${ul.id }" clazz="edit_user"></admin:button>
-						<admin:button value="Delete" user-id="${ul.id }" clazz="btn-danger delete_user"></admin:button>
+					<ec:column property="userName"  title="用户名"/>
+					<ec:column property="rbacRole.roleName" title="所属角色" />
+					<ec:column property="email" title="邮箱" />
+					<ec:column property="status" title="状态"></ec:column>
+					<ec:column title="操作" alias="action"  filterable="false" sortable="false">
+						<admin:button value="编辑" user-id="${ul.id }" clazz="edit_user"></admin:button>
+						<admin:button value="删除" user-id="${ul.id }" clazz="btn-danger delete_user"></admin:button>
 					</ec:column>
 				</ec:row>
 			</ec:table>
@@ -33,16 +33,16 @@
 $(function(){
 	$("#addUser").click(function(){
 		$.get($.orionis.url("rbac/user/add"), {}, function(data){
-			$.orionis.dialog(data, "User Add");
+			$.orionis.dialog(data, "添加用户");
 		});
 	});
 	$(".edit_user").click(function(){
 		$.get($.orionis.url("rbac/user/edit"), {id: $(this).attr("user-id")}, function(data){
-			$.orionis.dialog(data, "User Edit");
+			$.orionis.dialog(data, "编辑用户");
 		});
 	});
 	$(".delete_user").click(function(){
-		if(confirm("Are you sure you want to delete?") == false){
+		if(confirm("您确定要删除该用户吗?") == false){
 			return false;
 		}
 		$.get($.orionis.url("rbac/user/delete"), {id: $(this).attr("user-id")}, function(data){
