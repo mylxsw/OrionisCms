@@ -27,7 +27,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  * Site : http://blog.orionis.name
  *
  */
-@Remark(value = "文章分类", group = "category")
+@Remark(value = "文章分类", group = "content")
 @RequestMapping("category")
 @Controller
 public class CagegoryController extends BaseController {

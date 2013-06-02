@@ -39,8 +39,4 @@ privileged aspect CategoryServiceImpl_Roo_Service {
         category.persist();
     }
     
-    public Category CategoryServiceImpl.updateCategory(Category category) {
-        return category.merge();
-    }
-    
 }

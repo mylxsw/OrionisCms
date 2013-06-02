@@ -232,3 +232,7 @@ hint
 entity jpa --class ~.cms.extensions.demo.model.Demo2
 field string --fieldName testField 
 field number --fieldName age --type int
+service --interface ~.cms.extensions.content.service.NewsService --entity ~.cms.extensions.content.model.News
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-06-02 20:55:11
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-06-02 20:56:56
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-06-02 21:09:47

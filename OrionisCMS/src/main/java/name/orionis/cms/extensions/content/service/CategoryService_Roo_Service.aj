@@ -15,5 +15,4 @@ privileged aspect CategoryService_Roo_Service {
     public abstract List<Category> CategoryService.findAllCategorys();    
     public abstract List<Category> CategoryService.findCategoryEntries(int firstResult, int maxResults);    
     public abstract void CategoryService.saveCategory(Category category);    
-    public abstract Category CategoryService.updateCategory(Category category);    
 }

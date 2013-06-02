@@ -111,7 +111,7 @@ public class DirectRemote {
 					.add(new NavItem().setLinkName("搜索").setLinkUrl("search/list")));
 		}else if(position.equalsIgnoreCase("menu.content")){ // Context
 			root.add(new NavItem().setLinkName("内容管理").setFolder(true)
-					.add(new NavItem().setLinkName("文章").setLinkUrl("content/list"))
+					.add(new NavItem().setLinkName("文章").setLinkUrl("news/list"))
 					.add(new NavItem().setLinkName("附件").setLinkUrl("attachment/list"))
 					.add(new NavItem().setLinkName("专题").setLinkUrl("subject/list"))
 					.add(new NavItem().setLinkName("碎片").setLinkUrl("fragment/list"))
@@ -123,7 +123,7 @@ public class DirectRemote {
 					.add(new NavItem().setLinkName("刷新URL缓存").setLinkUrl(""))
 					.add(new NavItem().setLinkName("同步刷新").setLinkUrl("")));
 			root.add(new NavItem().setLinkName("内容设置").setFolder(true)
-					.add(new NavItem().setLinkName("分类管理").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("分类管理").setLinkUrl("category/list"))
 					.add(new NavItem().setLinkName("模块管理").setLinkUrl("account/change_password")));
 		}else if(position.equalsIgnoreCase("menu.user")){ // User
 			root.add(new NavItem().setLinkName("用户管理").setFolder(true)

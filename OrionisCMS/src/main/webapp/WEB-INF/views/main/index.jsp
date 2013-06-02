@@ -159,6 +159,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/interface/DirectRemote.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script type="text/javascript" src='<c:url value="/resources/ueditor/editor_config.js" />' ></script>
+<script type="text/javascript" src='<c:url value="/resources/ueditor/editor_all_min.js" />' ></script>
 <script src="<c:url value="/resources/static/js/jquery-cms-ext.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
 </body>
