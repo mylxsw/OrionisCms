@@ -80,7 +80,7 @@ jQuery.orionis = {
 		 * ********************************************************************************
 		 */
 		if($("form[ajax='true']").length){
-			$("form[ajax='true']").on("submit", function(e){
+			$("form[ajax='true']").off("submit").on("submit", function(e){
 				e.preventDefault();
 				var options = {
 						dataType: 'json'	

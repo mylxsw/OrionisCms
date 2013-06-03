@@ -67,7 +67,7 @@ public class NewsController extends BaseController {
 			return errors(result, newsForm, resp);
 		}
 
-		newsService.addNews(newsForm);
+		newsService.addArtilce(newsForm);
 
 		return success(resp);
 	}

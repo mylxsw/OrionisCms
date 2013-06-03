@@ -7,5 +7,5 @@ import org.springframework.roo.addon.layers.service.RooService;
 @RooService(domainTypes = { name.orionis.cms.extensions.content.model.News.class })
 public interface NewsService {
 
-	void addNews(NewsForm newsForm);
+	void addArtilce(NewsForm newsForm);
 }
