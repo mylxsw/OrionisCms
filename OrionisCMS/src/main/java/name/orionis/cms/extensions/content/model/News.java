@@ -34,6 +34,9 @@ public class News {
     @DecimalMax("999")
     private short list_order;
 
+    @Size(max = 10000)
+    private String content;
+    
     @Size(max = 5)
     private String style;
 

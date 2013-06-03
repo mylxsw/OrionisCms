@@ -77,67 +77,34 @@ public class DirectRemote {
 	private NavItem _godNavs(String position) {
 		NavItem root = new NavItem();
 		if(position.equalsIgnoreCase("top")){
-			root.add(new NavItem().setLinkName("主面板").setLinkUrl("menu.my_dashboard"));
-			root.add(new NavItem().setLinkName("设置").setLinkUrl("menu.setting"));
-			root.add(new NavItem().setLinkName("模块").setLinkUrl("menu.module"));
-			root.add(new NavItem().setLinkName("内容").setLinkUrl("menu.content"));
-			root.add(new NavItem().setLinkName("用户").setLinkUrl("menu.user"));
-			root.add(new NavItem().setLinkName("界面").setLinkUrl("menu.ui"));
-			root.add(new NavItem().setLinkName("扩展").setLinkUrl("menu.extension"));
-			root.add(new NavItem().setLinkName("应用").setLinkUrl("menu.app"));
+			root.add(new NavItem().setLinkName("DashBoard").setLinkUrl("menu.my_dashboard"));
+			root.add(new NavItem().setLinkName("Settings").setLinkUrl("menu.setting"));
+			root.add(new NavItem().setLinkName("Modules").setLinkUrl("menu.module"));
+			root.add(new NavItem().setLinkName("Content").setLinkUrl("menu.content"));
+			root.add(new NavItem().setLinkName("Extensions").setLinkUrl("menu.extension"));
 		}
 		if(position.equalsIgnoreCase("menu.my_dashboard")){ // Dashboard
-			root.add(new NavItem().setLinkName("个人信息").setFolder(true)
-					.add(new NavItem().setLinkName("修改个人信息").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("修改密码").setLinkUrl("account/change_password")));
+			root.add(new NavItem().setLinkName("Personal Information").setFolder(true)
+					.add(new NavItem().setLinkName("Modify Personal Info").setLinkUrl("account/change_personal"))
+					.add(new NavItem().setLinkName("Change Password").setLinkUrl("account/change_password")));
 		}else if(position.equalsIgnoreCase("menu.setting")){ // Settings
-			root.add(new NavItem().setLinkName("相关设置").setFolder(true)
-					.add(new NavItem().setLinkName("站点设置").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("基本设置").setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName("安全设置").setLinkUrl(""))
-					.add(new NavItem().setLinkName("邮箱设置").setLinkUrl("")));
-			root.add(new NavItem().setLinkName("管理员设置").setFolder(true)
-					.add(new NavItem().setLinkName("管理员管理").setLinkUrl("rbac/user/list"))
-					.add(new NavItem().setLinkName("角色管理").setLinkUrl("rbac/role/list")));
+			root.add(new NavItem().setLinkName("Administrators Settings").setFolder(true)
+					.add(new NavItem().setLinkName("Administrator Management").setLinkUrl("rbac/user/list"))
+					.add(new NavItem().setLinkName("Role Management").setLinkUrl("rbac/role/list")));
 		}else if(position.equalsIgnoreCase("menu.module")){ // Modules
-			root.add(new NavItem().setLinkName("模块管理").setFolder(true)
-					.add(new NavItem().setLinkName("广告").setLinkUrl("advertisement/list"))
-					.add(new NavItem().setLinkName("公告").setLinkUrl("announce/list"))
-					.add(new NavItem().setLinkName("消息").setLinkUrl("message/list"))
-					.add(new NavItem().setLinkName("短信").setLinkUrl("sms/list"))
-					.add(new NavItem().setLinkName("评论").setLinkUrl("remark/list"))
-					.add(new NavItem().setLinkName("友情链接").setLinkUrl("blogroll/list")) // Blogroll
-					.add(new NavItem().setLinkName("投票").setLinkUrl("vote/list"))
-					.add(new NavItem().setLinkName("搜索").setLinkUrl("search/list")));
+			root.add(new NavItem().setLinkName("Modules").setFolder(true)
+					.add(new NavItem().setLinkName("Advertisement").setLinkUrl("advertisement/list"))
+					.add(new NavItem().setLinkName("Announce").setLinkUrl("announce/list"))
+					.add(new NavItem().setLinkName("Message").setLinkUrl("message/list"))
+					.add(new NavItem().setLinkName("Blogroll").setLinkUrl("blogroll/list")) // Blogroll
+					);
 		}else if(position.equalsIgnoreCase("menu.content")){ // Context
-			root.add(new NavItem().setLinkName("内容管理").setFolder(true)
-					.add(new NavItem().setLinkName("文章").setLinkUrl("news/list"))
-					.add(new NavItem().setLinkName("附件").setLinkUrl("attachment/list"))
-					.add(new NavItem().setLinkName("专题").setLinkUrl("subject/list"))
-					.add(new NavItem().setLinkName("碎片").setLinkUrl("fragment/list"))
-					.add(new NavItem().setLinkName("收集").setLinkUrl("collection/list"))
-					.add(new NavItem().setLinkName("评论管理").setLinkUrl("remark/list")));
-			root.add(new NavItem().setLinkName("缓存管理").setFolder(true)
-					.add(new NavItem().setLinkName("刷新栏目缓存").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("刷新首页缓存").setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName("刷新URL缓存").setLinkUrl(""))
-					.add(new NavItem().setLinkName("同步刷新").setLinkUrl("")));
-			root.add(new NavItem().setLinkName("内容设置").setFolder(true)
-					.add(new NavItem().setLinkName("分类管理").setLinkUrl("category/list"))
-					.add(new NavItem().setLinkName("模块管理").setLinkUrl("account/change_password")));
-		}else if(position.equalsIgnoreCase("menu.user")){ // User
-			root.add(new NavItem().setLinkName("用户管理").setFolder(true)
-					.add(new NavItem().setLinkName("用户审核").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("用户模型管理").setLinkUrl("account/change_password"))
-					.add(new NavItem().setLinkName("用户组管理").setLinkUrl(""))
-					.add(new NavItem().setLinkName("模型管理").setLinkUrl("")));
-		}else if(position.equalsIgnoreCase("menu.ui")){ // UI
-			root.add(new NavItem().setLinkName("模板管理").setFolder(true)
-					.add(new NavItem().setLinkName("模板样式").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("标签库").setLinkUrl("account/change_password")));
+			root.add(new NavItem().setLinkName("Content").setFolder(true)
+					.add(new NavItem().setLinkName("Aritcle").setLinkUrl("news/list"))
+					.add(new NavItem().setLinkName("Remark").setLinkUrl("remark/list")));
+			root.add(new NavItem().setLinkName("Content Settings").setFolder(true)
+					.add(new NavItem().setLinkName("Category").setLinkUrl("category/list")));
 		}else if(position.equalsIgnoreCase("menu.extension")){
-			
-		}else if(position.equalsIgnoreCase("menu.app")){
 			
 		}
 		

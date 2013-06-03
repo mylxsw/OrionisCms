@@ -9,7 +9,7 @@
 <div class="control-group" id="group-${id }">
    <label class="control-label" for="${id }">${label }</label>
    <div class="controls">
-	 <textarea style="width:484px; height:94px"  id="${id }" name="${name }" placeholder="${label }"  <c:forEach items="${dyna_attr }" var="attr"> ${attr.key }="${attr.value }" </c:forEach> >${value }</textarea>
+	 <textarea style="min-width:484px; min-height:94px"  id="${id }" name="${name }" placeholder="${label }"  <c:forEach items="${dyna_attr }" var="attr"> ${attr.key }="${attr.value }" </c:forEach> >${value }</textarea>
    </div>
 </div>
 <c:if test="${rich}">

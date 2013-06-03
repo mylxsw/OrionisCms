@@ -49,6 +49,14 @@ privileged aspect News_Roo_JavaBean {
         this.list_order = list_order;
     }
     
+    public String News.getContent() {
+        return this.content;
+    }
+    
+    public void News.setContent(String content) {
+        this.content = content;
+    }
+    
     public String News.getStyle() {
         return this.style;
     }

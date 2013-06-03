@@ -16,9 +16,6 @@ public class NewsData {
     @Id
     private int id;
 
-    @Size(max = 10000)
-    private String content;
-
     @Size(max = 30)
     private String template;
 

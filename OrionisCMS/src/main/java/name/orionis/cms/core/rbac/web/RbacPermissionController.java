@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/rbac/permission")
-@Remark(value="RBAC权限控制器", group="rbac")
+@Remark(value="RBAC Permission Controller", group="rbac")
 public class RbacPermissionController extends BaseController {
 
 	@Resource
@@ -47,7 +47,7 @@ public class RbacPermissionController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="更新权限",group="rbac_permission")
+	@Remark(value="Update Permission",group="rbac_permission")
 	@RequestMapping("update")
 	public String update(HttpServletResponse resp){
 		permissionService.updatePermissions(getApplicationContext());
@@ -64,7 +64,7 @@ public class RbacPermissionController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="为角色授权",group="rbac_permission")
+	@Remark(value="Graint Permission To Role",group="rbac_permission")
 	@RequestMapping("add")
 	public String add(
 			@Valid @ModelAttribute("permissionForm") PermissionForm permissionForm,
@@ -114,7 +114,7 @@ public class RbacPermissionController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="删除角色权限",group="rbac_permission")
+	@Remark(value="Delete role`s permission",group="rbac_permission")
 	@RequestMapping("delete")
 	public String delete( @RequestParam(value="id",required=false) long id,
 			HttpServletResponse resp){

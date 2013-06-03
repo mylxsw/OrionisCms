@@ -35,7 +35,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  */
 @Controller
 @RequestMapping("/rbac/menus")
-@Remark(value="RBAC菜单控制器", group="rbac")
+@Remark(value="RBAC Menu Controller", group="rbac")
 public class RbacMenuController extends BaseController {
 
 	@Resource
@@ -49,7 +49,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="菜单列表",group="rbac_menus")
+	@Remark(value="Menu List",group="rbac_menus")
 	@RequestMapping("list")
 	public String list( 
 			@RequestParam("id") long id, 
@@ -72,7 +72,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="添加菜单",group="rbac_menus")
+	@Remark(value="Add Menu",group="rbac_menus")
 	@RequestMapping("add")
 	public String add(
 			@Valid @ModelAttribute("menuForm") MenuForm menuForm,
@@ -106,7 +106,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="选择菜单",group="rbac_menus")
+	@Remark(value="Select Menu",group="rbac_menus")
 	@RequestMapping("select")
 	public String select(HttpServletRequest req, HttpServletResponse resp ,  Model model){
 		List<ControllerClassInfo> controllers = 
@@ -124,7 +124,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="修改菜单", group="rbac_menus")
+	@Remark(value="Modify Menu", group="rbac_menus")
 	@RequestMapping("modify")
 	public String modify(
 			@Valid @ModelAttribute("menuForm") MenuForm menuForm,
@@ -177,7 +177,7 @@ public class RbacMenuController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="删除菜单",group="rbac_menus")
+	@Remark(value="Delete Menu",group="rbac_menus")
 	@RequestMapping("delete")
 	public String delete(@RequestParam("id") long id, HttpServletRequest req, HttpServletResponse resp){
 		menuService.deleteRbacMenuCascade(RbacMenu.findRbacMenu(id));

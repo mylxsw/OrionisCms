@@ -35,11 +35,11 @@ import name.orionis.helper.ueditor.Uploader;
 @Remark(value="Ueditor Upload Controller", group="upload")
 @RequestMapping("ueditor")
 public class UeditorUploadController extends BaseController implements ServletContextAware {
-	final private String uploadPath = "uploads/ueditor";//保存路径
+	final private String uploadPath = "uploads/ueditor";// Save path
 	final private String [] uploadTypes = {".rar" , ".doc" , ".docx" , 
 			".zip" , ".pdf" , ".txt" , ".swf", ".wmv",
 			".jpg", ".bmp", ".jpeg", ".png", ".gif", ".psd"};
-	final private int maxUploadSize = 10000;//允许的文件最大尺寸，单位KB
+	final private int maxUploadSize = 10000;// KB
 	private ServletContext servletContext;
 	/**
 	 * File upload
@@ -48,7 +48,7 @@ public class UeditorUploadController extends BaseController implements ServletCo
 	 * @return
 	 * @throws IOException 
 	 */
-	@Remark("文件上传")
+	@Remark("File upload")
 	@RequestMapping("fileupload")
 	public String uploadFile(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 	    Uploader up = new Uploader(req);
@@ -68,35 +68,34 @@ public class UeditorUploadController extends BaseController implements ServletCo
 	    return ajax(map, resp);
 	}
 	
-	@Remark("获取远程图片")
+	@Remark("Get Remote Image")
 	@RequestMapping("getRemoteImage")
 	public String getRemoteImage(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		String url = req.getParameter("upfile");
-    	String state = "远程图片抓取成功！";
+    	String state = "Image Get Successfully";
     	
     	String filePath = "upload";
     	String[] arr = url.split("ue_separate_ue");
     	String[] outSrc = new String[arr.length];
     	for(int i=0;i<arr.length;i++){
-    		//保存文件路径
+    		// Save upload path
 			File f = new File(servletContext.getRealPath("/")+ uploadPath);
 			String savePath = f.getParent() + "/"+filePath;
-    		//格式验证
+    		// format validation
     		String type = getFileType(arr[i]);
 			if(type.equals("")){
-				state = "图片类型不正确！";
+				state = "Image type not allowed!";
 				continue;
 			}
     		String saveName = Long.toString(new Date().getTime())+type;
-    		//大小验证
     		HttpURLConnection.setFollowRedirects(false); 
 		    HttpURLConnection   conn   = (HttpURLConnection) new URL(arr[i]).openConnection(); 
 		    if(conn.getContentType().indexOf("image")==-1){
-		    	state = "请求地址头不正确";
+		    	state = "Request header error!";
 		    	continue;
 		    }
 		    if(conn.getResponseCode() != 200){
-		    	state = "请求地址不存在！";
+		    	state = "Request path not allowed";
 		    	continue;
 		    }
             File dir = new File(savePath);
@@ -114,7 +113,6 @@ public class UeditorUploadController extends BaseController implements ServletCo
     			}
     			os.close();
     			is.close();
-    			// 这里处理 inputStream
     		} catch (Exception e) {
     			e.printStackTrace();
     		}
@@ -131,7 +129,7 @@ public class UeditorUploadController extends BaseController implements ServletCo
 	    map.put("srcUrl", url);
 	    return ajax(map, resp);
 	}
-	@Remark("涂鸦")
+	@Remark("Scrawl")
 	@RequestMapping("scrawlUp")
 	public String scrawlUp(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String param = req.getParameter("action");
@@ -139,7 +137,7 @@ public class UeditorUploadController extends BaseController implements ServletCo
 	    up.setSavePath(servletContext.getRealPath("/")+ uploadPath);
 	    String[] fileType = {".gif" , ".png" , ".jpg" , ".jpeg" , ".bmp"};
 	    up.setAllowFiles(fileType);
-	    up.setMaxSize(maxUploadSize); //单位KB
+	    up.setMaxSize(maxUploadSize); //KB
 	    
 	    if(param!=null && param.equals("tmpImg")){
 	    	up.upload();

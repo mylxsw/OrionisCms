@@ -15,14 +15,6 @@ privileged aspect NewsData_Roo_JavaBean {
         this.id = id;
     }
     
-    public String NewsData.getContent() {
-        return this.content;
-    }
-    
-    public void NewsData.setContent(String content) {
-        this.content = content;
-    }
-    
     public String NewsData.getTemplate() {
         return this.template;
     }

@@ -21,7 +21,7 @@ import name.orionis.cms.extensions.announce.model.Announce;
 import name.orionis.cms.extensions.announce.service.AnnounceService;
 import name.orionis.helper.reflection.annotation.Remark;
 
-@Remark(value="公告管理" ,group="announce")
+@Remark(value="Announce Management" ,group="announce")
 @RequestMapping("announce")
 @Controller
 public class AnnounceController extends BaseController {
@@ -29,7 +29,7 @@ public class AnnounceController extends BaseController {
 	@Resource
 	private AnnounceService announceService;
 	
-	@Remark(value="公告列表" , group="announce")
+	@Remark(value="Announce list" , group="announce")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, 
 			HttpServletResponse resp,
@@ -39,7 +39,7 @@ public class AnnounceController extends BaseController {
 		return view("list");
 	}
 	
-	@Remark(value="添加公告", group="announce")
+	@Remark(value="Add Announce", group="announce")
 	@RequestMapping("add")
 	public String add( @Valid @ModelAttribute AnnounceForm announceForm,
 			BindingResult result, 
@@ -64,7 +64,7 @@ public class AnnounceController extends BaseController {
 		return success(resp);
 	}
 	
-	@Remark(value="编辑公告", group="announce")
+	@Remark(value="Modify Announce", group="announce")
 	@RequestMapping("edit")
 	public String edit( @Valid @ModelAttribute AnnounceForm announceForm,
 			BindingResult result, 
@@ -90,7 +90,7 @@ public class AnnounceController extends BaseController {
 		return success(resp);
 	}
 	
-	@Remark(value="删除公告",group="announce")
+	@Remark(value="Delete Announce",group="announce")
 	@RequestMapping("delete")
 	public String role_delete(@RequestParam("id") long id, HttpServletRequest req, 
 			HttpServletResponse resp){

@@ -29,7 +29,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  *
  */
 @Controller
-@Remark(value="帐号控制器", group="account")
+@Remark(value="Account Controller", group="account")
 @RequestMapping("account")
 public class AccountController extends BaseController {
 	public static final String ACCOUNT_INFO = "userinfo";
@@ -49,7 +49,7 @@ public class AccountController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("login")
-	@Remark(value="用户登录", group="account")
+	@Remark(value="User login", group="account")
 	public String login(@RequestParam(value="username", required=false) String username, 
 			@RequestParam(value="password", required=false) String password, 
 			HttpServletRequest req,
@@ -63,7 +63,7 @@ public class AccountController extends BaseController {
 		
 		// Username and password must be not blank 
 		if(StringUtils.isBlank(username) || StringUtils.isBlank(password)){
-			return ajax("用户名或密码错误!", STATUS_FAILED, resp);
+			return ajax("Username or password error!", STATUS_FAILED, resp);
 		}
 		
 		// God Mode
@@ -72,7 +72,7 @@ public class AccountController extends BaseController {
 					Encrypt.encryptPassword(password, username)) 
 					&& configHelper.getGodPassword().equals(Encrypt.encryptPassword(password, username))){
 				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true).setUserId(0L).setUsername(username).setRoleId(0L));
-				return ajax("超级管理员登录成功！", STATUS_SUCCESS, resp);
+				return ajax("Super administrator login successfully!", STATUS_SUCCESS, resp);
 			}
 		}
 		
@@ -93,7 +93,7 @@ public class AccountController extends BaseController {
 		
 		session.setAttribute(ACCOUNT_INFO, new UserInfo(user.getId(), 
 				user.getRbacRole().getId()).setUsername(user.getUserName()));
-		return ajax("登录成功!", STATUS_SUCCESS, resp);
+		return ajax("Login successfully!", STATUS_SUCCESS, resp);
 	}
 	
 	/**
@@ -102,11 +102,11 @@ public class AccountController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="退出", group="account")
+	@Remark(value="logout", group="account")
 	@RequestMapping("logout")
 	public String logout(HttpSession session, HttpServletResponse resp){
 		session.invalidate();
-		return ajax("安全退出系统!", STATUS_SUCCESS, resp);
+		return ajax("Logout successfully!", STATUS_SUCCESS, resp);
 	}
 	
 	@Override

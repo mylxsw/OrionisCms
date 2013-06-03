@@ -24,7 +24,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  * Site : http://blog.orionis.name
  *
  */
-@Remark(value="友情链接分类管理" ,group="blogroll")
+@Remark(value="Blogroll Category Management" ,group="blogroll")
 @RequestMapping("blogroll/category")
 @Controller
 public class BlogrollCategoryController extends BaseController {
@@ -38,7 +38,7 @@ public class BlogrollCategoryController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="友情链接分类列表" , group="blogroll")
+	@Remark(value="Blogroll Category List" , group="blogroll")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, HttpServletResponse resp, Model model){
 		model.addAttribute("category",categoryService.findAllBlogrollCategorys());
@@ -54,7 +54,7 @@ public class BlogrollCategoryController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="添加分类", group="blogroll")
+	@Remark(value="Add Category ", group="blogroll")
 	@RequestMapping("add")
 	public String add( @Valid @ModelAttribute BlogrollCategoryForm categoryForm,
 			BindingResult result, 
@@ -75,7 +75,7 @@ public class BlogrollCategoryController extends BaseController {
 		return success(resp);
 	}
 	
-	@Remark(value="编辑分类", group="blogroll")
+	@Remark(value="Modify Category ", group="blogroll")
 	@RequestMapping("edit")
 	public String edit( @Valid @ModelAttribute BlogrollCategoryForm categoryForm,
 			BindingResult result, 
@@ -103,7 +103,7 @@ public class BlogrollCategoryController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="删除分类",group="blogroll")
+	@Remark(value="Delete Category ",group="blogroll")
 	@RequestMapping("delete")
 	public String role_delete(@RequestParam("id") long id, HttpServletRequest req, 
 			HttpServletResponse resp){

@@ -20,15 +20,15 @@ public class Constant {
 	/**
 	 * Message: successfully operation
 	 */
-	final public static String MESSAGE_ACTION_SUCCESS = "操作成功！";
+	final public static String MESSAGE_ACTION_SUCCESS = "Operation Successfully!";
 	/**
 	 * Message: form wrong
 	 */
-	final public static String MESSAGE_ACTION_FORM_WRONG = "表单验证错误!";
+	final public static String MESSAGE_ACTION_FORM_WRONG = "Form Validation Error!";
 	/**
 	 * Message: failed operation
 	 */
-	public static final String MESSAGE_ACTION_FAILED = "操作失败!";
+	public static final String MESSAGE_ACTION_FAILED = "Operation Failed!";
 	
 	/**
 	 * Security Reflection Tools Scan Controller`s base package

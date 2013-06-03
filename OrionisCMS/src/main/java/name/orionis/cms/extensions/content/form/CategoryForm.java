@@ -16,17 +16,17 @@ import name.orionis.cms.extensions.content.model.Category;
  *
  */
 public class CategoryForm extends Form<Category> {
-	@NotNull(message="分类名称不能为空！")
-    @Size(min = 1, max = 50, message="分类名称必须为1-50个字符之内！")
+	@NotNull(message="Category Name must not be null!")
+    @Size(min = 1, max = 50, message="Category Name must be 1-50 character length.")
     private String cate_name;
 
-    @Size(max = 500, message="分类描述不能大于500字符长度")
+    @Size(max = 500)
     private String description;
 
     @Value("0")
     private int parent_id;
 
-    @Size(max = 100, message="链接地址长度不能大于100字符")
+    @Size(max = 100)
     private String url;
 
     @Value("false")
