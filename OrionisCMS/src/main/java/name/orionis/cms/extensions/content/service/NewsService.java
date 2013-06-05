@@ -1,6 +1,7 @@
 package name.orionis.cms.extensions.content.service;
 
 import name.orionis.cms.extensions.content.form.NewsForm;
+import name.orionis.cms.extensions.content.model.News;
 
 import org.springframework.roo.addon.layers.service.RooService;
 
@@ -8,4 +9,6 @@ import org.springframework.roo.addon.layers.service.RooService;
 public interface NewsService {
 
 	void addArtilce(NewsForm newsForm);
+	
+	News updateNews(NewsForm newsForm, long id);
 }

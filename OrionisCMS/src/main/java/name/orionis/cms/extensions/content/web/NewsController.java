@@ -82,16 +82,20 @@ public class NewsController extends BaseController {
 
 		long id = Long.parseLong(req.getParameter("id"));
 		if (HTTP_GET.equals(req.getMethod())) {
-			model.addAttribute("news", newsService.findNews(id));
+			Map<String,String> map = new HashMap<String, String>();
+			List<Category> cateList = cateService.findAllCategorys();
+			for(Category c : cateList){
+				map.put(c.getId() + "", c.getCate_name());
+			}
+			model.addAttribute("cates", map);
+			model.addAttribute("n", newsService.findNews(id));
 			return view("edit");
 		}
 		// Check Form Information
 		if (result.hasErrors() || !newsForm.validate()) {
 			return errors(result, newsForm, resp);
 		}
-		News entity = newsForm.toEntity();
-		entity.setId(id);
-		newsService.updateNews(entity);
+		newsService.updateNews( newsForm, id);
 
 		return success(resp);
 	}

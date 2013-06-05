@@ -60,8 +60,11 @@ jQuery.orionis = {
 	 * 更新主面板内容
 	 * @param url
 	 */
-	updateMain:function(url){
-		$.get($.orionis.url(url), {}, function(data){
+	updateMain:function(url, params){
+		if(!params){
+			params = {};
+		}
+		$.get($.orionis.url(url), params, function(data){
 			$("#ajax_main").html(data);
 			$.orionis.reloadJsEvent();
 		});

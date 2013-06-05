@@ -23,11 +23,11 @@ import name.orionis.cms.extensions.content.model.News;
  *
  */
 public class NewsForm extends Form<News> {
-	@NotNull
+	@NotNull(message="The title must not be null!")
     @Size(min = 1, max = 80)
     private String title;
 
-    @Size(max = 1000)
+	@Size(max = 1000, message="The description must be less than 1000 character length!")
     private String description;
 
     @Size(max = 40)
@@ -36,11 +36,11 @@ public class NewsForm extends Form<News> {
     @DecimalMax("999")
     private short list_order;
 
-    @Size(max = 10000)
+    @Size(max = 40000, message="The Content must be less than 40000 character length!")
     private String content;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date create_time;
 
     private Long category;

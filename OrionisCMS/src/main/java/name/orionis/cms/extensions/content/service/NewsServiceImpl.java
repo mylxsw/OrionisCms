@@ -16,4 +16,12 @@ public class NewsServiceImpl implements NewsService {
 		news.persist();
 	}
 	
+	@Override
+	public News updateNews(NewsForm newsForm, long id){
+		News entity = newsForm.toEntity();
+		entity.setId(id);
+		entity.setCategory(Category.findCategory(newsForm.getCategory()));
+		return entity.merge();
+	}
+	
 }

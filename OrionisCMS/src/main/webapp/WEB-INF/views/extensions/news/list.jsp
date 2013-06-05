@@ -23,6 +23,6 @@
 </admin:module>
 <admin:script>
 	<admin:js_updateMain selector="#addNew" url="news/add"></admin:js_updateMain>
-	<admin:js_dialog selector=".edit_news" url="news/edit" title=" Edit" params="id:$(this).attr('news-id')"></admin:js_dialog>
+	<admin:js_updateMain selector=".edit_news" url="news/edit" params="{id:$(this).attr('news-id')}"></admin:js_updateMain>
 	<admin:js_confirm_action selector=".delete_news" url="news/delete" message="您确定要删除吗?" updateUrl="news/list" params="id:$(this).attr('news-id')" />
 </admin:script>

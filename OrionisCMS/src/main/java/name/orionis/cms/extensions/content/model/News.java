@@ -18,11 +18,11 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord
 public class News {
 
-    @NotNull
-    @Size(min = 1, max = 80)
+    @NotNull(message="The title must not be null!")
+    @Size(min = 1, max = 80, message="The title length must be 1-80 character length!")
     private String title;
 
-    @Size(max = 1000)
+    @Size(max = 1000, message="The description must be less than 1000 character length!")
     private String description;
 
     @Size(max = 40)
@@ -34,7 +34,7 @@ public class News {
     @DecimalMax("999")
     private short list_order;
 
-    @Size(max = 10000)
+    @Size(max = 40000, message="The Content must be less than 40000 character length!")
     private String content;
     
     @Size(max = 5)
@@ -44,11 +44,11 @@ public class News {
     private String image;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date create_time;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date update_time;
 
     @Value("false")

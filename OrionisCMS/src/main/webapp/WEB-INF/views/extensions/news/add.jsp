@@ -15,7 +15,7 @@
 		<admin:select name="category" label="文章分类" data="${cates }"></admin:select>
 		<admin:textarea name="description" label="内容摘要"></admin:textarea>
 		<admin:textarea name="content" label="文章内容" id="content" rich="true"></admin:textarea>
-		<admin:input name="list_order" label="排序"></admin:input>
+		<admin:input name="list_order" label="排序" value="1"></admin:input>
 		<admin:buttonPanel>
 			<admin:button value="添加" type="submit"></admin:button>
 		</admin:buttonPanel>

@@ -116,12 +116,12 @@
 		<servlet-class>name.orionis.cms.site.servlet.CmsDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>suffix</param-name>
-			<param-value>.html</param-value>
+			<param-value>.shtml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<url-pattern>*.shtml</url-pattern>
 	</servlet-mapping>
     
     <session-config>

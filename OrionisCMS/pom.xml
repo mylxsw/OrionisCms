@@ -411,6 +411,12 @@
 			<artifactId>extremecomponents</artifactId>
 			<version>1.0.1</version>
 		</dependency>
+		<!-- CKEditor -->
+		<dependency>
+			<groupId>com.ckeditor</groupId>
+			<artifactId>ckeditor-java-core</artifactId>
+			<version>3.5.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

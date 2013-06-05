@@ -15,13 +15,13 @@
 <c:if test="${rich}">
 <script type="text/javascript">
 window.editor = new UE.ui.Editor({
-	// toolbars:[
-//           ['fullscreen', 'source', '|', 'undo', 'redo', '|',
-//               'link', 'unlink','|',
-//               'insertimage', 'emotion','scrawl', 'insertvideo','music','attachment', 'map', 'gmap', 'highlightcode','webapp', '|',
-//               'spechars','snapscreen', 'wordimage', 
-//               ]
-//       ],
+	 toolbars:[
+           ['fullscreen', 'source', '|', 'undo', 'redo', '|',
+               'link', 'unlink','|',
+               'insertimage', 'emotion', 'map', 'gmap', 'highlightcode','webapp', '|',
+               'spechars', 'wordimage', 
+               ]
+       ],
     initialFrameWidth:770,  //初始化编辑器宽度,默认1000
     initialFrameHeight:320, //初始化编辑器高度,默认320
     minFrameHeight:120,

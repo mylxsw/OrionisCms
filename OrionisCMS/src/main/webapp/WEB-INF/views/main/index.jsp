@@ -38,6 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <![endif]-->
 <script type="text/javascript">
 	var basePath = "<%=basePath%>";
+	var CKEDITOR_BASEPATH = basePath + "resources/ckeditor/";
 </script>
 </head>
 <body>
