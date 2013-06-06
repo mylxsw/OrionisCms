@@ -96,6 +96,42 @@ public class AccountController extends BaseController {
 		return ajax("Login successfully!", STATUS_SUCCESS, resp);
 	}
 	
+	
+	@Remark(value="Modify Personal Info", group="account")
+	@RequestMapping("personalinfo")
+	public String personalinfo(HttpSession session, HttpServletRequest req, HttpServletResponse resp, Model model){
+		UserInfo user = (UserInfo) session.getAttribute(AccountController.ACCOUNT_INFO);
+		if(req.getMethod().equals(HTTP_GET)){
+			model.addAttribute("user", rbacService.findRbacUser(user.getUserId()));
+			return view("personalinfo");
+		}
+		String email = (String) req.getParameter("email");
+		
+		RbacUser rbacUser = rbacService.findRbacUser(user.getUserId());
+		rbacUser.setEmail(email);
+		
+		rbacService.updateRbacUser(rbacUser);
+		return success(resp);
+	}
+	
+	@Remark(value="Modify Password", group="account")
+	@RequestMapping("changePassword")
+	public String changePassword(HttpSession session, HttpServletRequest req, HttpServletResponse resp, Model model){
+		if(req.getMethod().equals(HTTP_GET)){
+			return view("change_password");
+		}
+		String password = req.getParameter("password").trim();
+		if("".equals(password)){
+			return failed(resp);
+		}
+		
+		UserInfo user = (UserInfo) session.getAttribute(AccountController.ACCOUNT_INFO);
+		RbacUser rbacUser = rbacService.findRbacUser(user.getUserId());
+		rbacUser.setPassword(Encrypt.encryptPassword(password, rbacUser.getUserName()));
+		rbacService.updateRbacUser(rbacUser);
+		return success(resp);
+		
+	}
 	/**
 	 * Safe logout
 	 * @param session

@@ -85,8 +85,8 @@ public class DirectRemote {
 		}
 		if(position.equalsIgnoreCase("menu.my_dashboard")){ // Dashboard
 			root.add(new NavItem().setLinkName("Personal Information").setFolder(true)
-					.add(new NavItem().setLinkName("Modify Personal Info").setLinkUrl("account/change_personal"))
-					.add(new NavItem().setLinkName("Change Password").setLinkUrl("account/change_password")));
+					.add(new NavItem().setLinkName("Modify Personal Info").setLinkUrl("account/personalinfo"))
+					.add(new NavItem().setLinkName("Change Password").setLinkUrl("account/changePassword")));
 		}else if(position.equalsIgnoreCase("menu.setting")){ // Settings
 			root.add(new NavItem().setLinkName("Administrators Settings").setFolder(true)
 					.add(new NavItem().setLinkName("Administrator Management").setLinkUrl("rbac/user/list"))
