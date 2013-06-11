@@ -102,6 +102,7 @@ jQuery.orionis = {
 				}else{ // 表单提交之后，根据返回的status值进行处理函数的分发
 					var form = $(this);
 					options.success = function(data){
+						
 						// status == 1 处理成功
 						if( !$.orionis.isEmpty(form.attr("success")) && data.status == 1){
 							eval(form.attr("success"))(data);

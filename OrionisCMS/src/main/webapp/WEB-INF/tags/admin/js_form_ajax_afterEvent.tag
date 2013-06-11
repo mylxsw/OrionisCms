@@ -15,7 +15,7 @@ function ${functionName}(data){
 				$.orionis.alert_message(data.${errorField });
 			</c:when>
 			<c:otherwise>
-				$.orionis.alert_message(data.errors);
+				$.orionis.alert_message(data.info);
 			</c:otherwise>
 		</c:choose>
 	}

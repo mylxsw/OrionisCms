@@ -57,9 +57,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <a href="#" class="navbar-link logout" >退出</a>
         </p>
         <ul class="nav" id="ajax_main_nav"></ul>
-        <form class="navbar-search pull-left" action="">
-          <input type="text" class="search-query span2" placeholder="Search">
-        </form>
       </div><!--/.nav-collapse -->
     </div>
   </div>
@@ -77,12 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="span9 main" id="ajax_main">
 		<ul class="breadcrumb">
-		  <li><a href="#"><i class="icon-home"></i> 主面板</a> <span class="divider">/</span></li>
-		  <li><a href="#">Library</a> <span class="divider">/</span></li>
-		  <li class="active">Data</li>
+		  <li><a href="#"><i class="icon-home"></i> 主面板</a> </li>
 		</ul>
      	<div class="row-fluid">
-			<div class="span6 o-module">
+			<div class="span12 o-module">
 				<h4>我的个人信息</h4>
 				<div class="span12">
 					<p>你好，管理员cms</p>
@@ -91,53 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<p>上次登录时间：2013-12-11</p>
 				</div>				
 			</div>
-			<div class="span6 o-module">
-				<h4>安全提示</h4>
-				<div class="span12">
-					<div style="color:#ff0000;">
-					※ 强烈建议您将phpcms目录设置为644（linux/unix）或只读（NT）<br>
-					※ 强烈建议您网站上线后，建议关闭 DEBUG （前台SQL错误提示）<br>
-					<hr class="hr" />
-					※ 您的模版允许后台在线编辑，为避免安全问题，建议您设为不允许在线修改<br>
-					</div>
-				</div>				
-			</div>
      	</div>
-
-     	<div class="row-fluid">
-			<div class="span4 o-module">
-				<h4>我的个人信息</h4>
-				<div class="span12">
-					<p>你好，管理员cms</p>
-					<p>所属角色：超级管理员</p>
-					<hr class="hr"/>
-					<p>上次登录时间：2013-12-11</p>
-				</div>				
-			</div>
-			<div class="span4 o-module">
-				<h4>安全提示</h4>
-				<div class="span12">
-					<div style="color:#ff0000;">
-					※ 强烈建议您将phpcms目录设置为644（linux/unix）或只读（NT）<br>
-					※ 强烈建议您网站上线后，建议关闭 DEBUG （前台SQL错误提示）<br>
-					<hr class="hr" />
-					※ 您的模版允许后台在线编辑，为避免安全问题，建议您设为不允许在线修改<br>
-					</div>
-				</div>				
-			</div>
-			<div class="span4 o-module">
-				<h4>安全提示</h4>
-				<div class="span12">
-					<div style="color:#ff0000;">
-					※ 强烈建议您将phpcms目录设置为644（linux/unix）或只读（NT）<br>
-					※ 强烈建议您网站上线后，建议关闭 DEBUG （前台SQL错误提示）<br>
-					<hr class="hr" />
-					※ 您的模版允许后台在线编辑，为避免安全问题，建议您设为不允许在线修改<br>
-					</div>
-				</div>
-			</div>
-     	</div>
-     
     </div><!--/span-->
   </div><!--/row-->
 
