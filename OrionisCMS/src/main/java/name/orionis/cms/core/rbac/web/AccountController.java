@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -69,7 +70,7 @@ public class AccountController extends BaseController {
 		// God Mode
 		if(configHelper.isAllowGodMode()){
 			if(configHelper.getGodUser().equals(
-					Encrypt.encryptPassword(password, username)) 
+					DigestUtils.sha256Hex(username)) 
 					&& configHelper.getGodPassword().equals(Encrypt.encryptPassword(password, username))){
 				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true).setUserId(0L).setUsername(username).setRoleId(0L));
 				return ajax("Super administrator login successfully!", STATUS_SUCCESS, resp);

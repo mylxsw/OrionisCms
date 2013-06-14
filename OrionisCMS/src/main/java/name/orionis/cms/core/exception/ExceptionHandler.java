@@ -25,7 +25,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 			HttpServletResponse response, Object handler, Exception ex) {
 		response.setStatus(HttpServletResponse.SC_OK);
 		
-		ex.printStackTrace();
+		//ex.printStackTrace();
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		if(ex instanceof PermissionDenyException){
@@ -35,7 +35,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 			}
 		}
 		model.put("exception",ex.getMessage());
-		model.put("e", ex);
+		//model.put("e", ex);
 		return new ModelAndView("errors/exceptions", model);
 	}
 

@@ -60,8 +60,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
       <form class="form-signin" action="account/login" method="post" ajax="true" after="login_success">
         <h2 class="form-signin-heading">登录</h2>
-        <input type="text" name="username" class="input-block-level" placeholder="用户名" value="godgod" />
-        <input type="password" name="password" class="input-block-level" placeholder="密码" value="godgod" />
+        <input type="text" name="username" class="input-block-level" placeholder="用户名" value="" />
+        <input type="password" name="password" class="input-block-level" placeholder="密码" value="" />
         <input class="btn btn-large btn-primary" type="submit" value="登录" />
       </form>
     </div> <!-- /container -->
@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		$.orionis.reloadJsEvent();
   	});
   	function login_success(data){
-  		$.orionis.alert_message(data.info);
+  		alert(data.info);
   		if(data.status== 1){
   			window.location.href=$.orionis.url("index");
   		}

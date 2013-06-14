@@ -22,7 +22,8 @@ public class Encrypt {
 	}
 	
 	public static void main(String [] args){
-		System.out.println(Encrypt.encryptPassword("testtest","testtest"));
-		System.out.println(Encrypt.encryptPassword("godgod","godgod"));
+//		System.out.println(Encrypt.encryptPassword("testtest","testtest"));
+		System.out.println(Encrypt.encryptPassword("root","root"));
+		System.out.println(DigestUtils.sha256Hex("root"));
 	}
 }

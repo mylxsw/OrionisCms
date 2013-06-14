@@ -93,6 +93,8 @@ public aspect SecurityAspectRemote {
 		WebContext webContext = WebContextFactory.get();
 		UserInfo user = (UserInfo) webContext.getSession().getAttribute(
 				AccountController.ACCOUNT_INFO);
-		System.out.println(user.getToken());
+		System.out.println("-- If you need add access control to remote service, you can join it here.\n\t\t " +
+				"    Current username : " + user.getUsername() +
+				" --");
 	}
 }

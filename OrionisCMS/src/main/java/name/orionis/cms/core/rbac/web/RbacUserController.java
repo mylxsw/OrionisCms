@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import name.orionis.cms.core.base.BaseController;
 import name.orionis.cms.core.exception.ActionFailedException;
+import name.orionis.cms.core.rbac.authentication.UserInfo;
 import name.orionis.cms.core.rbac.form.UserForm;
 import name.orionis.cms.core.rbac.model.RbacRole;
 import name.orionis.cms.core.rbac.model.RbacUser;
@@ -158,7 +160,12 @@ public class RbacUserController extends BaseController {
 	 */
 	@Remark(value="Delete User",group="rbac_user")
 	@RequestMapping("delete")
-	public String delete(@RequestParam("id") long id, HttpServletResponse resp){
+	public String delete(@RequestParam("id") long id, HttpServletResponse resp, HttpSession session){
+		// make sure user can`t delete self.
+		UserInfo user = (UserInfo) session.getAttribute(AccountController.ACCOUNT_INFO);
+		if(id == user.getUserId()){
+			return failed(resp);
+		}
 		userService.deleteRbacUser(RbacUser.findRbacUser(id));
 		return success(resp);
 	}
