@@ -146,10 +146,12 @@ public abstract class BaseController implements ApplicationContextAware {
 	 */
 	protected String errors(BindingResult result, Form<?> form, 
 			HttpServletResponse resp){
-		return ajax(MessageBuilder.init().
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("errors", MessageBuilder.init().
 				addMessage(result.getFieldErrors()).
 				addMessage(form.errorMessages()).
-				buildMap("errors"), 
+				build());
+		return ajax(map, 
 				Constant.MESSAGE_ACTION_FORM_WRONG, STATUS_FAILED, resp);
 	}
 	/**

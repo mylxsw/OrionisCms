@@ -95,7 +95,7 @@ public class NewsController extends BaseController {
 		if (result.hasErrors() || !newsForm.validate()) {
 			return errors(result, newsForm, resp);
 		}
-		newsService.updateNews( newsForm, id);
+		newsService.updateNewsById( newsForm, id);
 
 		return success(resp);
 	}

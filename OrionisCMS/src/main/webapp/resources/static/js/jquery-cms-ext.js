@@ -150,7 +150,12 @@ jQuery.orionis = {
 		if($("a.parse").length){
 			$("a.parse").click(function(e){
 				e.preventDefault();
-				$.orionis.updateMain($(this).attr("href"));
+				var href = $(this).attr("href");
+				if(href.indexOf("javascript:") == 0){
+					eval(href);
+					return false;
+				}
+				$.orionis.updateMain(href);
 			});
 			$("form.parse").each(function(){
 				$(this).attr("action", $.orionis.url($(this).attr("action")));

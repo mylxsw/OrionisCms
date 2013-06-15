@@ -10,5 +10,5 @@ public interface NewsService {
 
 	void addArtilce(NewsForm newsForm);
 	
-	News updateNews(NewsForm newsForm, long id);
+	News updateNewsById(NewsForm newsForm, long id);
 }

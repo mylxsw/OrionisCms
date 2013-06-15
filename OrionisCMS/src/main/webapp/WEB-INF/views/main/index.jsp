@@ -13,10 +13,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Orionis CMS</title>
 <meta name="keywords" content=""/>
 <meta name="description" content=""/>
-<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />"/>
-<link rel="stylesheet" href="<c:url value="/resources/bootstrap/css/bootstrap-responsive.min.css" />"/>
+<link rel="stylesheet" href="<c:url value="/resources/orionis-admin/vendor/easy-ui/themes/bootstrap/easyui.css" />"/>
+<link rel="stylesheet" href="<c:url value="/resources/orionis-admin/vendor/bootstrap-jquery-ui/css/bootstrap.min.css" />"/>
+<link rel="stylesheet" href="<c:url value="/resources/orionis-admin/vendor/bootstrap-jquery-ui/css/bootstrap-responsive.min.css" />"/>
 <link rel="stylesheet" href="<c:url value="/resources/jquery-ui/css/custom-theme/jquery-ui-1.10.0.custom.css" />"/>
-
+<link rel="stylesheet" href="<c:url value="/resources/orionis-admin/css/easy-main.css" />"/>
 <!--[if IE 7]>
 <link rel="stylesheet" href="<c:url value="/resources/assets/css/font-awesome-ie7.min.css" />">
 <![endif]-->
@@ -25,7 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <![endif]-->
 
 <link type="text/css" href="<c:url value="resources/assets/css/font-awesome.min.css" />" />
-<link rel="stylesheet" href="<c:url value="/resources/static/css/core.css" />"/>
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<c:url value="/resources/assets/ico/apple-touch-icon-144-precomposed.png" />" >
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<c:url value="/resources/assets/ico/apple-touch-icon-114-precomposed.png" />">
@@ -41,9 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var CKEDITOR_BASEPATH = basePath + "resources/ckeditor/";
 </script>
 </head>
-<body>
-<div class="container-fluid container-global">
-<div class="navbar navbar-inverse ">
+<body  class="easyui-layout">
+<div class="navbar navbar-inverse navbar-fixed-top" data-options="region:'north'" >
   <div class="navbar-inner">
     <div class="container-fluid">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -61,44 +60,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
   </div>
 </div>
-
-<div class="container-fluid">
-  <div class="row-fluid">
-
-    <div class="span3 left_nav" >
-      <div class="well sidebar-nav">
-        <ul class="nav nav-list" id="ajax_left_nav">
-        </ul>
-      </div><!--/.well -->
-    </div><!--/span-->
-    
-    <div class="span9 main" id="ajax_main">
-		<ul class="breadcrumb">
-		  <li><a href="#"><i class="icon-home"></i> 主面板</a> </li>
-		</ul>
-     	<div class="row-fluid">
-			<div class="span12 o-module">
-				<h4>我的个人信息</h4>
-				<div class="span12">
-					<p>你好，管理员cms</p>
-					<p>所属角色：超级管理员</p>
-					<hr class="hr"/>
-					<p>上次登录时间：2013-12-11</p>
-				</div>				
+<div data-options="region:'west', split: true" title="侧栏菜单" id="sidebar">
+	<div class="well sidebar-nav">
+       <ul class="nav nav-list" id="ajax_left_nav">
+       </ul>
+     </div>
+</div>
+<div data-options="region:'center'" id="ajax_main">
+	<ul class="breadcrumb">
+		<li>
+			<a href="#"><i class="icon-home icon-white"></i> 主页</a><span class="divider">/</span>
+		</li>
+		<li>
+			<a href="#">类库</a><span class="divider">/</span>
+		</li>
+		<li class="active">
+			数据
+		</li>
+	</ul>
+	<div class="body">
+		<div class="row-fluid ">
+			<div class="span12">
+				<div class="widget">
+					<div class="widget-title">
+						<div class="icon">
+							<i class="icon-th-list"></i>
+						</div>
+						<h4>管理内容</h4>
+						<a href="#" class="minimize"><i class="icon-chevron-up"></i></a>
+					</div>
+					<div class="widget-content">
+						<div>欢迎使用Orionis CMS 二次开发平台</div>
+					</div>
+				</div>
 			</div>
-     	</div>
-    </div><!--/span-->
-  </div><!--/row-->
-
-  <hr>
-</div><!--/.fluid-container-->
+		</div>
+	</div>
+</div>
+<div id="window"></div>
 <div id="dialog"></div>
 <div id="message"></div>
 <div id="queue"></div>
-<footer class="footer">
-	<div class="copyright">&copy; orionis.name 2013</div>
-</footer>
-</div>
 <script src="<c:url value="/resources/static/js/jquery-1.8.3.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/static/js/jquery.form.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>" type="text/javascript" ></script>
@@ -106,6 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<c:url value="/resources/jquery-ui/js/jquery.ui.datepicker-zh-CN.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/jquery-ui/js/jquery-ui-timepicker-addon.js" />" type="text/javascript"></script>
 <script src="<c:url value="/resources/jquery-uploadify/jquery.uploadify.min.js" />" type="text/javascript"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/easyloader.js" />"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/plugins/jquery.resizable.js" />"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/plugins/jquery.parser.js" />"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/plugins/jquery.draggable.js" />"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/plugins/jquery.droppable.js" />"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/plugins/jquery.layout.js" />"></script>
+<script src="<c:url value="/resources/orionis-admin/vendor/easy-ui/plugins/jquery.panel.js" />"></script>
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/interface/DirectRemote.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
@@ -113,5 +122,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src='<c:url value="/resources/ueditor/editor_all_min.js" />' ></script>
 <script src="<c:url value="/resources/static/js/jquery-cms-ext.js"/>" type="text/javascript" ></script>
 <script src="<c:url value="/resources/static/js/core.js"/>" type="text/javascript" ></script>
+<script src="<c:url value="/resources/orionis-admin/js/easy-ui-main.js" />"></script>
 </body>
 </html>

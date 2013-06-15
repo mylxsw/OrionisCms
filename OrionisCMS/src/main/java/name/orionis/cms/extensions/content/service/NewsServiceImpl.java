@@ -17,11 +17,18 @@ public class NewsServiceImpl implements NewsService {
 	}
 	
 	@Override
-	public News updateNews(NewsForm newsForm, long id){
+	public News updateNewsById(NewsForm newsForm, long id){
 		News entity = newsForm.toEntity();
-		entity.setId(id);
-		entity.setCategory(Category.findCategory(newsForm.getCategory()));
-		return entity.merge();
+		
+		News newEntity = News.findNews(id);
+		newEntity.setCategory(Category.findCategory(newsForm.getCategory()));
+		newEntity.setContent(entity.getContent());
+		newEntity.setTitle(entity.getTitle());
+		newEntity.setDescription(entity.getDescription());
+		newEntity.setList_order(entity.getList_order());
+		newEntity.setUsername(entity.getUsername());
+		
+		return newEntity.merge();
 	}
 	
 }

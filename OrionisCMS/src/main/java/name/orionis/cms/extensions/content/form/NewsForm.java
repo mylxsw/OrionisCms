@@ -24,7 +24,7 @@ import name.orionis.cms.extensions.content.model.News;
  */
 public class NewsForm extends Form<News> {
 	@NotNull(message="文章标题不能为空!")
-    @Size(min = 1, max = 80)
+    @Size(min = 1, max = 80, message="文章标题应为1-80个字符长度")
     private String title;
 
 	@Size(max = 1000, message="描述信息不能多余1000个字符长度!")
