@@ -27,7 +27,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  */
 @Controller
 @RequestMapping("/rbac/role")
-@Remark(value="RBAC Role Controller", group="rbac")
+@Remark(value="RBAC角色管理", group="rbac")
 public class RbacRoleController extends BaseController {
 
 	@Resource
@@ -39,7 +39,7 @@ public class RbacRoleController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Role List",group="rbac_role")
+	@Remark(value="角色管理",group="rbac_role")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, Model model){
 		model.addAttribute("roles", roleService.findAllRbacRoles());
@@ -55,7 +55,7 @@ public class RbacRoleController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Add Role",group="rbac_role")
+	@Remark(value="添加角色",group="rbac_role")
 	@RequestMapping("add")
 	public String add(
 			@Valid @ModelAttribute("roleForm") RoleForm roleForm,
@@ -87,7 +87,7 @@ public class RbacRoleController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Modify Role", group="rbac_role")
+	@Remark(value="修改角色", group="rbac_role")
 	@RequestMapping("edit")
 	public String edit(
 			@Valid @ModelAttribute("roleForm") RoleForm roleForm,
@@ -130,7 +130,7 @@ public class RbacRoleController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="Delete Role",group="rbac_role")
+	@Remark(value="删除角色",group="rbac_role")
 	@RequestMapping("delete")
 	public String role_delete(@RequestParam("id") long id, HttpServletRequest req, HttpServletResponse resp){
 		roleService.deleteRbacRole(roleService.findRbacRole(id));

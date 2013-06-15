@@ -22,7 +22,8 @@
 </ul>
 		<div class="row-fluid o-module o-module-big">
     	<admin:button value="添加菜单" id="addMenu" style="margin-left: 9px; margin-top: 10px;"></admin:button>
-		<div style="margin-top:20px; border:1px solid #CCC; padding:10px;" id="menu_preview">
+		<span class="label label-success">[ ${role.roleName } ]</span>
+		<div style="margin:20px; border:1px solid #CCC; padding:10px;" id="menu_preview">
 			<admin:nav nav_data="${menus }"></admin:nav>
 		</div>
 		</div>

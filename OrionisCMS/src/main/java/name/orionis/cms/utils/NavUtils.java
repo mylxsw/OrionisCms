@@ -54,7 +54,7 @@ public class NavUtils {
 			buffer.append("<li><span "
 					+ (item.isValid() ? "" : "status='invalid'")
 					+ "><a href=\"" + item.getLinkUrl() + "\"  folder=\"" + (item.isFolder() ? "true" : "false") + "\">");
-			buffer.append(item.getLinkName() + "</a><span class='control' mid='" + item.getId() + "'><a href='edit' class='edit'>Edit</a>  |  <a href='del' class='del '>Delete</a></span></span>");
+			buffer.append(item.getLinkName() + "</a><span class='control' mid='" + item.getId() + "'><a href='edit' class='edit'>编辑</a>  |  <a href='del' class='del '>删除</a></span></span>");
 			if(item.isFolder()){
 				buffer.append(genNavManager(item));
 			}else{

@@ -1,5 +1,6 @@
 package name.orionis.cms.core.rbac.form;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,22 +16,23 @@ import name.orionis.cms.core.rbac.model.RbacRole;
  */
 public class PermissionForm extends Form<RbacPermission> {
 
-    @NotNull
-    @Size(max = 40)
+    @NotNull(message="权限名称不能为空!")
+    @Size(max = 40, message="权限名不能大于40字符!")
     private String permissionName;
 
-    @NotNull
-    @Size(max = 220)
+    @NotNull(message="控制器名不能为空!")
+    @Size(max = 220, message="控制器名不能大于220字符!")
     private String controller;
 
-    @NotNull
-    @Size(max = 220)
+    @NotNull(message="方法名不能为空!")
+    @Size(max = 220, message="方法名不能大于220字符!")
     private String method;
 
-    @NotNull
-    @Size(max = 255)
+    @NotNull(message="URL地址不能为空!")
+    @Size(max = 255, message="url不能大于255字符!")
     private String url;
 
+    @Min(message="角色ID不能为空!", value = 0)
     private long roleId;
     
     

@@ -14,6 +14,7 @@ import name.orionis.cms.core.exception.ActionFailedException;
 import name.orionis.cms.core.rbac.form.PermissionForm;
 import name.orionis.cms.core.rbac.model.RbacPermission;
 import name.orionis.cms.core.rbac.service.RbacPermissionService;
+import name.orionis.cms.core.rbac.service.RbacRoleService;
 import name.orionis.cms.utils.Constant;
 import name.orionis.helper.reflection.ControllerClassInfo;
 import name.orionis.helper.reflection.ControllerReflectionUtil;
@@ -35,19 +36,19 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/rbac/permission")
-@Remark(value="RBAC Permission Controller", group="rbac")
+@Remark(value="RBAC权限管理", group="rbac")
 public class RbacPermissionController extends BaseController {
 
 	@Resource
 	private RbacPermissionService permissionService;
-	
+	@Resource private RbacRoleService roleService;
 	/**
 	 * Permission Update
 	 * This option is just for developer
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="Update Permission",group="rbac_permission")
+	@Remark(value="权限更新",group="rbac_permission")
 	@RequestMapping("update")
 	public String update(HttpServletResponse resp){
 		permissionService.updatePermissions(getApplicationContext());
@@ -64,7 +65,7 @@ public class RbacPermissionController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Graint Permission To Role",group="rbac_permission")
+	@Remark(value="角色授权",group="rbac_permission")
 	@RequestMapping("add")
 	public String add(
 			@Valid @ModelAttribute("permissionForm") PermissionForm permissionForm,
@@ -92,6 +93,7 @@ public class RbacPermissionController extends BaseController {
 			}
 			model.addAttribute("permissions", permissions);
 			model.addAttribute("id", id);
+			model.addAttribute("role", roleService.findRbacRole(id));
 			return view("add");
 		}
 		
@@ -114,7 +116,7 @@ public class RbacPermissionController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="Delete role`s permission",group="rbac_permission")
+	@Remark(value="权限解除",group="rbac_permission")
 	@RequestMapping("delete")
 	public String delete( @RequestParam(value="id",required=false) long id,
 			HttpServletResponse resp){

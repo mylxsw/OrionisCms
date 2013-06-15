@@ -30,6 +30,7 @@ li:hover{
   <li class="active">权限列表</li>
 </ul>
 		<div class="row-fluid o-module o-module-big">
+		<span class="label label-success">[ ${role.roleName } ]</span>
 			<%
 				Map<String, RbacPermission> permission_list = (Map<String, RbacPermission>) request.getAttribute("permissions");
 				

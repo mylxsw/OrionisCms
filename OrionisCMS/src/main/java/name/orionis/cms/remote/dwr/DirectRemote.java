@@ -77,33 +77,32 @@ public class DirectRemote {
 	private NavItem _godNavs(String position) {
 		NavItem root = new NavItem();
 		if(position.equalsIgnoreCase("top")){
-			root.add(new NavItem().setLinkName("DashBoard").setLinkUrl("menu.my_dashboard"));
-			root.add(new NavItem().setLinkName("Settings").setLinkUrl("menu.setting"));
-			root.add(new NavItem().setLinkName("Modules").setLinkUrl("menu.module"));
-			root.add(new NavItem().setLinkName("Content").setLinkUrl("menu.content"));
-			root.add(new NavItem().setLinkName("Extensions").setLinkUrl("menu.extension"));
+			root.add(new NavItem().setLinkName("主面板").setLinkUrl("menu.my_dashboard"));
+			root.add(new NavItem().setLinkName("设置").setLinkUrl("menu.setting"));
+			root.add(new NavItem().setLinkName("模块").setLinkUrl("menu.module"));
+			root.add(new NavItem().setLinkName("内容").setLinkUrl("menu.content"));
+			root.add(new NavItem().setLinkName("扩展").setLinkUrl("menu.extension"));
 		}
 		if(position.equalsIgnoreCase("menu.my_dashboard")){ // Dashboard
-			root.add(new NavItem().setLinkName("Personal Information").setFolder(true)
-					.add(new NavItem().setLinkName("Modify Personal Info").setLinkUrl("account/personalinfo"))
-					.add(new NavItem().setLinkName("Change Password").setLinkUrl("account/changePassword")));
+			root.add(new NavItem().setLinkName("个人信息").setFolder(true)
+					.add(new NavItem().setLinkName("修改个人信息").setLinkUrl("account/personalinfo"))
+					.add(new NavItem().setLinkName("修改密码").setLinkUrl("account/changePassword")));
 		}else if(position.equalsIgnoreCase("menu.setting")){ // Settings
-			root.add(new NavItem().setLinkName("Administrators Settings").setFolder(true)
-					.add(new NavItem().setLinkName("Administrator Management").setLinkUrl("rbac/user/list"))
-					.add(new NavItem().setLinkName("Role Management").setLinkUrl("rbac/role/list")));
+			root.add(new NavItem().setLinkName("管理员设置").setFolder(true)
+					.add(new NavItem().setLinkName("管理员管理").setLinkUrl("rbac/user/list"))
+					.add(new NavItem().setLinkName("角色管理").setLinkUrl("rbac/role/list")));
 		}else if(position.equalsIgnoreCase("menu.module")){ // Modules
-			root.add(new NavItem().setLinkName("Modules").setFolder(true)
-					.add(new NavItem().setLinkName("Advertisement").setLinkUrl("advertisement/list"))
-					.add(new NavItem().setLinkName("Announce").setLinkUrl("announce/list"))
-					.add(new NavItem().setLinkName("Message").setLinkUrl("message/list"))
-					.add(new NavItem().setLinkName("Blogroll").setLinkUrl("blogroll/list")) // Blogroll
+			root.add(new NavItem().setLinkName("模块").setFolder(true)
+					.add(new NavItem().setLinkName("广告").setLinkUrl("advertisement/list"))
+					.add(new NavItem().setLinkName("通知公告").setLinkUrl("announce/list"))
+					.add(new NavItem().setLinkName("消息").setLinkUrl("message/list"))
+					.add(new NavItem().setLinkName("友情链接").setLinkUrl("blogroll/list")) // Blogroll
 					);
 		}else if(position.equalsIgnoreCase("menu.content")){ // Context
-			root.add(new NavItem().setLinkName("Content").setFolder(true)
-					.add(new NavItem().setLinkName("Aritcle").setLinkUrl("news/list"))
-					.add(new NavItem().setLinkName("Remark").setLinkUrl("remark/list")));
-			root.add(new NavItem().setLinkName("Content Settings").setFolder(true)
-					.add(new NavItem().setLinkName("Category").setLinkUrl("category/list")));
+			root.add(new NavItem().setLinkName("内容").setFolder(true)
+					.add(new NavItem().setLinkName("文章管理").setLinkUrl("news/list")));
+			root.add(new NavItem().setLinkName("内容分类管理").setFolder(true)
+					.add(new NavItem().setLinkName("分类管理").setLinkUrl("category/list")));
 		}else if(position.equalsIgnoreCase("menu.extension")){
 			
 		}

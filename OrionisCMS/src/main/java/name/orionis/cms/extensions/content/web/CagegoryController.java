@@ -27,7 +27,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  * Site : http://blog.orionis.name
  *
  */
-@Remark(value = "Article Category", group = "content")
+@Remark(value = "文章分类管理", group = "content")
 @RequestMapping("category")
 @Controller
 public class CagegoryController extends BaseController {
@@ -35,7 +35,7 @@ public class CagegoryController extends BaseController {
 	@Resource
 	private CategoryService categoryService;
 
-	@Remark(value = "Article Category list", group = "category")
+	@Remark(value = "分类管理", group = "category")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, HttpServletResponse resp,
 			Model model) {
@@ -43,7 +43,7 @@ public class CagegoryController extends BaseController {
 		return view("list");
 	}
 
-	@Remark(value = "Add Article Category", group = "category")
+	@Remark(value = "添加分类", group = "category")
 	@RequestMapping("add")
 	public String add(@Valid @ModelAttribute CategoryForm categoryForm,
 			BindingResult result, HttpServletRequest req,
@@ -66,7 +66,7 @@ public class CagegoryController extends BaseController {
 		return success(resp);
 	}
 
-	@Remark(value = "Modify Article Category", group = "category")
+	@Remark(value = "修改分类", group = "category")
 	@RequestMapping("edit")
 	public String edit(@Valid @ModelAttribute CategoryForm categoryForm,
 			BindingResult result, HttpSession session, HttpServletRequest req,
@@ -90,7 +90,7 @@ public class CagegoryController extends BaseController {
 		return success(resp);
 	}
 
-	@Remark(value = "Delete Article Category", group = "category")
+	@Remark(value = "删除分类", group = "category")
 	@RequestMapping("delete")
 	public String delete(@RequestParam("id") long id, HttpServletRequest req,
 			HttpServletResponse resp) {

@@ -35,7 +35,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  *
  */
 @Controller
-@Remark(value="File Upload Controller", group="upload")
+@Remark(value="文件上传控制器", group="upload")
 @RequestMapping("file")
 public class FileUploadController extends BaseController implements ServletContextAware {
 
@@ -69,7 +69,7 @@ public class FileUploadController extends BaseController implements ServletConte
 				throw new Exception();
 			}
 		} catch( Exception e){
-			return ajax("Upload validation failed!", STATUS_FAILED, resp);
+			return ajax("上传验证失败!", STATUS_FAILED, resp);
 		}
 		
 		// Get uploaded file information
@@ -85,7 +85,7 @@ public class FileUploadController extends BaseController implements ServletConte
 			}
 		}
 		if(!isLegal){
-			return ajax("The file extension not allowed", STATUS_FAILED, resp);
+			return ajax("上传文件扩展名不允许", STATUS_FAILED, resp);
 		}
 		
 		// Move file to appropriate position
@@ -95,7 +95,7 @@ public class FileUploadController extends BaseController implements ServletConte
 			_copyFile(file, new_filename, private_access);
 		} catch (IOException e) {
 			e.printStackTrace();
-			return ajax("File upload error!", STATUS_FAILED, resp);
+			return ajax("文件上传错误!", STATUS_FAILED, resp);
 		}
 		
 		// Save file information

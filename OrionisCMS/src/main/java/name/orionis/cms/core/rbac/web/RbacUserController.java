@@ -37,7 +37,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  */
 @Controller
 @RequestMapping("/rbac/user")
-@Remark(value="RBAC User Controller", group="rbac")
+@Remark(value="RBAC用户管理", group="rbac")
 public class RbacUserController extends BaseController {
 	
 	@Resource
@@ -50,7 +50,7 @@ public class RbacUserController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="User List", group="rbac_user")
+	@Remark(value="用户管理", group="rbac_user")
 	@RequestMapping("list")
 	public String list(@RequestParam(value="page", defaultValue="1") int page, 
 			Model model){
@@ -71,7 +71,7 @@ public class RbacUserController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Add User",group="rbac_user")
+	@Remark(value="添加用户",group="rbac_user")
 	@RequestMapping("add")
 	public String add(@Valid @ModelAttribute("userForm") UserForm userForm, 
 			BindingResult result, 
@@ -100,7 +100,7 @@ public class RbacUserController extends BaseController {
 		
 		return success(resp);
 	}
-	@Remark(value="Modify User", group="rbac_user")
+	@Remark(value="修改用户", group="rbac_user")
 	@RequestMapping("edit")
 	public String edit(
 			@Valid @ModelAttribute("userForm") UserForm userForm,
@@ -158,7 +158,7 @@ public class RbacUserController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="Delete User",group="rbac_user")
+	@Remark(value="删除用户",group="rbac_user")
 	@RequestMapping("delete")
 	public String delete(@RequestParam("id") long id, HttpServletResponse resp, HttpSession session){
 		// make sure user can`t delete self.

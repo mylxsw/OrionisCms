@@ -84,6 +84,7 @@ html, body{
 	width: 100%;
 	min-height: 30px;
 	line-height: 2;
+	background: #fff;
 }
 .footer div.copyright{
 	margin:0;

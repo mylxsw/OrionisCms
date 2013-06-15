@@ -14,7 +14,7 @@ import name.orionis.cms.core.rbac.model.Status;
  */
 public class RoleForm extends Form<RbacRole> {
 	
-	@Size(min = 2, max = 20)
+	@Size(min = 2, max = 20, message="角色名应为2-20字符长度")
     private String roleName;
 	
 	private int status = 0;

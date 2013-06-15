@@ -56,7 +56,7 @@ $(function(){
 	 * ***************************************************************/
 	$(".logout").click(function(e){
 		e.preventDefault();
-		if(confirm("Are you sure you want to logout？") == false){
+		if(confirm("您确定要退出系统？") == false){
 			return ;
 		}
 		$.get($.orionis.url("account/logout"),{}, function(data){

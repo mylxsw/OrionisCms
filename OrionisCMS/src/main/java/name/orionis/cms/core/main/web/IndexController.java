@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@Remark(value="Cms Admin Main Page",group="main")
+@Remark(value="CMS管理主界面",group="main")
 public class IndexController extends BaseController {
 	
 	
@@ -26,7 +26,7 @@ public class IndexController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Admin Main Page" , group="main")
+	@Remark(value="管理主页" , group="main")
 	@RequestMapping("/index")
 	public String index(Model model, HttpSession session){
 		

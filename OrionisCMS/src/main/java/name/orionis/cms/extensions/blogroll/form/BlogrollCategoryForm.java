@@ -13,7 +13,7 @@ import name.orionis.cms.extensions.blogroll.model.BlogrollCategory;
  */
 public class BlogrollCategoryForm extends Form<BlogrollCategory> {
 
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message="分类名称必须为1-50个字符长度")
     private String categoryName;
     private int listOrder;
 	

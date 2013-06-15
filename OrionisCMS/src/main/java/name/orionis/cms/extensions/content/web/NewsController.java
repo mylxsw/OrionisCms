@@ -26,7 +26,7 @@ import name.orionis.cms.extensions.content.service.CategoryService;
 import name.orionis.cms.extensions.content.service.NewsService;
 import name.orionis.helper.reflection.annotation.Remark;
 
-@Remark(value = "Article Controller", group = "content")
+@Remark(value = "文章管理", group = "content")
 @RequestMapping("news")
 @Controller
 public class NewsController extends BaseController {
@@ -36,7 +36,7 @@ public class NewsController extends BaseController {
 	@Resource
 	private CategoryService cateService;
 
-	@Remark(value = "Article List", group = "news")
+	@Remark(value = "文章管理", group = "news")
 	@RequestMapping("list")
 	public String list(HttpServletRequest req, HttpServletResponse resp,
 			Model model) {
@@ -44,7 +44,7 @@ public class NewsController extends BaseController {
 		return view("list");
 	}
 
-	@Remark(value = "Add Article", group = "news")
+	@Remark(value = "添加文章", group = "news")
 	@RequestMapping("add")
 	public String add(@Valid @ModelAttribute NewsForm newsForm,
 			BindingResult result, HttpServletRequest req,
@@ -72,7 +72,7 @@ public class NewsController extends BaseController {
 		return success(resp);
 	}
 
-	@Remark(value = "Modify Article", group = "news")
+	@Remark(value = "修改文章", group = "news")
 	@RequestMapping("edit")
 	public String edit(@Valid @ModelAttribute NewsForm newsForm,
 			BindingResult result, HttpSession session, HttpServletRequest req,
@@ -100,7 +100,7 @@ public class NewsController extends BaseController {
 		return success(resp);
 	}
 
-	@Remark(value = "Delete Article", group = "news")
+	@Remark(value = "删除文章", group = "news")
 	@RequestMapping("delete")
 	public String delete(@RequestParam("id") long id, HttpServletRequest req,
 			HttpServletResponse resp) {

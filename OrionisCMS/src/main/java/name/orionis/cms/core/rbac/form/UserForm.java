@@ -3,6 +3,7 @@ package name.orionis.cms.core.rbac.form;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -23,18 +24,19 @@ import name.orionis.cms.utils.Encrypt;
  */
 public class UserForm extends Form<RbacUser> {
 	@NotNull
-    @Size(min = 3, max = 50, message="Username must be 3-50 character length.")
+    @Size(min = 3, max = 50, message="用户名必须3-50字符长度.")
     private String userName;
 
-    @Size(min = 6, max = 30, message="Password must be 6-30 charachter length.")
+    @Size(min = 6, max = 30, message="密码必须在6-30位之间.")
     private String password;
 
-    @Email(message="Email Address error!")
+    @Email(message="邮箱地址格式有误!")
     private String email;
 
-    @Size(max = 50)
+    @Size(max = 50, message="真实姓名长度应为50字符之内")
     private String realName;
     
+    @Min(value=0, message="角色ID不能为空!")
     private long roleId;
     
     private int status  = 0;
@@ -47,7 +49,7 @@ public class UserForm extends Form<RbacUser> {
 		} catch(Exception e){
 			return true;
 		}
-		errorMessages = "Username has been exists!";
+		errorMessages = "用户名已经存在!";
 		
 		return false;
 	}

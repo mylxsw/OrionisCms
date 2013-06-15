@@ -88,12 +88,12 @@ public class SecurityAspect {
 			if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 				return ;
 			}
-			throw new PermissionDenyException("Permission Denied!", "account/login");
+			throw new PermissionDenyException("您没有权限执行该操作!", "account/login");
 		}
 		
 		// God Mode, Permit all
 		if(userinfo.isGodMode()){
-			log.info("God Mode:" 
+			log.info("超级管理员模式操作:" 
 					+ SessionHelper.getHttpServletRequest().getRequestURI());
 			return ;
 		}
@@ -101,7 +101,7 @@ public class SecurityAspect {
 		// If invoke anonymous only method, forbidden
 		if(containsElement(invokePermissionName, configHelper.getAnonymousOnlyAccess())){
 			throw new PermissionDenyException(
-					"Permission Denied!");
+					"您没有权限执行该操作!");
 		}
 		
 		
@@ -114,8 +114,8 @@ public class SecurityAspect {
 		}catch(Exception e){}
 
 		if (!role_permissions.contains(invokePermissionName)) {
-			log.info("Access Intercept:  " + invokeClass + " : " + invokeMethod);
-			throw new PermissionDenyException("Permission Denied!");
+			log.info("访问拦截:  " + invokeClass + " : " + invokeMethod);
+			throw new PermissionDenyException("您没有权限执行该操作!");
 		}
 	}
 	

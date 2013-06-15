@@ -1,5 +1,6 @@
 package name.orionis.cms.core.rbac.form;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,16 +20,17 @@ import name.orionis.cms.core.rbac.model.Status;
  */
 public class MenuForm extends Form<RbacMenu> {
 
-	@NotNull
-    @Size(max = 40)
+	@NotNull(message="菜单名必须!")
+    @Size(max = 40, message="菜单名称不能多余40个字符")
     private String menuName;
 
-    @Size(max = 100)
+    @Size(max = 100, message="菜单地址必须!")
     private String url;
 
     @Value("0")
     private Long parentId;
     
+    @Min(value=0, message="角色id不能为空!")
     private Long roldId;
     
 	@Override

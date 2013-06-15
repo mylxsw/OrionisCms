@@ -23,11 +23,11 @@ import name.orionis.cms.extensions.content.model.News;
  *
  */
 public class NewsForm extends Form<News> {
-	@NotNull(message="The title must not be null!")
+	@NotNull(message="文章标题不能为空!")
     @Size(min = 1, max = 80)
     private String title;
 
-	@Size(max = 1000, message="The description must be less than 1000 character length!")
+	@Size(max = 1000, message="描述信息不能多余1000个字符长度!")
     private String description;
 
     @Size(max = 40)
@@ -36,7 +36,7 @@ public class NewsForm extends Form<News> {
     @DecimalMax("999")
     private short list_order;
 
-    @Size(max = 40000, message="The Content must be less than 40000 character length!")
+    @Size(max = 40000, message="内容长度应该少于40000个字符!")
     private String content;
     
     @Temporal(TemporalType.TIMESTAMP)

@@ -20,16 +20,16 @@ import name.orionis.cms.extensions.blogroll.model.BlogrollCategory;
  */
 public class BlogrollForm extends Form<BlogRoll> {
 
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 100, message="链接名称必须为1-100个字符长度")
     private String linkName;
 
-    @Size(max = 100)
+    @Size(max = 100,message="链接地址长度不能大于100字符")
     private String linkUrl;
 
     @Size(max = 100)
     private String logo;
 
-    @Size(max = 200)
+    @Size(max = 200, message="简介信息不能大于200字符")
     private String introduce;
 
     private int listOrder;

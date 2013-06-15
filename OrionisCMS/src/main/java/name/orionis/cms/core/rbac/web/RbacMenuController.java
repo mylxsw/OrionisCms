@@ -21,6 +21,7 @@ import name.orionis.cms.core.rbac.dto.NavItem;
 import name.orionis.cms.core.rbac.form.MenuForm;
 import name.orionis.cms.core.rbac.model.RbacMenu;
 import name.orionis.cms.core.rbac.service.RbacMenuService;
+import name.orionis.cms.core.rbac.service.RbacRoleService;
 import name.orionis.cms.utils.Constant;
 import name.orionis.helper.reflection.ControllerClassInfo;
 import name.orionis.helper.reflection.ControllerReflectionUtil;
@@ -35,11 +36,12 @@ import name.orionis.helper.reflection.annotation.Remark;
  */
 @Controller
 @RequestMapping("/rbac/menus")
-@Remark(value="RBAC Menu Controller", group="rbac")
+@Remark(value="RBAC菜单管理", group="rbac")
 public class RbacMenuController extends BaseController {
 
 	@Resource
 	private RbacMenuService menuService;
+	@Resource private RbacRoleService roleService;
 	
 	/**
 	 * Menu list
@@ -49,7 +51,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Menu List",group="rbac_menus")
+	@Remark(value="菜单管理",group="rbac_menus")
 	@RequestMapping("list")
 	public String list( 
 			@RequestParam("id") long id, 
@@ -60,6 +62,7 @@ public class RbacMenuController extends BaseController {
 		model.addAttribute("menus", navItems);
 		
 		model.addAttribute("role_id", id);
+		model.addAttribute("role", roleService.findRbacRole(id));
 		return view("list");
 	}
 	/**
@@ -72,7 +75,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Add Menu",group="rbac_menus")
+	@Remark(value="添加菜单",group="rbac_menus")
 	@RequestMapping("add")
 	public String add(
 			@Valid @ModelAttribute("menuForm") MenuForm menuForm,
@@ -106,7 +109,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Select Menu",group="rbac_menus")
+	@Remark(value="选择菜单回调",group="rbac_menus")
 	@RequestMapping("select")
 	public String select(HttpServletRequest req, HttpServletResponse resp ,  Model model){
 		List<ControllerClassInfo> controllers = 
@@ -124,7 +127,7 @@ public class RbacMenuController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Remark(value="Modify Menu", group="rbac_menus")
+	@Remark(value="修改菜单", group="rbac_menus")
 	@RequestMapping("modify")
 	public String modify(
 			@Valid @ModelAttribute("menuForm") MenuForm menuForm,
@@ -177,7 +180,7 @@ public class RbacMenuController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="Delete Menu",group="rbac_menus")
+	@Remark(value="删除菜单",group="rbac_menus")
 	@RequestMapping("delete")
 	public String delete(@RequestParam("id") long id, HttpServletRequest req, HttpServletResponse resp){
 		menuService.deleteRbacMenuCascade(RbacMenu.findRbacMenu(id));

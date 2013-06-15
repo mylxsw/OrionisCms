@@ -26,7 +26,7 @@ import com.google.code.kaptcha.Producer;
  *
  */
 @Controller
-@Remark(value="Kaptcha", group="open")
+@Remark(value="验证码控制", group="open")
 public class KaptchaController {
 	private Producer captchaProducer = null;
 
@@ -35,7 +35,7 @@ public class KaptchaController {
 		this.captchaProducer = captchaProducer;
 	}
 
-	@Remark(value="handleRequest", group="open")
+	@Remark(value="显示验证码", group="open")
 	@RequestMapping("/captcha-image")
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

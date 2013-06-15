@@ -32,7 +32,7 @@ import name.orionis.helper.ueditor.Uploader;
  *
  */
 @Controller
-@Remark(value="Ueditor Upload Controller", group="upload")
+@Remark(value="Ueditor文件上传控制", group="upload")
 @RequestMapping("ueditor")
 public class UeditorUploadController extends BaseController implements ServletContextAware {
 	final private String uploadPath = "uploads/ueditor";// Save path

@@ -30,7 +30,7 @@ import name.orionis.helper.reflection.annotation.Remark;
  *
  */
 @Controller
-@Remark(value="Account Controller", group="account")
+@Remark(value="账户控制", group="account")
 @RequestMapping("account")
 public class AccountController extends BaseController {
 	public static final String ACCOUNT_INFO = "userinfo";
@@ -50,7 +50,7 @@ public class AccountController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("login")
-	@Remark(value="User login", group="account")
+	@Remark(value="用户登录", group="account")
 	public String login(@RequestParam(value="username", required=false) String username, 
 			@RequestParam(value="password", required=false) String password, 
 			HttpServletRequest req,
@@ -64,7 +64,7 @@ public class AccountController extends BaseController {
 		
 		// Username and password must be not blank 
 		if(StringUtils.isBlank(username) || StringUtils.isBlank(password)){
-			return ajax("Username or password error!", STATUS_FAILED, resp);
+			return ajax("用户名或密码错误!", STATUS_FAILED, resp);
 		}
 		
 		// God Mode
@@ -73,7 +73,7 @@ public class AccountController extends BaseController {
 					DigestUtils.sha256Hex(username)) 
 					&& configHelper.getGodPassword().equals(Encrypt.encryptPassword(password, username))){
 				session.setAttribute(ACCOUNT_INFO, new UserInfo().setGodMode(true).setUserId(0L).setUsername(username).setRoleId(0L));
-				return ajax("Super administrator login successfully!", STATUS_SUCCESS, resp);
+				return ajax("以超级管理员身份登录成功!", STATUS_SUCCESS, resp);
 			}
 		}
 		
@@ -94,11 +94,11 @@ public class AccountController extends BaseController {
 		
 		session.setAttribute(ACCOUNT_INFO, new UserInfo(user.getId(), 
 				user.getRbacRole().getId()).setUsername(user.getUserName()));
-		return ajax("Login successfully!", STATUS_SUCCESS, resp);
+		return ajax("登录成功!", STATUS_SUCCESS, resp);
 	}
 	
 	
-	@Remark(value="Modify Personal Info", group="account")
+	@Remark(value="修改个人信息", group="account")
 	@RequestMapping("personalinfo")
 	public String personalinfo(HttpSession session, HttpServletRequest req, HttpServletResponse resp, Model model){
 		UserInfo user = (UserInfo) session.getAttribute(AccountController.ACCOUNT_INFO);
@@ -115,7 +115,7 @@ public class AccountController extends BaseController {
 		return success(resp);
 	}
 	
-	@Remark(value="Modify Password", group="account")
+	@Remark(value="修改密码", group="account")
 	@RequestMapping("changePassword")
 	public String changePassword(HttpSession session, HttpServletRequest req, HttpServletResponse resp, Model model){
 		if(req.getMethod().equals(HTTP_GET)){
@@ -139,11 +139,11 @@ public class AccountController extends BaseController {
 	 * @param resp
 	 * @return
 	 */
-	@Remark(value="logout", group="account")
+	@Remark(value="退出系统", group="account")
 	@RequestMapping("logout")
 	public String logout(HttpSession session, HttpServletResponse resp){
 		session.invalidate();
-		return ajax("Logout successfully!", STATUS_SUCCESS, resp);
+		return ajax("您已经安全退出系统!", STATUS_SUCCESS, resp);
 	}
 	
 	@Override
